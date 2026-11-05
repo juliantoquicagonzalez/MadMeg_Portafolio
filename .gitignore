@@ -1,0 +1,12 @@
+# Original source files (not used by the website)
+assets/_source/
+
+# Tumb font: the current file is the DEMO/trial version, which must not be published.
+# Once the licensed font is bought, put it at assets/fonts/Tumb.otf and delete these two lines.
+assets/fonts/Tumb.otf
+assets/fonts/Tumb-License.txt
+
+# System files
+Thumbs.db
+desktop.ini
+.DS_Store
