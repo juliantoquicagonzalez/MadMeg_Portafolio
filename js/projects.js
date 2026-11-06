@@ -4,7 +4,7 @@
    from this list. Images live in assets/projects/<slug>/:
      card.webp  -> tarot card cover
      hero.webp  -> wide banner on the project page
-     01.webp…   -> case-study sections, in order
+     c/*        -> images used by the composed case study (js/project-blocks.js)
    ========================================================= */
 window.PROJECTS = [
   {
@@ -44,62 +44,7 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/matching-potions/card.webp",
     "hero": "assets/projects/matching-potions/hero.webp",
-    "sections": [
-      {
-        "src": "assets/projects/matching-potions/01.webp",
-        "w": 1440,
-        "h": 620,
-        "alt": "The Goal and The Feel"
-      },
-      {
-        "src": "assets/projects/matching-potions/02.webp",
-        "w": 1440,
-        "h": 747,
-        "alt": "Illustrated game icons"
-      },
-      {
-        "src": "assets/projects/matching-potions/03.webp",
-        "w": 1440,
-        "h": 835,
-        "alt": "Potions, shelfs and cards"
-      },
-      {
-        "src": "assets/projects/matching-potions/04.webp",
-        "w": 1440,
-        "h": 732,
-        "alt": "Sketched wireframe and user flow"
-      },
-      {
-        "src": "assets/projects/matching-potions/05.webp",
-        "w": 1440,
-        "h": 468,
-        "alt": "Typography and color palette"
-      },
-      {
-        "src": "assets/projects/matching-potions/06.webp",
-        "w": 1440,
-        "h": 638,
-        "alt": "Game screens"
-      },
-      {
-        "src": "assets/projects/matching-potions/07.webp",
-        "w": 1440,
-        "h": 683,
-        "alt": "Game screens: win and lose states"
-      },
-      {
-        "src": "assets/projects/matching-potions/08.webp",
-        "w": 1440,
-        "h": 791,
-        "alt": "UI toolkit"
-      },
-      {
-        "src": "assets/projects/matching-potions/09.webp",
-        "w": 1440,
-        "h": 810,
-        "alt": "Matching Potions key art"
-      }
-    ]
+    "sections": []
   },
   {
     "slug": "wild-forager",
@@ -138,68 +83,7 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/wild-forager/card.webp",
     "hero": "assets/projects/wild-forager/hero.webp",
-    "sections": [
-      {
-        "src": "assets/projects/wild-forager/01.webp",
-        "w": 1440,
-        "h": 752,
-        "alt": "You probably walk past edible wild plants"
-      },
-      {
-        "src": "assets/projects/wild-forager/02.webp",
-        "w": 1440,
-        "h": 836,
-        "alt": "Moodboards and references"
-      },
-      {
-        "src": "assets/projects/wild-forager/03.webp",
-        "w": 1440,
-        "h": 503,
-        "alt": "Logo concept"
-      },
-      {
-        "src": "assets/projects/wild-forager/04.webp",
-        "w": 1440,
-        "h": 561,
-        "alt": "Logo versions"
-      },
-      {
-        "src": "assets/projects/wild-forager/05.webp",
-        "w": 1440,
-        "h": 322,
-        "alt": "Logo badges"
-      },
-      {
-        "src": "assets/projects/wild-forager/06.webp",
-        "w": 1440,
-        "h": 738,
-        "alt": "Typography and color palette"
-      },
-      {
-        "src": "assets/projects/wild-forager/07.webp",
-        "w": 1440,
-        "h": 969,
-        "alt": "The app experience"
-      },
-      {
-        "src": "assets/projects/wild-forager/08.webp",
-        "w": 1440,
-        "h": 792,
-        "alt": "The illustrations"
-      },
-      {
-        "src": "assets/projects/wild-forager/09.webp",
-        "w": 1440,
-        "h": 524,
-        "alt": "Botanical illustrations"
-      },
-      {
-        "src": "assets/projects/wild-forager/10.webp",
-        "w": 1440,
-        "h": 766,
-        "alt": "Social media posts"
-      }
-    ]
+    "sections": []
   },
   {
     "slug": "astrologia-millennial",
@@ -248,26 +132,7 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/astrologia-millennial/card.webp",
     "hero": "assets/projects/astrologia-millennial/hero.webp",
-    "sections": [
-      {
-        "src": "assets/projects/astrologia-millennial/01.webp",
-        "w": 1440,
-        "h": 798,
-        "alt": "Horoscopes, creative writing and editing"
-      },
-      {
-        "src": "assets/projects/astrologia-millennial/02.webp",
-        "w": 1440,
-        "h": 623,
-        "alt": "Weekly horoscope stories"
-      },
-      {
-        "src": "assets/projects/astrologia-millennial/03.webp",
-        "w": 1440,
-        "h": 1257,
-        "alt": "From the stars, to the idea, to the meme"
-      }
-    ]
+    "sections": []
   },
   {
     "slug": "the-luck-and-the-hare",
@@ -301,68 +166,7 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/the-luck-and-the-hare/card.webp",
     "hero": "assets/projects/the-luck-and-the-hare/hero.webp",
-    "sections": [
-      {
-        "src": "assets/projects/the-luck-and-the-hare/01.webp",
-        "w": 1440,
-        "h": 474,
-        "alt": "Welcome to the burrow"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/02.webp",
-        "w": 1440,
-        "h": 262,
-        "alt": "The Hare isotype"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/03.webp",
-        "w": 1440,
-        "h": 1161,
-        "alt": "The logo"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/04.webp",
-        "w": 1440,
-        "h": 692,
-        "alt": "Applied illustrations on the storefront"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/05.webp",
-        "w": 1440,
-        "h": 612,
-        "alt": "Color palette"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/06.webp",
-        "w": 1440,
-        "h": 721,
-        "alt": "Typography"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/07.webp",
-        "w": 1440,
-        "h": 731,
-        "alt": "Graphic elements"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/08.webp",
-        "w": 1440,
-        "h": 731,
-        "alt": "Coffee blends packaging"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/09.webp",
-        "w": 1440,
-        "h": 480,
-        "alt": "Merch mockups"
-      },
-      {
-        "src": "assets/projects/the-luck-and-the-hare/10.webp",
-        "w": 1440,
-        "h": 627,
-        "alt": "Web design: shop"
-      }
-    ]
+    "sections": []
   },
   {
     "slug": "alice-in-doomland",
@@ -405,68 +209,7 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/alice-in-doomland/card.webp",
     "hero": "assets/projects/alice-in-doomland/hero.webp",
-    "sections": [
-      {
-        "src": "assets/projects/alice-in-doomland/01.webp",
-        "w": 1440,
-        "h": 799,
-        "alt": "Moodboards and references"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/02.webp",
-        "w": 1440,
-        "h": 751,
-        "alt": "Character lineup"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/03.webp",
-        "w": 1440,
-        "h": 795,
-        "alt": "Alice Baker"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/04.webp",
-        "w": 1440,
-        "h": 733,
-        "alt": "Kenneth"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/05.webp",
-        "w": 1440,
-        "h": 733,
-        "alt": "Jack"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/06.webp",
-        "w": 1440,
-        "h": 846,
-        "alt": "Quentin twins"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/07.webp",
-        "w": 1440,
-        "h": 678,
-        "alt": "The instruments"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/08.webp",
-        "w": 1440,
-        "h": 678,
-        "alt": "Ostyum Asylum"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/09.webp",
-        "w": 1440,
-        "h": 707,
-        "alt": "3D characters line up"
-      },
-      {
-        "src": "assets/projects/alice-in-doomland/10.webp",
-        "w": 1440,
-        "h": 799,
-        "alt": "Lyric video key frame"
-      }
-    ]
+    "sections": []
   }
 ];
 

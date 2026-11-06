@@ -795,6 +795,13 @@ body::after {
 .cb-stat { margin: 22px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); font-family: var(--f-head); font-weight: 700; font-size: 18px; line-height: 1.35; max-width: 46ch; }
 .cb-note.is-left { text-align: left; }
 .cb-phone.is-solo { max-width: 300px; margin: 0 auto; }
+/* long scrolling screenshots: show the top of the screen inside a normal phone shape */
+.cb-phone.is-tall { aspect-ratio: 9 / 19.5; }
+.cb-phone.is-tall img { height: 100%; object-fit: cover; object-position: top; }
+.cb-gallery.is-contain.is-icons .cb-gal img { max-height: 90px; filter: none; }
+.cb-gallery.is-icons { align-items: center; max-width: 980px; margin: 0 auto; }
+.cb-gal figcaption span { display: block; margin-top: 8px; text-transform: none; letter-spacing: 0; font-size: 13px; line-height: 1.6; opacity: .85; text-align: left; }
+.cb-gallery:has(figcaption span) { align-items: start; }
 .cb-sketch img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .cb-note { margin-top: 14px; text-align: center; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; opacity: .75; }
 .cb-gal img { display: block; width: 100%; height: auto; border-radius: 6px; }
@@ -963,6 +970,10 @@ body::after {
   .cb-swatches { grid-template-columns: repeat(2, 1fr); }
   .cb-gallery { grid-template-columns: repeat(min(var(--cols), 2), minmax(0, 1fr)); }
   .cb-gallery.is-contain .cb-gal img { max-height: 260px; }
+  .cb-gallery.is-icons { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cb-gallery.is-contain.is-icons .cb-gal img { max-height: 64px; }
+  .cb-gallery:has(figcaption span) { grid-template-columns: 1fr; }
+  .p-head .tags { flex-wrap: wrap; }
   .p-nav { grid-template-columns: 1fr; }
   .p-nav .prev { border-right: 0; border-bottom: var(--line); }
   .p-nav a { padding: 22px 20px; }

@@ -41,7 +41,7 @@
             ${b.sketch ? `<figure class="cb-sketch">${pic(b.sketch)}</figure>` : ""}
           </div>
           ${b.phone
-            ? `<figure class="cb-fig rv"><div class="cb-phone is-solo">${pic(b.image)}</div></figure>`
+            ? `<figure class="cb-fig rv"><div class="cb-phone is-solo ${b.tall ? "is-tall" : ""}">${pic(b.image)}</div></figure>`
             : `<figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
         </div>`,
       feature: (b) => `
@@ -68,8 +68,8 @@
       gallery: (b) => `
         <div class="cb-gallery-wrap">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>` : ""}
-          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""}" style="--cols:${b.cols || 3};${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
-            ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}</figcaption>` : ""}</figure>`).join("")}
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""}" style="--cols:${b.cols || 3};${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
+            ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
@@ -150,19 +150,27 @@
 
   // sections rise in as they enter (with a safety net so nothing stays hidden)
   safe(() => {
-    const els = [...document.querySelectorAll(".cs-section, .cb .rv")];
-    if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
-    // rise in when the section's top passes ~85% of the screen; once a section is on
-    // screen at all, it is shown after 1.5s even if that observer never fires
-    const show = (el) => el.classList.add("in");
-    const main = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { show(e.target); main.unobserve(e.target); } }),
-      { rootMargin: "0px 0px -15% 0px", threshold: 0 }
-    );
-    const near = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { setTimeout(() => show(e.target), 1500); near.unobserve(e.target); } }),
-      { threshold: 0 }
-    );
-    els.forEach((el) => { main.observe(el); near.observe(el); });
+    // Rise in when the piece's top passes ~85% of the screen. Checked on scroll (rAF-throttled)
+    // rather than with IntersectionObserver alone: a fast scroll can carry a piece past the
+    // screen between two observer checks, and it would then stay hidden forever. Here anything
+    // that is already above the trigger line is revealed, whether it was seen or skipped.
+    let pending = [...document.querySelectorAll(".cs-section, .cb .rv")];
+    let queued = false;
+    const sweep = () => {
+      queued = false;
+      // at the very bottom of the page nothing can scroll any higher: show whatever is on screen
+      const atEnd = scrollY + innerHeight >= document.documentElement.scrollHeight - 4;
+      const line = atEnd ? innerHeight : innerHeight * 0.85;
+      pending = pending.filter((el) => {
+        if (el.getBoundingClientRect().top < line) { el.classList.add("in"); return false; }
+        return true;
+      });
+      if (!pending.length) { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); }
+    };
+    const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(sweep); } };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    addEventListener("load", onScroll); // lazy images change the layout once they arrive
+    sweep();
   }, "reveal");
 })();

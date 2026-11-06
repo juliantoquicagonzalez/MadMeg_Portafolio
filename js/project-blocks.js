@@ -20,6 +20,7 @@
 (() => {
   const img = (slug, name, w, h, alt) => ({ src: `assets/projects/${slug}/c/${name}.webp`, w, h, alt });
   const mp = (name, w, h, alt) => img("matching-potions", name, w, h, alt);
+  const wf = (name, w, h, alt) => img("wild-forager", name, w, h, alt);
   const am = (name, w, h, alt) => img("astrologia-millennial", name, w, h, alt);
   const al = (name, w, h, alt) => img("alice-in-doomland", name, w, h, alt);
   const lh = (name, w, h, alt, ext = "webp") => ({ ...img("the-luck-and-the-hare", name, w, h, alt), src: `assets/projects/the-luck-and-the-hare/c/${name}.${ext}` });
@@ -305,6 +306,113 @@
           title: "Reglas de los signos",
           text: "May the stars be always on your favor",
           images: [1, 2, 3, 4, 5, 6, 7].map((i) => am(`rules-${i}`, 640, 800, "“Reglas de los signos” carousel")),
+        },
+      ],
+    },
+
+    "wild-forager": {
+      // the app's own palette (Figma: #102B15 #345938 #7B996A #5C9B37 #FFE600 #E4FDCD)
+      theme: {
+        forest: { bg: "#102b15", fg: "#e4fdcd", accent: "#ffe600" },
+        moss: { bg: "#345938", fg: "#e4fdcd", accent: "#ffe600" },
+        mint: { bg: "#e4fdcd", fg: "#102b15", accent: "#5c9b37" },
+      },
+      blocks: [
+        {
+          type: "split", tone: "forest", side: "right", phone: true,
+          title: "You probably walk past edible wild plants all the time without noticing them.",
+          text: "Wild Forager helps users notice their surroundings again. It’s not a harvesting shortcut made only for consumption, it’s a learning tool created to heal relationships between humans and their surrounding green neighbors.",
+          steps: ["Educational", "Edgy", "Anti-System", "Food Sovereignty"],
+          image: wf("app-home", 412, 986, "Wild Forager map of plants nearby"),
+        },
+        {
+          type: "gallery", tone: "moss", cols: 2,
+          title: "Moodboards & Refs",
+          images: [
+            wf("mood-logo", 888, 725, "Logo and brand moodboard"), wf("mood-type", 1100, 647, "Typography moodboard"),
+            wf("mood-illustration", 1031, 827, "Illustration moodboard"), wf("mood-ui", 1100, 599, "App UI and visual style moodboard"),
+          ],
+          captions: ["Logo & brand", "Typography", "Illustration", "Visual style"],
+          descs: [
+            "Lino-cut, flat colors and strong shapes. Inspired on “Food not bombs” logo and the raised fist symbolizing food sovereignty and people’s dignity.",
+            "Relaxed, playful, handwritten and bold. But also professional, neutral and easy to understand. Rebelliousness meets accessibility while staying bold.",
+            "Colorful, detailed and accurate, but also easy to read and clear. Botanical traditional illustration, created for the people and not scientists.",
+            "Lino-cut inspired, strong silhouettes and shapes. Negative and positive space relationship. Hand made, bold, fun and unique.",
+          ],
+        },
+        {
+          type: "split", tone: "mint", side: "left",
+          title: "The Fist Up",
+          text: "Wild Forager is designed to slow the process down: observe first, compare carefully, and prioritize habitats over harvest. Made to help users engage with the Wild as a part of it, and not as an intruder.",
+          stat: "The Fist Up as a wink to the next revolution: not only technologic but also environmentally friendly. The dandelion as a symbol of the hope and dreams of a better future.",
+          image: wf("fist", 905, 1160, "Raised fist holding dandelions"),
+        },
+        {
+          type: "gallery", tone: "mint", cols: 2, contain: true,
+          images: [wf("logo-a", 886, 393, "Wild Forager horizontal logo"), wf("logo-b", 886, 393, "Wild Forager horizontal logo, light version")],
+        },
+        {
+          type: "gallery", tone: "forest", cols: 3, contain: true,
+          images: [wf("badge-1", 700, 701, "Round badge, dark"), wf("badge-2", 700, 701, "Round badge, green"), wf("badge-3", 700, 700, "Round badge, light")],
+        },
+        {
+          type: "palette", tone: "moss",
+          title: "Survivant font for titles and display",
+          fonts: [
+            { name: "Survivant", role: "For titles and display" },
+            { name: "General Sans", role: "Regular for body text, Medium and Bold for highlights" },
+          ],
+          text: "People once knew the plants around them. That kind of knowledge should not feel unusual. Wild Forager is meant to support slower, place-based plant learning.",
+          colors: [
+            { hex: "#102B15" }, { hex: "#345938" }, { hex: "#7B996A" },
+            { hex: "#5C9B37" }, { hex: "#FFE600" }, { hex: "#E4FDCD" },
+          ],
+        },
+        {
+          type: "split", tone: "forest", side: "left", phone: true, tall: true,
+          title: "The experience",
+          text: "Browse each plant profile with illustrations, photos, traits, habitat, seasonality, and look-alike warnings so what is in front of each user can be compared carefully.",
+          steps: [
+            "Use the map to identify plants nearby",
+            "See each plant’s information, photos and characteristics",
+            "Identify each plant’s morphology with illustrative, clear and simple guides",
+            "Beware of toxic lookalikes and cautions",
+            "Send your own reports, photos, recipes and locations",
+            "Create your profile and report plants, warnings or sites",
+            "Use all the info to do your own research and go deeper",
+          ],
+          image: wf("app-plant", 412, 1578, "Plant profile screen"),
+        },
+        {
+          type: "gallery", tone: "mint", cols: 9, contain: true, icons: true,
+          text: "Type of flowers · Type of leafs",
+          images: [
+            wf("ic-1", 248, 253, "Many-petal flower"), wf("ic-2", 232, 245, "Four-petal flower"), wf("ic-3", 256, 254, "Five-petal flower"),
+            wf("ic-4", 183, 233, "Asymmetric flower"), wf("ic-5", 256, 285, "Bipinnate leaf"), wf("ic-6", 251, 295, "Palmate leaf"),
+            wf("ic-7", 223, 287, "Odd-pinnate leaf"), wf("ic-8", 122, 333, "Lanceolate leaf"), wf("ic-9", 150, 333, "Spatulate leaf"),
+          ],
+        },
+        {
+          type: "split", tone: "forest", side: "right",
+          title: "The Illustrations",
+          text: "The first batch of botanical illustrations were focused on common plants in Germany that have high risk of being misidentified, and their dangerous lookalikes are a menace for all foragers.",
+          steps: ["The early blooming, blooming and late state", "Its unique characteristics and differentiators from its lookalikes", "The flowers close-up", "The stems details", "The leaf close-up"],
+          note: "Currently, the illustrations are being tested for dynamic interaction within the app where users can spotlight each plant’s part, and recieve more information",
+          image: { ...wf("cows-parsley-study", 1300, 1762, "Cow’s Parsley botanical study"), alpha: false },
+        },
+        {
+          type: "gallery", tone: "forest", cols: 4, contain: true,
+          images: [
+            wf("bears-garlic", 900, 1237, "Bear’s Garlic"), wf("bellis", 900, 1153, "Bellis Perennis or Common Daisy"),
+            wf("cows-parsley", 900, 1261, "Cow’s Parsley"), wf("portulak", 900, 1300, "Portulak"),
+          ],
+          captions: ["Bear’s Garlic", "Bellis Perennis or Common Daisy", "Cow’s Parsley", "Portulak"],
+        },
+        {
+          type: "gallery", tone: "moss", cols: 3,
+          title: "Social media posts",
+          text: "Social media Figma templates and a few specific designs to start building the community around ethical foraging. Most of wild forager’s content will be candid photos, and organic or UGC content. Keep on foraging!",
+          images: [1, 2, 3, 4, 5, 6].map((i) => wf(`post-${i}`, 720, 900, "Wild Forager social media post")),
         },
       ],
     },

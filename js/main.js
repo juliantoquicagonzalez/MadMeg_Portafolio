@@ -30,23 +30,29 @@
   // switch off the deal / flip / collage. Only infinite loops are paused (in CSS).
   const isTouch = matchMedia("(hover: none)").matches;
   const mobileMQ = matchMedia("(max-width: 760px)");
-  /* Reveal an element when the visitor actually gets there (its top passes ~70% of the
-     screen). Safety net: once it is on screen at all, it is revealed after 2.5s even if the
-     main observer never fires; without IntersectionObserver everything shows at once. */
-  const revealOnView = (els, onReveal, { margin = "0px 0px -30% 0px", fallbackMs = 2500 } = {}) => {
-    const list = [].concat(els);
-    if (!("IntersectionObserver" in window)) { list.forEach(onReveal); return; }
-    const done = new Set();
-    const fire = (el) => { if (!done.has(el)) { done.add(el); onReveal(el); } };
-    const main = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { fire(e.target); main.unobserve(e.target); } }),
-      { rootMargin: margin, threshold: 0 }
-    );
-    const near = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { setTimeout(() => fire(e.target), fallbackMs); near.unobserve(e.target); } }),
-      { threshold: 0 }
-    );
-    list.forEach((el) => { main.observe(el); near.observe(el); });
+  /* Reveal an element when the visitor actually gets there: its top passes `line`
+     (fraction of the screen height, 0.7 = 70%). Checked on scroll, rAF-throttled, so an
+     element carried past the screen by a fast scroll is still revealed (an observer alone
+     can miss it and leave it hidden forever). */
+  const revealOnView = (els, onReveal, { line = 0.7 } = {}) => {
+    let pending = [].concat(els);
+    let queued = false;
+    const sweep = () => {
+      queued = false;
+      // at the very bottom of the page nothing can scroll any higher: show whatever is on screen
+      const atEnd = scrollY + innerHeight >= document.documentElement.scrollHeight - 4;
+      const y = atEnd ? innerHeight : innerHeight * line;
+      pending = pending.filter((el) => {
+        if (el.getBoundingClientRect().top < y) { onReveal(el); return false; }
+        return true;
+      });
+      if (!pending.length) { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); }
+    };
+    const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(sweep); } };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    addEventListener("load", onScroll);
+    sweep();
   };
 
   const stage = document.getElementById("deckStage");
@@ -201,7 +207,7 @@
           card.style.removeProperty("--cw");
           card.style.transform = `translate(${i % 2 ? 70 : -70}px, 60px) rotate(${i % 2 ? 10 : -10}deg)`;
         });
-        revealOnView(cards, (c) => c.classList.add("in"), { margin: "0px 0px -12% 0px", fallbackMs: 1500 });
+        revealOnView(cards, (c) => c.classList.add("in"), { line: 0.88 });
       } else {
         cards.forEach((c) => c.classList.remove("in"));
         computeLayout();
@@ -287,7 +293,7 @@
     });
     if (shot) { collage.classList.add("in"); return; }
     // starts once the about's top reaches ~60% of the screen
-    revealOnView(collage, () => collage.classList.add("in"), { margin: "0px 0px -40% 0px", fallbackMs: 3000 });
+    revealOnView(collage, () => collage.classList.add("in"), { line: 0.6 });
   }, "collage");
 
   /* ---------- 6. Hero: each letter of the logo moves on its own ---------- */
