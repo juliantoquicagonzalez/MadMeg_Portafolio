@@ -792,6 +792,9 @@ body::after {
 .cb-split.is-wide { grid-template-columns: 1fr 2.2fr; }
 .cb-split.is-wide.is-left { grid-template-columns: 2.2fr 1fr; }
 .cb-sketch { margin: 26px 0 0; max-width: 360px; opacity: .92; }
+.cb-stat { margin: 22px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); font-family: var(--f-head); font-weight: 700; font-size: 18px; line-height: 1.35; max-width: 46ch; }
+.cb-note.is-left { text-align: left; }
+.cb-phone.is-solo { max-width: 300px; margin: 0 auto; }
 .cb-sketch img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .cb-note { margin-top: 14px; text-align: center; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; opacity: .75; }
 .cb-gal img { display: block; width: 100%; height: auto; border-radius: 6px; }

@@ -20,6 +20,7 @@
 (() => {
   const img = (slug, name, w, h, alt) => ({ src: `assets/projects/${slug}/c/${name}.webp`, w, h, alt });
   const mp = (name, w, h, alt) => img("matching-potions", name, w, h, alt);
+  const am = (name, w, h, alt) => img("astrologia-millennial", name, w, h, alt);
   const al = (name, w, h, alt) => img("alice-in-doomland", name, w, h, alt);
   const lh = (name, w, h, alt, ext = "webp") => ({ ...img("the-luck-and-the-hare", name, w, h, alt), src: `assets/projects/the-luck-and-the-hare/c/${name}.${ext}` });
 
@@ -263,6 +264,47 @@
           title: "Lyric video soon to be released",
           note: "Animated by Samuel Poveda, Angie López and Carolina Osorio",
           image: { ...al("lyric-video", 960, 540, "Frame from the lyric video"), alpha: false },
+        },
+      ],
+    },
+
+    "astrologia-millennial": {
+      // pink / lilac of the brand's feed, with its violet for highlights
+      theme: {
+        pink: { bg: "#fbd6e6", fg: "#24143f", accent: "#5b2be0" },
+        lilac: { bg: "#d6cbf8", fg: "#1e1238", accent: "#5b2be0" },
+        night: { bg: "#21123f", fg: "#fbe9f1", accent: "#f6b9d6" },
+      },
+      blocks: [
+        {
+          type: "split", tone: "pink", side: "right", phone: true,
+          title: "Horoscopes, creative writing and editing",
+          text: "As part of my contribution to the team, I’ve crafted daily, weekly, monthly and annual astrological reports on a relatable and fun tone. No complex words or technical concepts hard to understand, just the pure substance of it. We’re like your obsessed-with-the-stars bff who just wants the best for you, and is def gonna tell you.",
+          stat: "Our horoscope’s audience has grown from 35k likes and 150 comments per post on 2022, to 66.2k likes and 3k comments per post on average.",
+          note: "Important note: my role here involves writing and layout, not illustration",
+          image: am("feed", 572, 1454, "The account’s weekly horoscope post on Instagram"),
+        },
+        {
+          type: "gallery", tone: "pink", cols: 5,
+          images: [1, 2, 3, 4, 5].map((i) => am(`post-${i}`, 720, 900, "Weekly horoscope post")),
+        },
+        {
+          type: "phones", tone: "night",
+          title: "Weekend stories",
+          text: "More than 260 weeks covered, as well as 200 weekends reports on stories, and annual and daily astrology catch-up on other media.",
+          images: [1, 2, 3, 4, 5].map((i) => am(`story-${i}`, 640, 1138, "Weekend horoscope story")),
+        },
+        {
+          type: "gallery", tone: "lilac", cols: 3,
+          title: "From the stars, to the idea, to the meme",
+          text: "My role also involves designing memes with copys and style guides provided by the team. This means working on a wide range of styles, but maintaining the brand’s identity. We work on Canva so everyone can make adjustments in real time.",
+          images: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => am(`meme-${i}`, 720, 900, "Meme designed for the account")),
+        },
+        {
+          type: "gallery", tone: "night", cols: 7,
+          title: "Reglas de los signos",
+          text: "May the stars be always on your favor",
+          images: [1, 2, 3, 4, 5, 6, 7].map((i) => am(`rules-${i}`, 640, 800, "“Reglas de los signos” carousel")),
         },
       ],
     },

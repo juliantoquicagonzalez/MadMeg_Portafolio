@@ -36,9 +36,13 @@
         <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""}">
           <div class="cb-col rv">${head(b.title, ++n)}${para(b.text)}
             ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
+            ${b.stat ? `<p class="cb-stat">${b.stat}</p>` : ""}
+            ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
             ${b.sketch ? `<figure class="cb-sketch">${pic(b.sketch)}</figure>` : ""}
           </div>
-          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>
+          ${b.phone
+            ? `<figure class="cb-fig rv"><div class="cb-phone is-solo">${pic(b.image)}</div></figure>`
+            : `<figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
         </div>`,
       feature: (b) => `
         <div class="cb-feature">
