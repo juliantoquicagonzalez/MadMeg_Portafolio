@@ -36,7 +36,6 @@
     root.innerHTML = `
       <div class="p-head">
         <a href="index.html#work">← All cards</a>
-        <div>Card ${p.num} / ${projects.length}</div>
         <div class="grow"></div>
         <div class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
       </div>

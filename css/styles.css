@@ -711,8 +711,10 @@ body::after {
   border-bottom: var(--line);
   background: var(--cream);
 }
-.p-desc { border-right: var(--line); display: flex; flex-direction: column; }
-.desc-row { display: grid; grid-template-columns: 1fr 1fr; flex: 1; }
+.p-desc { --nw: 62px; border-right: var(--line); display: flex; flex-direction: column; }
+/* the description starts at the right edge of the roman-numeral box,
+   so its text lines up with the project title */
+.desc-row { display: grid; grid-template-columns: 1fr 1fr; flex: 1; margin-left: var(--nw); border-left: var(--line); }
 .desc-row .info-box { border-bottom: 0; }
 .desc-row .info-box:first-child { border-right: var(--line); }
 .p-info { display: flex; flex-direction: column; }
@@ -723,7 +725,8 @@ body::after {
 .info-box .v.small { font-size: 13px; line-height: 1.4; }
 .title-box { display: flex; align-items: stretch; padding: 0; }
 .title-box .n {
-  display: grid; place-items: center; padding: 0 20px;
+  flex: none; width: var(--nw);
+  display: grid; place-items: center;
   border-right: var(--line);
   font-family: var(--f-display); font-size: 28px; background: var(--violet); color: var(--cream);
 }
