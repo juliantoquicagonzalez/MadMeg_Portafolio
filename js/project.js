@@ -23,6 +23,7 @@
       `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
     const para = (t) => (t ? `<p class="cb-text">${t}</p>` : "");
     const head = (t, n) => (t ? `<div class="cb-kicker">${String(n).padStart(2, "0")}</div><h2 class="cb-title">${t}</h2>` : "");
+    const fonts = (b) => b.fonts.map((f) => `<div class="cb-font"><span class="cb-font-name">${f.name}</span><span class="cb-font-role">${f.role}</span></div>`).join("");
     let n = 0;
     const html = {
       trio: (b) => `
@@ -40,8 +41,8 @@
         </div>`,
       feature: (b) => `
         <div class="cb-feature">
-          <div class="cb-center rv">${head(b.title, ++n)}${para(b.text)}</div>
-          <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
+          <div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>
+          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>
         </div>`,
       phones: (b) => `
         <div class="cb-phones-wrap">
@@ -53,10 +54,17 @@
       palette: (b) => `
         <div class="cb-palette">
           <div class="cb-col rv">${head(b.title, ++n)}
-            <div class="cb-fonts">${b.fonts.map((f) => `<div class="cb-font"><span class="cb-font-name">${f.name}</span><span class="cb-font-role">${f.role}</span></div>`).join("")}</div>
+            <div class="cb-fonts">${fonts(b)}</div>
             ${para(b.text)}
           </div>
-          <div class="cb-swatches rv">${b.colors.map((c) => `<div class="cb-swatch" style="--c:${c.hex}"><span>${c.name ? `<b>${c.name}</b>` : ""}${c.hex}</span></div>`).join("")}</div>
+          <div class="cb-swatches rv" style="--cols:${b.cols || 3}">${b.colors.map((c) => `<div class="cb-swatch" style="--c:${c.hex}"><span>${c.name ? `<b>${c.name}</b>` : ""}${c.hex}</span></div>`).join("")}</div>
+        </div>`,
+      gallery: (b) => `
+        <div class="cb-gallery-wrap">
+          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>` : ""}
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""}" style="--cols:${b.cols || 3}">
+            ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}</figcaption>` : ""}</figure>`).join("")}
+          </div>
         </div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
     };
