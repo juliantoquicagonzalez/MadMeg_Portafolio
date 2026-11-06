@@ -706,18 +706,19 @@ body::after {
 }
 .p-banner img { display: block; width: 100%; height: auto; max-width: 1440px; margin: 0 auto; }
 .p-top {
+  --nw: 62px; /* width of the roman-numeral box = side margin on both sides */
   display: grid;
   grid-template-columns: 1.55fr 1fr;
   border-bottom: var(--line);
   background: var(--cream);
 }
-.p-desc { --nw: 62px; border-right: var(--line); display: flex; flex-direction: column; }
-/* the description starts at the right edge of the roman-numeral box,
-   so its text lines up with the project title */
-.desc-row { display: grid; grid-template-columns: 1fr 1fr; flex: 1; margin-left: var(--nw); border-left: var(--line); }
+.p-desc { border-right: var(--line); display: flex; flex-direction: column; }
+/* the description starts at the right edge of the roman-numeral box, so its text
+   lines up with the project title; the info column keeps the same margin on the right */
+.desc-row { display: grid; grid-template-columns: 1fr 1fr; flex: 1; margin-left: var(--nw); }
 .desc-row .info-box { border-bottom: 0; }
 .desc-row .info-box:first-child { border-right: var(--line); }
-.p-info { display: flex; flex-direction: column; }
+.p-info { display: flex; flex-direction: column; margin-right: var(--nw); }
 .info-box { border-bottom: var(--line); padding: 18px 22px; }
 .info-box:last-child { border-bottom: 0; }
 .info-box .k { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; margin-bottom: 8px; }
@@ -774,6 +775,9 @@ body::after {
 @media (max-width: 1080px) {
   .p-top { grid-template-columns: 1fr; }
   .p-desc { border-right: 0; border-bottom: var(--line); }
+  /* one column: same side margin on both sides for the description and the info */
+  .desc-row { margin-right: var(--nw); }
+  .p-info { margin: 0 var(--nw); }
   .nav-spacer { display: none; }
   .collage {
     grid-template-columns: minmax(0, 1fr);
@@ -853,6 +857,7 @@ body::after {
   .p-head { flex-wrap: wrap; }
   .p-head .grow { display: none; }
   .desc-row { grid-template-columns: 1fr; }
+  .p-top { --nw: 48px; } /* narrower numeral box + side margins on phones */
   .desc-row .info-box:first-child { border-right: 0; border-bottom: var(--line); }
   .info-row { grid-template-columns: 1fr; }
   .info-row .info-box:first-child { border-right: 0; border-bottom: var(--line); }
