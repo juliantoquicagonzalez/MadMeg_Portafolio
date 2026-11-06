@@ -76,23 +76,10 @@
     const toRoman = (n) => ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"][n] || n;
     document.getElementById("deckCount").textContent = `${toRoman(projects.length)} cards`;
 
-    // Card back — identical for every card. PLACEHOLDER: Maria will design it.
+    // Card back — identical for every card, designed by Maria (assets/card-back.webp)
     const backHTML = `
       <div class="card-face card-back">
-        <div class="dots"></div>
-        <div class="frame"></div>
-        <svg class="corner-mini a"><use href="#spark4"/></svg>
-        <svg class="corner-mini b"><use href="#spark4"/></svg>
-        <svg class="corner-mini c"><use href="#spark4"/></svg>
-        <svg class="corner-mini d"><use href="#spark4"/></svg>
-        <span class="label top">MADMEG</span>
-        <svg class="emblem" viewBox="0 0 100 100">
-          <use href="#moon" x="8" y="8" width="84" height="84" style="color:#f6f1e9"/>
-          <use href="#star8" x="44" y="22" width="44" height="44" style="color:#f9561f"/>
-          <use href="#spark4" x="20" y="66" width="12" height="12" style="color:#f6f1e9"/>
-          <use href="#spark4" x="78" y="74" width="8" height="8" style="color:#eb85ff"/>
-        </svg>
-        <span class="label bottom">✶ PORTFOLIO ✶</span>
+        <img src="assets/card-back.webp" alt="" decoding="async" />
       </div>`;
 
     const coverHTML = (p) =>
