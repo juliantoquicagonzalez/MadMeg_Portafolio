@@ -195,12 +195,15 @@ body::after {
 .hero-inner {
   position: absolute; inset: 0;
   display: grid; place-items: center;
+  padding-bottom: 64px; /* keeps logo + pills clear of the "scroll" hint */
 }
-.hero-center { display: flex; flex-direction: column; align-items: center; gap: 4vh; }
+.hero-center { display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 3.5vh, 36px); }
 
 .logo {
   position: relative;
-  width: min(62vw, 54vh);
+  /* sized by the room left once the pills and the scroll hint are counted,
+     so short laptop screens never stack them on top of each other */
+  width: min(62vw, 54vh, calc((100svh - var(--nav-h) - 250px) * .954));
   aspect-ratio: 806 / 845;
 }
 /* the logo is six separate letters, each with its own life:
@@ -274,7 +277,7 @@ body::after {
 }
 
 .scroll-hint {
-  position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%);
+  position: absolute; left: 50%; bottom: clamp(18px, 4.5vh, 44px); transform: translateX(-50%);
   opacity: calc(1 - var(--dark) * 4);
   display: flex; align-items: center; gap: 10px;
   font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em;
@@ -793,6 +796,7 @@ body::after {
   .nav .nav-social { display: none; }
   .hero-side { display: none; }
   .logo { width: min(78vw, 46vh); }
+  .hero-inner { padding-bottom: 40px; }
   .pills { padding: 8px 14px; gap: 8px; }
   .pill { font-size: 11px; }
   .hero-frame { inset: 12px; }
