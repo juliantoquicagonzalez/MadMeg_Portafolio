@@ -2,14 +2,7 @@
    MADMEG PORTFOLIO — styles
    Brand: Tumb (display) · JetBrains Mono (body) · Gambetta (titles)
    ========================================================= */
-/* Tumb (demo version, see assets/fonts/Tumb-License.txt).
-   The demo has no apostrophe, "&" or accents: those characters
-   fall back to Bagel Fat One automatically. */
-@font-face {
-  font-family: "Tumb";
-  src: url("../assets/fonts/Tumb.otf") format("opentype");
-  font-display: swap;
-}
+/* Tumb is served by Adobe Fonts (kit sxu4bkt, linked in the HTML <head>). */
 :root {
   --violet: #5b25ef;
   --peri: #9ba9f5;
@@ -22,7 +15,7 @@
   --line-cream: 1.5px solid rgba(246, 241, 233, .28);
   --nav-h: 64px;
 
-  --f-display: "Tumb", "Bagel Fat One", system-ui, sans-serif;
+  --f-display: "tumb", system-ui, sans-serif;
   --f-head: "Gambetta", Georgia, serif;
   --f-mono: "JetBrains Mono", ui-monospace, monospace;
 
