@@ -1,7 +1,8 @@
 /* =========================================================
    MADMEG — project page (project.html?p=<slug>)
-   Top: banner on one side, info in outlined boxes on the other.
-   Below: Maria's case-study sections, full width.
+   Top: banner, then the info in outlined boxes.
+   Below: the case study — composed from blocks (js/project-blocks.js)
+   when available, otherwise Maria's full-section images.
    ========================================================= */
 (() => {
   const safe = (fn, name) => { try { fn(); } catch (err) { console.warn("[madmeg] " + name + " failed:", err); } };
@@ -16,6 +17,57 @@
   const pal = `--p0:${p.palette[0]};--p1:${p.palette[1]}`;
   const root = document.getElementById("project");
 
+  /* ---------- composed sections (js/project-blocks.js) ---------- */
+  function renderBlocks({ theme, blocks }) {
+    const pic = (im, cls = "", lazy = true) =>
+      `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
+    const para = (t) => (t ? `<p class="cb-text">${t}</p>` : "");
+    const head = (t, n) => (t ? `<div class="cb-kicker">${String(n).padStart(2, "0")}</div><h2 class="cb-title">${t}</h2>` : "");
+    let n = 0;
+    const html = {
+      trio: (b) => `
+        <div class="cb-trio">
+          <div class="cb-col rv">${head(b.left.title, ++n)}${para(b.left.text)}</div>
+          <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
+          <div class="cb-col rv">${head(b.right.title, ++n)}${para(b.right.text)}</div>
+        </div>`,
+      split: (b) => `
+        <div class="cb-split ${b.side === "left" ? "is-left" : ""}">
+          <div class="cb-col rv">${head(b.title, ++n)}${para(b.text)}
+            ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
+          </div>
+          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>
+        </div>`,
+      feature: (b) => `
+        <div class="cb-feature">
+          <div class="cb-center rv">${head(b.title, ++n)}${para(b.text)}</div>
+          <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
+        </div>`,
+      phones: (b) => `
+        <div class="cb-phones-wrap">
+          <div class="cb-center rv">${head(b.title, ++n)}${para(b.text)}</div>
+          <div class="cb-phones" style="--count:${b.images.length}">
+            ${b.images.map((im, i) => `<figure class="cb-phone rv" style="--i:${i}">${pic(im)}</figure>`).join("")}
+          </div>
+        </div>`,
+      palette: (b) => `
+        <div class="cb-palette">
+          <div class="cb-col rv">${head(b.title, ++n)}
+            <div class="cb-fonts">${b.fonts.map((f) => `<div class="cb-font"><span class="cb-font-name">${f.name}</span><span class="cb-font-role">${f.role}</span></div>`).join("")}</div>
+            ${para(b.text)}
+          </div>
+          <div class="cb-swatches rv">${b.colors.map((c) => `<div class="cb-swatch" style="--c:${c.hex}"><span>${c.name ? `<b>${c.name}</b>` : ""}${c.hex}</span></div>`).join("")}</div>
+        </div>`,
+      full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
+    };
+    return blocks
+      .map((b) => {
+        const t = theme[b.tone] || Object.values(theme)[0];
+        return `<section class="cb-block cb-${b.type}-block" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent}">${html[b.type](b)}</section>`;
+      })
+      .join("");
+  }
+
   safe(() => {
     if (root.querySelector(".p-top")) return; // idempotent (the static <h1> fallback gets replaced)
     document.title = `${p.title} — Madmeg`;
@@ -24,14 +76,17 @@
     const team = p.team.map(([n, r]) => `<div class="team-row"><b>${n}</b><span>${r}</span></div>`).join("");
     const link = p.link ? `<a class="info-link" href="${p.link[1]}" target="_blank" rel="noopener">${p.link[0]} ↗</a>` : "";
 
-    const sections = p.sections
-      .map(
-        (s, i) => `
+    const composed = (window.PROJECT_BLOCKS || {})[p.slug];
+    const sections = composed
+      ? renderBlocks(composed)
+      : p.sections
+          .map(
+            (s, i) => `
         <figure class="cs-section" style="${pal}">
           <img src="${s.src}" alt="${s.alt}" width="${s.w}" height="${s.h}" ${i > 0 ? 'loading="lazy"' : ""} decoding="async" />
         </figure>`
-      )
-      .join("");
+          )
+          .join("");
 
     root.innerHTML = `
       <div class="p-head">
@@ -67,7 +122,7 @@
         </div>
       </section>
 
-      <section class="cs">${sections}</section>
+      <section class="${composed ? "cb" : "cs"}">${sections}</section>
 
       <nav class="p-nav">
         <a class="prev" href="project.html?p=${prev.slug}">
@@ -81,7 +136,7 @@
 
   // sections rise in as they enter (with a safety net so nothing stays hidden)
   safe(() => {
-    const els = [...document.querySelectorAll(".cs-section")];
+    const els = [...document.querySelectorAll(".cs-section, .cb .rv")];
     if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
     // rise in when the section's top passes ~85% of the screen; once a section is on
     // screen at all, it is shown after 1.5s even if that observer never fires
