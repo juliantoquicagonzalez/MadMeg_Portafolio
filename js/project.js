@@ -33,16 +33,18 @@
           <div class="cb-col rv">${head(b.right.title, ++n)}${para(b.right.text)}</div>
         </div>`,
       split: (b) => `
-        <div class="cb-split ${b.side === "left" ? "is-left" : ""}">
+        <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""}">
           <div class="cb-col rv">${head(b.title, ++n)}${para(b.text)}
             ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
+            ${b.sketch ? `<figure class="cb-sketch">${pic(b.sketch)}</figure>` : ""}
           </div>
           <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>
         </div>`,
       feature: (b) => `
         <div class="cb-feature">
           <div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>
-          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>
+          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
+            ${b.note ? `<figcaption class="cb-note">${b.note}</figcaption>` : ""}</figure>
         </div>`,
       phones: (b) => `
         <div class="cb-phones-wrap">
@@ -62,8 +64,8 @@
       gallery: (b) => `
         <div class="cb-gallery-wrap">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>` : ""}
-          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""}" style="--cols:${b.cols || 3}">
-            ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}</figcaption>` : ""}</figure>`).join("")}
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""}" style="--cols:${b.cols || 3};${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
+            ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
