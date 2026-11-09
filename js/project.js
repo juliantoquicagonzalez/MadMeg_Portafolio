@@ -68,10 +68,12 @@
       gallery: (b) => `
         <div class="cb-gallery-wrap">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>` : ""}
-          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""}" style="--cols:${b.cols || 3};${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
+      text: (b) => `
+        <div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
     };
     return blocks
@@ -110,7 +112,7 @@
       </div>
 
       <section class="p-banner" style="${pal}">
-        <img src="${p.hero}" alt="${p.title} cover" width="1440" height="497" fetchpriority="high" />
+        <img src="${p.hero}" alt="${p.title} cover" width="${p.heroW || 1440}" height="${p.heroH || 497}" fetchpriority="high" />
       </section>
 
       <section class="p-top">

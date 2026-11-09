@@ -210,6 +210,42 @@ window.PROJECTS = [
     "cover": "assets/projects/alice-in-doomland/card.webp",
     "hero": "assets/projects/alice-in-doomland/hero.webp",
     "sections": []
+  },
+  {
+    "slug": "neo",
+    "num": "VI",
+    "title": "Neo",
+    "tags": [
+      "Character Design",
+      "Art Direction",
+      "3D"
+    ],
+    "role": "Concept and Art Direction",
+    "tools": [
+      "Blender"
+    ],
+    "year": "2026",
+    "summary": "Straight from the mountains of Colombia, comes Neo: a happy kid and nature’s #1 fan.",
+    "detail": "Developed to be presented at the giant screens on Neo Centro comercial passage, bringing nature to one of the most hectic spots in downtown Bogota: San Victorino.",
+    "team": [
+      [
+        "María José Madrigal",
+        "Concept and Art Direction"
+      ],
+      [
+        "Julián Toquica",
+        "3D Artist and Producer"
+      ]
+    ],
+    "palette": [
+      "#4591a0",
+      "#224927"
+    ],
+    "cover": "assets/projects/neo/card.webp",
+    "hero": "assets/projects/neo/hero.webp",
+    "heroW": 1400,
+    "heroH": 636,
+    "sections": []
   }
 ];
 

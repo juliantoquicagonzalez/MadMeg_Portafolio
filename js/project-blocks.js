@@ -23,6 +23,7 @@
   const wf = (name, w, h, alt) => img("wild-forager", name, w, h, alt);
   const am = (name, w, h, alt) => img("astrologia-millennial", name, w, h, alt);
   const al = (name, w, h, alt) => img("alice-in-doomland", name, w, h, alt);
+  const ne = (name, w, h, alt) => img("neo", name, w, h, alt);
   const lh = (name, w, h, alt, ext = "webp") => ({ ...img("the-luck-and-the-hare", name, w, h, alt), src: `assets/projects/the-luck-and-the-hare/c/${name}.${ext}` });
 
   window.PROJECT_BLOCKS = {
@@ -413,6 +414,59 @@
           title: "Social media posts",
           text: "Social media Figma templates and a few specific designs to start building the community around ethical foraging. Most of wild forager’s content will be candid photos, and organic or UGC content. Keep on foraging!",
           images: [1, 2, 3, 4, 5, 6].map((i) => wf(`post-${i}`, 720, 900, "Wild Forager social media post")),
+        },
+      ],
+    },
+
+    "neo": {
+      // colours of the piece itself: sky title blue, mountain teal, forest green, and the red of Neo's cap
+      theme: {
+        sky: { bg: "#bfe0f0", fg: "#10384a", accent: "#d23f33" },
+        teal: { bg: "#4591a0", fg: "#f4fbf7", accent: "#ffe28a" },
+        forest: { bg: "#15351f", fg: "#e8f5df", accent: "#ff7a59" },
+      },
+      blocks: [
+        {
+          type: "split", tone: "sky", side: "right", wide: true,
+          title: "Let’s meet Neo",
+          text: "Straight from the mountains of Colombia, comes Neo: a happy kid and nature's #1 fan. Developed to be presented at the giant screens on Neo Centro comercial passage, bringing nature to one of the most hectic spots in downtown Bogota: San Victorino.",
+          image: ne("neo-sitting", 1400, 1691, "Neo sitting, reaching out his hand"),
+        },
+        {
+          type: "gallery", tone: "teal", contain: true, cols: 2, maxh: 640, ratio: [1, 2.6],
+          title: "Character sheet",
+          images: [ne("neo-clay", 622, 1862, "Neo clay pose"), ne("sheet", 2000, 1397, "Neo character sheet: expressions, poses and details")],
+        },
+        {
+          type: "gallery", tone: "forest", contain: true, center: true, cols: 5, maxh: 250,
+          title: "The plants",
+          images: [
+            ne("pl-anthuriums", 900, 436, "Red and blue Anthuriums"),
+            ne("pl-macrolepiota", 700, 601, "Macrolepiota"),
+            ne("pl-amanita", 700, 633, "Amanita"),
+            ne("pl-pink-guayacan", 800, 926, "Pink Guayacan"),
+            ne("pl-yellow-guayacan", 800, 802, "Yellow Guayacan"),
+            ne("pl-wax-palm", 800, 1507, "Wax Palm"),
+            ne("pl-yarumo", 900, 809, "Yarumo tree"),
+            ne("pl-monsteras", 900, 900, "Monsteras"),
+            ne("pl-orchids", 900, 441, "Orchids"),
+            ne("pl-ferns", 900, 564, "Fern"),
+            ne("pl-parasol", 700, 814, "Parasol Mushroom"),
+            ne("pl-bromeliad", 800, 743, "Bromeliad"),
+            ne("pl-aglaonema", 900, 603, "Aglaonema"),
+          ],
+          captions: ["Red and blue Anthuriums", "Macrolepiota", "Amanita", "Pink Guayacan", "Yellow Guayacan", "Wax Palm", "Yarumo tree", "Monsteras", "Orchids", "Fern", "Parasol Mushroom", "Bromeliad", "Aglaonema"],
+        },
+        {
+          type: "split", tone: "sky", side: "left", phone: true,
+          title: "NEOSCOPE: Open Screen exposition.",
+          text: "Neo Centro Comercial. San Victorino - Bogota, Colombia.",
+          image: ne("mall-screen", 364, 644, "Neo on the giant screen inside Neo Centro, in San Victorino"),
+        },
+        {
+          type: "text", tone: "teal",
+          title: "Thanks for watching",
+          text: "A Purple Raven creation.",
         },
       ],
     },
