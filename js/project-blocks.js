@@ -25,6 +25,7 @@
   const al = (name, w, h, alt) => img("alice-in-doomland", name, w, h, alt);
   const ne = (name, w, h, alt) => img("neo", name, w, h, alt);
   const pf = (name, w, h, alt) => img("purple-font", name, w, h, alt);
+  const pr = (name, w, h, alt) => img("purple-raven-studio", name, w, h, alt);
   const lh = (name, w, h, alt, ext = "webp") => ({ ...img("the-luck-and-the-hare", name, w, h, alt), src: `assets/projects/the-luck-and-the-hare/c/${name}.${ext}` });
 
   window.PROJECT_BLOCKS = {
@@ -511,6 +512,32 @@
           type: "text", tone: "sticker",
           title: "Thank you for watching",
           text: "A Purple Raven creation.",
+        },
+      ],
+    },
+
+    "purple-raven-studio": {
+      theme: {
+        night: { bg: "#1a0f2b", fg: "#efe6ff", accent: "#a8e68a" },
+        lilac: { bg: "#e9defc", fg: "#1c1230", accent: "#6a2cf0" },
+      },
+      blocks: [
+        {
+          type: "split", tone: "night", side: "right",
+          title: "Purple Raven Studio",
+          text: "An experimental art start up, home of Neo and Purple Font. Every creation mixes 3D, graphic design and motion.",
+          image: pr("raven", 772, 1082, "Halftone raven"),
+        },
+        {
+          type: "gallery", tone: "lilac", contain: true, cols: 2, maxh: 640,
+          title: "Posters",
+          images: [pr("poster-lilac", 792, 1224, "Purple Raven poster, lilac version"), pr("poster-dark", 795, 1224, "Purple Raven poster, dark version")],
+        },
+        {
+          type: "text", tone: "night",
+          title: "Made by the studio",
+          text: "<a href=\"project.html?p=neo\">Neo</a> &nbsp;·&nbsp; <a href=\"project.html?p=purple-font\">Purple Font</a>",
+          note: "A Purple Raven creation.",
         },
       ],
     },
