@@ -291,45 +291,8 @@ window.PROJECTS = [
       "Get Purple Font on Gumroad",
       "https://purpleraven.gumroad.com/l/PURPLEFONT"
     ]
-  },
-  {
-    "slug": "purple-raven-studio",
-    "num": "VIII",
-    "title": "Purple Raven Studio",
-    "tags": [
-      "Art Direction",
-      "Experimental",
-      "Studio"
-    ],
-    "role": "Art Director and Graphic Designer",
-    "tools": [
-      "Blender",
-      "Photoshop"
-    ],
-    "year": "2026",
-    "summary": "Purple Raven Studio is an experimental art start up, home of Neo and Purple Font.",
-    "detail": "Every Purple Raven creation mixes 3D, graphic design and motion, built by two people who make things together.",
-    "team": [
-      [
-        "María José Madrigal",
-        "Art Director and Graphic Designer"
-      ],
-      [
-        "Julián Toquica",
-        "Motion Graphic Artist, VFX and Compositor"
-      ]
-    ],
-    "palette": [
-      "#2a1646",
-      "#1a0f2b"
-    ],
-    "cover": "assets/projects/purple-raven-studio/card.webp",
-    "hero": "assets/projects/purple-raven-studio/hero.webp",
-    "heroW": 1600,
-    "heroH": 814,
-    "sections": []
   }
 ];
 
 /* the yellow "projects" note in the about (Maria's own words) */
-window.NOTE_PROJECTS = [["Matching Potions", "I developed everything visual!", "matching-potions"], ["Wild Forager", "Branding and botannical illustrations *.*", "wild-forager"], ["Ruralmente", "I led the artistic direction", null], ["The Last Meow", "I designed zombies and cats characters *.*", null], ["Purple Raven Studio", "An experimental art start up with my bf", "purple-raven-studio"]];
+window.NOTE_PROJECTS = [["Matching Potions", "I developed everything visual!", "matching-potions"], ["Wild Forager", "Branding and botannical illustrations *.*", "wild-forager"], ["Ruralmente", "I led the artistic direction", null], ["The Last Meow", "I designed zombies and cats characters *.*", null], ["Purple Raven Studio", "An experimental art start up with my bf", null]];
