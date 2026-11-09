@@ -24,6 +24,7 @@
   const am = (name, w, h, alt) => img("astrologia-millennial", name, w, h, alt);
   const al = (name, w, h, alt) => img("alice-in-doomland", name, w, h, alt);
   const ne = (name, w, h, alt) => img("neo", name, w, h, alt);
+  const pf = (name, w, h, alt) => img("purple-font", name, w, h, alt);
   const lh = (name, w, h, alt, ext = "webp") => ({ ...img("the-luck-and-the-hare", name, w, h, alt), src: `assets/projects/the-luck-and-the-hare/c/${name}.${ext}` });
 
   window.PROJECT_BLOCKS = {
@@ -466,6 +467,49 @@
         {
           type: "text", tone: "teal",
           title: "Thanks for watching",
+          text: "A Purple Raven creation.",
+        },
+      ],
+    },
+
+    "purple-font": {
+      // lilac of the flowers, ink black of the letters, the green of the sticker note and of the RVN poster
+      theme: {
+        lilac: { bg: "#e9defc", fg: "#1c1230", accent: "#6a2cf0" },
+        gray: { bg: "#c4c4ca", fg: "#141414", accent: "#6a2cf0" },
+        night: { bg: "#1a0f2b", fg: "#efe6ff", accent: "#a8e68a" },
+        sticker: { bg: "#a5cf8e", fg: "#14210f", accent: "#5b25ef" },
+      },
+      blocks: [
+        {
+          type: "split", tone: "lilac", side: "right", wide: true,
+          title: "Purple Font",
+          text: "Purple Font is an experimental 2D font, created from 3D letters. Designed and textured to feel eery, magical and ethereal, combining heavy curves with strong textures to create this fun and wonky typography.",
+          image: pf("title", 1400, 861, "Purple Font, the font name set in its own letters"),
+        },
+        {
+          type: "feature", tone: "gray",
+          title: "The alphabet",
+          image: pf("alphabet", 1752, 737, "The Purple Font alphabet, A to Z"),
+        },
+        {
+          type: "gallery", tone: "lilac", contain: true, center: true, cols: 3, maxh: 420,
+          images: [pf("raven", 772, 1082, "Halftone raven"), pf("letter-r", 703, 852, "The letter R of Purple Font"), pf("flower", 800, 1096, "Purple halftone flower")],
+        },
+        {
+          type: "gallery", tone: "night", cols: 2,
+          title: "Mockups",
+          images: [pf("mock-tote", 1600, 913, "Purple Font on a tote bag"), pf("mock-wine", 1600, 893, "Purple Font on a wine label"), pf("mock-skate", 1600, 899, "Purple Font on a skateboard deck"), pf("mock-shirt", 1600, 899, "Purple Font on a t-shirt")],
+        },
+        { type: "full", tone: "night", image: pf("metro", 2400, 1350, "Purple Raven poster on a subway billboard") },
+        {
+          type: "gallery", tone: "gray", contain: true, cols: 2, maxh: 640,
+          title: "Posters",
+          images: [pf("poster-lilac", 792, 1224, "Purple Raven poster, lilac version"), pf("poster-dark", 795, 1224, "Purple Raven poster, dark version")],
+        },
+        {
+          type: "text", tone: "sticker",
+          title: "Thank you for watching",
           text: "A Purple Raven creation.",
         },
       ],

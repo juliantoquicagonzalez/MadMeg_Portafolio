@@ -246,6 +246,43 @@ window.PROJECTS = [
     "heroW": 1400,
     "heroH": 636,
     "sections": []
+  },
+  {
+    "slug": "purple-font",
+    "num": "VII",
+    "title": "Purple Font",
+    "tags": [
+      "Typography",
+      "Font Design",
+      "3D"
+    ],
+    "role": "Art Director and Graphic Designer",
+    "tools": [
+      "Blender",
+      "Photoshop"
+    ],
+    "year": "2026",
+    "summary": "Purple Font is an experimental 2D font, created from 3D letters. Designed and textured to feel eery, magical and ethereal, combining heavy curves with strong textures to create this fun and wonky typography.",
+    "detail": "You can buy it on our Gumroad to experiment with it and use it freely.",
+    "team": [
+      [
+        "María José Madrigal",
+        "Art Director and Graphic Designer"
+      ],
+      [
+        "Julián Toquica",
+        "Motion Graphic Artist, VFX and Compositor"
+      ]
+    ],
+    "palette": [
+      "#8b5cf3",
+      "#1a0f2b"
+    ],
+    "cover": "assets/projects/purple-font/card.webp",
+    "hero": "assets/projects/purple-font/hero.webp",
+    "heroW": 1600,
+    "heroH": 867,
+    "sections": []
   }
 ];
 

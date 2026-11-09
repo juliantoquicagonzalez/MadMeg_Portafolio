@@ -119,7 +119,8 @@
       const W = stage.clientWidth;
       const H = stage.clientHeight;
       const n = cards.length;
-      const cw = Math.max(130, Math.min(250, W * 0.15, (H * 0.7) / 1.72));
+      // cards shrink a little as the deck grows, so they keep fanning side by side instead of piling up
+      const cw = Math.max(130, Math.min(250, W * 0.15, (H * 0.7) / 1.72, (W - 80) / (n + 0.1)));
       const spacing = n > 1 ? Math.min(cw * 1.12, (W - cw - 80) / (n - 1)) : 0;
       const far = Math.max(W, H) * 0.95;
       layout = cards.map((card, i) => {
