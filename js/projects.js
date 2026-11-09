@@ -245,7 +245,11 @@ window.PROJECTS = [
     "hero": "assets/projects/neo/hero.webp",
     "heroW": 1400,
     "heroH": 636,
-    "sections": []
+    "sections": [],
+    "link": [
+      "Get Neo on Gumroad",
+      "https://purpleraven.gumroad.com/l/neostylizedcharacter"
+    ]
   },
   {
     "slug": "purple-font",
@@ -282,7 +286,11 @@ window.PROJECTS = [
     "hero": "assets/projects/purple-font/hero.webp",
     "heroW": 1600,
     "heroH": 867,
-    "sections": []
+    "sections": [],
+    "link": [
+      "Get Purple Font on Gumroad",
+      "https://purpleraven.gumroad.com/l/PURPLEFONT"
+    ]
   },
   {
     "slug": "purple-raven-studio",

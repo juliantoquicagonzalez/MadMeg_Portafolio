@@ -468,7 +468,8 @@
         {
           type: "text", tone: "teal",
           title: "Thanks for watching",
-          text: "A Purple Raven creation.",
+          text: "You can purchase <a href=\"https://purpleraven.gumroad.com/l/neostylizedcharacter\" target=\"_blank\" rel=\"noopener\">Neo</a> here, for Blender use and any purpose.",
+          note: "A Purple Raven creation.",
         },
       ],
     },
@@ -511,7 +512,8 @@
         {
           type: "text", tone: "sticker",
           title: "Thank you for watching",
-          text: "A Purple Raven creation.",
+          text: "You can purchase <a href=\"https://purpleraven.gumroad.com/l/PURPLEFONT\" target=\"_blank\" rel=\"noopener\">Purple Font</a> or <a href=\"https://purpleraven.gumroad.com/l/PURPLE3DFONT\" target=\"_blank\" rel=\"noopener\">Purple 3D Font</a> here, and use it freely.",
+          note: "A Purple Raven creation.",
         },
       ],
     },
