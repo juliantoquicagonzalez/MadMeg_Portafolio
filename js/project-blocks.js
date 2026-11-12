@@ -14,6 +14,7 @@
      palette  — typefaces + colour swatches (drawn in code)
      gallery  — a row of images (cols), optional captions; `contain` keeps cut-outs whole
      full     — one image, edge to edge
+     video    — a Vimeo player (src), 16:9
      carousel — text pinned on the left, images slide sideways (scroll, arrows or swipe)
    Every block takes a `tone` that picks the section colours from the project theme.
    Images live in assets/projects/<slug>/c/  (w/h = real pixel size, used to avoid layout jumps)
@@ -69,6 +70,7 @@
           type: "feature", tone: "night",
           image: mp("ui-toolkit", 1750, 1020, "UI toolkit: buttons, bars, stars and potion bottles"),
         },
+        { type: "video", tone: "night", title: "Matching Potions gameplay video", src: "https://player.vimeo.com/video/1177791247?h=c8d50ffe95&dnt=1" },
         { type: "full", tone: "night", image: mp("key-art", 1920, 1080, "Matching Potions key art") },
       ],
     },

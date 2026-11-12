@@ -97,6 +97,8 @@
         </div>`,
       text: (b) => `
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
+      video: (b) => `
+        <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
     };
     return blocks
