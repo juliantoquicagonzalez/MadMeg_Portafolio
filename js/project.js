@@ -27,9 +27,8 @@
     const html = {
       trio: (b) => `
         <div class="cb-trio">
-          <div class="cb-col rv">${head(b.left.title)}${para(b.left.text)}</div>
+          <div class="cb-col rv">${head(b.left.title)}${para(b.left.text)}<div class="cb-sep">${head(b.right.title)}${para(b.right.text)}</div></div>
           <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
-          <div class="cb-col rv">${head(b.right.title)}${para(b.right.text)}</div>
         </div>`,
       split: (b) => `
         <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""}">
@@ -44,16 +43,19 @@
             : `<figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
         </div>`,
       feature: (b) => `
-        <div class="cb-feature">
-          <div class="cb-center rv">${head(b.title)}${para(b.text)}</div>
+        <div class="cb-feature ${b.title || b.text ? "has-text" : ""}">
+          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
           <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
             ${b.note ? `<figcaption class="cb-note">${b.note}</figcaption>` : ""}</figure>
         </div>`,
       phones: (b) => `
-        <div class="cb-phones-wrap">
-          <div class="cb-center rv">${head(b.title)}${para(b.text)}</div>
-          <div class="cb-phones" style="--count:${b.images.length}">
-            ${b.images.map((im, i) => `<figure class="cb-phone rv" style="--i:${i}">${pic(im)}</figure>`).join("")}
+        <div class="cb-phones-wrap ${b.title || b.text ? "has-text" : ""}">
+          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
+          <div class="cb-media">
+            <div class="cb-phones" style="--count:${b.images.length}">
+              ${b.images.map((im, i) => `<figure class="cb-phone rv" style="--i:${i}">${pic(im)}</figure>`).join("")}
+            </div>
+            ${b.extra ? `<figure class="cb-fig cb-extra rv">${pic(b.extra, "cb-cut")}</figure>` : ""}
           </div>
         </div>`,
       palette: (b) => `
@@ -65,7 +67,7 @@
           <div class="cb-swatches rv" style="--cols:${b.cols || 3}">${b.colors.map((c) => `<div class="cb-swatch" style="--c:${c.hex}"><span>${c.name ? `<b>${c.name}</b>` : ""}${c.hex}</span></div>`).join("")}</div>
         </div>`,
       gallery: (b) => `
-        <div class="cb-gallery-wrap">
+        <div class="cb-gallery-wrap ${b.title || b.text ? "has-text" : ""}">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
           <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
@@ -145,6 +147,47 @@
         </a>
       </nav>`;
   }, "render");
+
+  // every image of the case study opens bigger (click / Enter), with arrows to move between them
+  safe(() => {
+    const imgs = () => [...document.querySelectorAll(".cb img, .cs-section img")];
+    let box, cur = 0, opener = null;
+    const show = (i) => {
+      const list = imgs(); cur = (i + list.length) % list.length;
+      const el = list[cur];
+      box.querySelector("img").src = el.currentSrc || el.src;
+      box.querySelector("img").alt = el.alt || "";
+      box.querySelector(".lb-count").textContent = `${cur + 1} / ${list.length}`;
+    };
+    const close = () => {
+      if (!box) return;
+      box.remove(); box = null; document.body.classList.remove("lb-open");
+      removeEventListener("keydown", onKey);
+      if (opener && opener.focus) opener.focus({ preventScroll: true });
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") show(cur + 1);
+      else if (e.key === "ArrowLeft") show(cur - 1);
+    };
+    const open = (el) => {
+      opener = el;
+      box = document.createElement("div");
+      box.className = "lb"; box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Image viewer");
+      box.innerHTML = `<button class="lb-btn lb-close" aria-label="Close">×</button><button class="lb-btn lb-prev" aria-label="Previous image">←</button><img alt="" /><button class="lb-btn lb-next" aria-label="Next image">→</button><div class="lb-count"></div>`;
+      document.body.appendChild(box); document.body.classList.add("lb-open");
+      show(imgs().indexOf(el));
+      box.addEventListener("click", (e) => {
+        if (e.target.closest(".lb-prev")) show(cur - 1);
+        else if (e.target.closest(".lb-next")) show(cur + 1);
+        else close();
+      });
+      addEventListener("keydown", onKey);
+      box.querySelector(".lb-close").focus();
+    };
+    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img, .cs-section img"); if (el) open(el); });
+    imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
+  }, "lightbox");
 
   // sections rise in as they enter (with a safety net so nothing stays hidden)
   safe(() => {

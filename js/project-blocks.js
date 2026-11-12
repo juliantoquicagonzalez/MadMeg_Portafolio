@@ -79,7 +79,6 @@
         },
         {
           type: "phones", tone: "night",
-          title: "Game Screens",
           images: [
             mp("screen-1", 640, 1422, "Intro: the alchemy journal"),
             mp("screen-2", 640, 1422, "Potions selection, level 2"),
@@ -90,16 +89,15 @@
         },
         {
           type: "phones", tone: "parchment",
-          title: "Win, lose & play",
           images: [
             mp("win", 700, 1370, "Win screen: Pure magic!"),
             mp("gameplay", 640, 1422, "Match-3 gameplay"),
             mp("lose", 700, 1370, "Lose screen: Ohhh… nice soup"),
           ],
+          extra: mp("potions", 1531, 193, "The potion bottles of the game"),
         },
         {
           type: "feature", tone: "night",
-          title: "UI Toolkit",
           image: mp("ui-toolkit", 1750, 1020, "UI toolkit: buttons, bars, stars and potion bottles"),
         },
         { type: "full", tone: "night", image: mp("key-art", 1920, 1080, "Matching Potions key art") },
