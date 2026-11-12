@@ -13,7 +13,7 @@
   <!-- Tumb, licensed through Maria's Adobe Fonts (Creative Cloud) web project -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/sxu4bkt.css" />
-  <link rel="stylesheet" href="css/styles.css?v=202611091102" />
+  <link rel="stylesheet" href="css/styles.css?v=202611121536" />
 </head>
 <body>
 
@@ -28,7 +28,7 @@
     <a class="nav-logo" href="#top"><img src="assets/letters/star.svg" alt="" />Madmeg</a>
     <a class="nav-link" href="#work"><span>Work</span></a>
     <a class="nav-link" href="#about"><span>About</span></a>
-    <a class="nav-link" href="#contact"><span>Contact</span></a>
+    <a class="nav-link" href="#message"><span>Contact</span></a>
     <div class="nav-spacer">Graphic Designer &amp; Illustrator — Colombia</div>
     <a class="nav-social" href="https://www.linkedin.com/in/maria-jose-madrigal-arboleda/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a>
     <a class="nav-social" href="https://www.behance.net/mariajosemadrigal" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 11.4c.9-.4 1.5-1.2 1.5-2.4C9.7 6.8 8.1 6 6 6H1v12h5.2c2.2 0 4.1-1 4.1-3.4 0-1.5-.8-2.7-2.1-3.2zM3.3 8h2.3c.9 0 1.7.3 1.7 1.3S6.6 10.7 5.8 10.7H3.3zm2.5 8H3.3v-3.2h2.6c1 0 1.9.4 1.9 1.6 0 1.3-.9 1.6-2 1.6zM15.4 7.2h5.2v1.3h-5.2zM18 9.6c-2.9 0-4.6 2-4.6 4.3 0 2.5 1.6 4.3 4.6 4.3 2.2 0 3.7-1 4.2-2.9h-2.2c-.2.6-1 1-1.9 1-1.4 0-2.2-.8-2.3-2.2h6.5c.2-2.7-1.3-4.5-4.3-4.5zm-2.2 3.3c.1-1.2.9-1.8 2-1.8 1.2 0 1.9.7 2 1.8z"/></svg></a>
@@ -51,8 +51,8 @@
             <span class="corner br"><svg><use href="#spark4"/></svg></span>
           </div>
 
-          <div class="hero-side left">2026</div>
-          <div class="hero-side right">Portfolio · María José Madrigal</div>
+          <div class="hero-side left">Creative design and illustration portfolio</div>
+          <div class="hero-side right">María José Madrigal</div>
 
           <div class="hero-inner">
             <div class="hero-center">
@@ -191,6 +191,24 @@
 
       </div>
     </section>
+
+    <!-- MESSAGE — contact form ------------------------------------>
+    <section class="msg" id="message" aria-labelledby="msgTitle">
+      <div class="msg-head">
+        <h2 id="msgTitle">Send me a message</h2>
+        <p>Have a project in mind, a question or just want to say hi? Write here and I'll get back to you.</p>
+      </div>
+      <form class="msg-form" id="msgForm" novalidate>
+        <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label class="full">Message<textarea name="message" rows="6" required></textarea></label>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="msg-foot full">
+          <button type="submit">Send message <span aria-hidden="true">→</span></button>
+          <p class="msg-status" id="msgStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer class="footer">
@@ -199,7 +217,7 @@
     <a href="#top">Back to top ↑</a>
   </footer>
 
-  <script defer src="js/projects.js?v=202611091102"></script>
-  <script defer src="js/main.js?v=202611091102"></script>
+  <script defer src="js/projects.js?v=202611121536"></script>
+  <script defer src="js/main.js?v=202611121536"></script>
 </body>
 </html>

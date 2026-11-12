@@ -262,11 +262,12 @@ body::after {
   writing-mode: vertical-rl;
 }
 .hero-side.left { left: 56px; transform: translateY(-50%) rotate(180deg); }
-.hero-side.right {
-  right: 56px; transform: translateY(-50%);
+.hero-side.right { right: 56px; transform: translateY(-50%); }
+.hero-side.left, .hero-side.right {
   font-family: var(--f-mono); font-size: 12px; letter-spacing: .3em;
-  text-transform: uppercase; color: var(--cream);
+  text-transform: uppercase; white-space: nowrap;
 }
+.hero-side.right { color: var(--cream); }
 
 .scroll-hint {
   position: absolute; left: 50%; bottom: clamp(18px, 4.5vh, 44px); transform: translateX(-50%);
@@ -624,7 +625,7 @@ body::after {
 .app-icons u {
   display: block; height: 9px; border-radius: 99px;
   border: 2px solid var(--lav);
-  background: linear-gradient(90deg, #5e29e3 0 86%, transparent 86%);
+  background: linear-gradient(90deg, #fef4fe 0 86%, transparent 86%);
   background-clip: content-box; padding: 1px;
 }
 .skills-grid ul { list-style: none; margin: 0; padding: 0; max-width: 210px; }
@@ -677,16 +678,19 @@ body::after {
   --nw: 62px; /* width of the roman-numeral box = side margin on both sides */
   display: grid;
   grid-template-columns: 1.55fr 1fr;
+  grid-template-areas: "title role" "desc info";
   border-bottom: var(--line);
   background: var(--cream);
 }
-.p-desc { border-right: var(--line); display: flex; flex-direction: column; }
+/* title and role share the first grid row, so their bottom lines are one and the same */
+.title-box { grid-area: title; border-right: var(--line); }
+.role-box { grid-area: role; margin-right: var(--nw); }
 /* the description starts at the right edge of the roman-numeral box, so its text
    lines up with the project title; the info column keeps the same margin on the right */
-.desc-row { display: grid; grid-template-columns: 1fr 1fr; flex: 1; margin-left: var(--nw); }
+.desc-row { grid-area: desc; display: grid; grid-template-columns: 1fr 1fr; margin-left: var(--nw); border-right: var(--line); }
 .desc-row .info-box { border-bottom: 0; }
 .desc-row .info-box:first-child { border-right: var(--line); }
-.p-info { display: flex; flex-direction: column; margin-right: var(--nw); }
+.p-info { grid-area: info; display: flex; flex-direction: column; margin-right: var(--nw); }
 .info-box { border-bottom: var(--line); padding: 18px 22px; }
 .info-box:last-child { border-bottom: 0; }
 .info-box .k { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; margin-bottom: 8px; }
@@ -841,15 +845,51 @@ body::after {
 .p-nav .t { font-family: var(--f-head); font-weight: 700; font-size: clamp(26px, 3.6vw, 52px); line-height: 1; }
 .p-nav a:hover { background: var(--ink); color: var(--pink); }
 
+
+/* --- contact form --- */
+.msg {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(28px, 5vw, 80px);
+  padding: clamp(48px, 7vw, 96px) 6.3vw;
+  background: var(--cream); color: var(--ink);
+  border-top: var(--line);
+  scroll-margin-top: var(--nav-h, 64px);
+}
+.msg-head h2 { margin: 0 0 14px; font-family: var(--f-head); font-weight: 700; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.02; }
+.msg-head p { margin: 0; max-width: 34ch; font-family: var(--f-mono); font-size: 14px; line-height: 1.6; }
+.msg-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-content: start; }
+.msg-form .full { grid-column: 1 / -1; }
+.msg-form label { display: flex; flex-direction: column; gap: 8px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.msg-form input, .msg-form textarea {
+  font: inherit; font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--ink);
+  background: #fff; border: var(--line); border-radius: 12px; padding: 13px 16px; width: 100%;
+}
+.msg-form textarea { resize: vertical; min-height: 140px; }
+.msg-form input:focus-visible, .msg-form textarea:focus-visible { outline: 3px solid var(--peri); outline-offset: 2px; }
+.msg-form [aria-invalid="true"] { border-color: #d23f33; }
+.msg-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.msg-foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.msg-foot button {
+  font-family: var(--f-mono); font-weight: 700; font-size: 14px; cursor: pointer;
+  background: var(--violet); color: var(--cream); border: var(--line); border-radius: 999px; padding: 13px 26px;
+  transition: background .25s, color .25s, transform .25s var(--ease-out);
+}
+.msg-foot button:hover { background: var(--ink); color: var(--pink); transform: translateY(-2px); }
+.msg-foot button:disabled { opacity: .6; cursor: progress; transform: none; }
+.msg-status { margin: 0; font-family: var(--f-mono); font-size: 13px; }
+.msg-status.is-ok { color: #1f7a3a; }
+.msg-status.is-err { color: #b3261e; }
+
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1080px) {
-  .p-top { grid-template-columns: 1fr; }
-  .p-desc { border-right: 0; border-bottom: var(--line); }
+  .msg { grid-template-columns: 1fr; }
+  .p-top { grid-template-columns: 1fr; grid-template-areas: "title" "desc" "role" "info"; }
+  .title-box, .desc-row { border-right: 0; }
+  .desc-row { border-bottom: var(--line); }
   /* one column: same side margin on both sides for the description and the info */
   .desc-row { margin-right: var(--nw); }
-  .p-info { margin: 0 var(--nw); }
+  .role-box, .p-info { margin: 0 var(--nw); }
   .nav-spacer { display: none; }
   .collage {
     grid-template-columns: minmax(0, 1fr);
@@ -861,6 +901,7 @@ body::after {
   .info-sec { padding-left: 0; }
 }
 @media (max-width: 760px) {
+  .msg-form { grid-template-columns: 1fr; }
   :root { --nav-h: 56px; }
   .nav > * { padding: 0 14px; font-size: 11px; }
   .nav .nav-logo { min-width: 0; font-size: 19px; }

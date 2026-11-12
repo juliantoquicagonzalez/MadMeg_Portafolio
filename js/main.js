@@ -266,6 +266,40 @@
       .join("");
   }, "note");
 
+  /* ---------- 5. Contact form (sent by email through FormSubmit) ---------- */
+  safe(() => {
+    const form = document.getElementById("msgForm");
+    if (!form) return;
+    const status = document.getElementById("msgStatus");
+    const btn = form.querySelector("button");
+    const say = (text, cls) => { status.textContent = text; status.className = "msg-status " + (cls || ""); };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      if (f.get("_honey")) return; // bots fill the hidden field
+      const name = String(f.get("name") || "").trim(), email = String(f.get("email") || "").trim(), message = String(f.get("message") || "").trim();
+      let bad = false;
+      [["name", !name], ["email", !/^\S+@\S+\.\S+$/.test(email)], ["message", !message]].forEach(([k, no]) => {
+        form.elements[k].setAttribute("aria-invalid", no ? "true" : "false");
+        bad = bad || no;
+      });
+      if (bad) return say("Please fill in your name, a valid email and a message.", "is-err");
+      btn.disabled = true; say("Sending…");
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/majomadrigal99@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ name, email, message, _replyto: email, _subject: "New message from madmeg.net", _template: "table", _captcha: "false" }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.success === "false" || data.success === false) throw new Error("send failed");
+        form.reset(); say("Thank you! Your message was sent, I'll get back to you soon.", "is-ok");
+      } catch (err) {
+        say("Couldn't send it. Please write to majomadrigal99@gmail.com.", "is-err");
+      } finally { btn.disabled = false; }
+    });
+  }, "contact-form");
+
   /* ---------- 5. Collage pieces fly in from outside ---------- */
   safe(() => {
     const collage = document.getElementById("collage");

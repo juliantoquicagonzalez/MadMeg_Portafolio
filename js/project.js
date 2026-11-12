@@ -22,19 +22,18 @@
     const pic = (im, cls = "", lazy = true) =>
       `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
     const para = (t) => (t ? `<p class="cb-text">${t}</p>` : "");
-    const head = (t, n) => (t ? `<div class="cb-kicker">${String(n).padStart(2, "0")}</div><h2 class="cb-title">${t}</h2>` : "");
+    const head = (t) => (t ? `<h2 class="cb-title">${t}</h2>` : "");
     const fonts = (b) => b.fonts.map((f) => `<div class="cb-font"><span class="cb-font-name">${f.name}</span><span class="cb-font-role">${f.role}</span></div>`).join("");
-    let n = 0;
     const html = {
       trio: (b) => `
         <div class="cb-trio">
-          <div class="cb-col rv">${head(b.left.title, ++n)}${para(b.left.text)}</div>
+          <div class="cb-col rv">${head(b.left.title)}${para(b.left.text)}</div>
           <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
-          <div class="cb-col rv">${head(b.right.title, ++n)}${para(b.right.text)}</div>
+          <div class="cb-col rv">${head(b.right.title)}${para(b.right.text)}</div>
         </div>`,
       split: (b) => `
         <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""}">
-          <div class="cb-col rv">${head(b.title, ++n)}${para(b.text)}
+          <div class="cb-col rv">${head(b.title)}${para(b.text)}
             ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
             ${b.stat ? `<p class="cb-stat">${b.stat}</p>` : ""}
             ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
@@ -46,20 +45,20 @@
         </div>`,
       feature: (b) => `
         <div class="cb-feature">
-          <div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>
+          <div class="cb-center rv">${head(b.title)}${para(b.text)}</div>
           <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
             ${b.note ? `<figcaption class="cb-note">${b.note}</figcaption>` : ""}</figure>
         </div>`,
       phones: (b) => `
         <div class="cb-phones-wrap">
-          <div class="cb-center rv">${head(b.title, ++n)}${para(b.text)}</div>
+          <div class="cb-center rv">${head(b.title)}${para(b.text)}</div>
           <div class="cb-phones" style="--count:${b.images.length}">
             ${b.images.map((im, i) => `<figure class="cb-phone rv" style="--i:${i}">${pic(im)}</figure>`).join("")}
           </div>
         </div>`,
       palette: (b) => `
         <div class="cb-palette">
-          <div class="cb-col rv">${head(b.title, ++n)}
+          <div class="cb-col rv">${head(b.title)}
             <div class="cb-fonts">${fonts(b)}</div>
             ${para(b.text)}
           </div>
@@ -67,13 +66,13 @@
         </div>`,
       gallery: (b) => `
         <div class="cb-gallery-wrap">
-          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}</div>` : ""}
+          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
           <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
       text: (b) => `
-        <div class="cb-center rv">${head(b.title, b.title ? ++n : "")}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
+        <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
     };
     return blocks
@@ -116,19 +115,16 @@
       </section>
 
       <section class="p-top">
-        <div class="p-desc">
-          <div class="info-box title-box">
-            <div class="n">${p.num}</div>
-            <h1>${p.title}</h1>
-          </div>
-          <div class="desc-row">
-            <div class="info-box"><div class="k">The project</div><p class="v">${p.summary}</p></div>
-            <div class="info-box"><div class="k">My part</div><p class="v">${p.detail} ${link}</p></div>
-          </div>
+        <div class="info-box title-box">
+          <div class="n">${p.num}</div>
+          <h1>${p.title}</h1>
         </div>
-
+        <div class="info-box role-box"><div class="k">Role</div><div class="v small">${p.role}</div></div>
+        <div class="desc-row">
+          <div class="info-box"><div class="k">The project</div><p class="v">${p.summary}</p></div>
+          <div class="info-box"><div class="k">My part</div><p class="v">${p.detail} ${link}</p></div>
+        </div>
         <div class="p-info">
-          <div class="info-box"><div class="k">Role</div><div class="v small">${p.role}</div></div>
           <div class="info-row">
             <div class="info-box"><div class="k">Category</div><div class="chips">${chips(p.tags)}</div></div>
             <div class="info-box"><div class="k">Tools</div><div class="chips">${chips(p.tools)}</div></div>
