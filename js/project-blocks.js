@@ -35,6 +35,7 @@
         night: { bg: "#272559", fg: "#f6f1e9", accent: "#5cb6f9" },     // Deep Midnight
         parchment: { bg: "#f3e8d2", fg: "#2b1a10", accent: "#5d4ad9" },
         amethyst: { bg: "#5d4ad9", fg: "#f6f1e9", accent: "#ffd76a" },  // Mystic Amethyst
+        cream: { bg: "#f6f1e9", fg: "#2b1a10", accent: "#5d4ad9" },
       },
       blocks: [
         {
@@ -61,33 +62,8 @@
           steps: ["Username input", "Potions selection", "Game", "Shelf", "Lose / Win"],
           image: mp("wireframe", 1600, 1045, "Hand-sketched wireframe of the game screens"),
         },
-        {
-          type: "palette", tone: "amethyst",
-          title: "Typography & palette",
-          fonts: [
-            { name: "Chaloops", role: "Titles", sample: "Matching Potions" },
-            { name: "Providence Sans", role: "Body text · Bold for highlights", sample: "Collect all the potions" },
-          ],
-          colors: [
-            { hex: "#5D4AD9", name: "Mystic Amethyst" },
-            { hex: "#272559", name: "Deep Midnight" },
-            { hex: "#0A3EA6", name: "Lapis Powder" },
-            { hex: "#5CB6F9" },
-            { hex: "#592202" },
-            { hex: "#CE5936" },
-          ],
-          text: "You can play the game on Itch.io and download the APK on your mobile.",
-        },
-        {
-          type: "phones", tone: "night",
-          images: [
-            mp("screen-1", 640, 1422, "Intro: the alchemy journal"),
-            mp("screen-2", 640, 1422, "Potions selection, level 2"),
-            mp("screen-3", 640, 1422, "Elixir of Clarity recipe"),
-            mp("screen-4", 640, 1422, "Potion’s shelf"),
-            mp("screen-5", 640, 1422, "Dew of Eternity identification card"),
-          ],
-        },
+        { type: "full", tone: "cream", image: mp("typography", 2400, 780, "Chaloops font for the titles, Providence Sans for body text, and the game’s colour palette: Mystic Amethyst #5D4AD9, Deep Midnight #272559, Lapis Powder #0A3EA6, #5CB6F9, #592202 and #CE5936") },
+        { type: "full", tone: "cream", image: mp("game-screens", 2400, 1063, "Game screens: intro journal, potions selection, Elixir of Clarity recipe, the potion shelf and the Dew of Eternity identification card") },
         {
           type: "phones", tone: "parchment",
           images: [
