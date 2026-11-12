@@ -97,6 +97,18 @@
         </div>`,
       text: (b) => `
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
+      scene: (b) => {
+        // a composition of separate pieces (exported from Figma) laid out as in the design; the interactive ones open on their own and grow a little on hover
+        const pc = (v, t) => `${Math.round((v / t) * 10000) / 100}%`;
+        const layer = (l) => {
+          const pos = `left:${pc(l.x, b.w)};top:${pc(l.y, b.h)};width:${pc(l.w, b.w)};height:${pc(l.h, b.h)}`;
+          const im = `<img src="${l.src}" alt="${l.alt || ""}" width="${Math.round(l.w * 2)}" height="${Math.round(l.h * 2)}" loading="lazy" decoding="async" />`;
+          return l.still
+            ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
+            : `<button type="button" class="sc-item" data-full="${l.src}" data-alt="${l.alt || ""}" data-bg="${b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
+        };
+        return `<div class="cb-scene rv" style="aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
+      },
       video: (b) => `
         <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
       full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%"></button>`).join("")}</figure>`,
@@ -229,7 +241,7 @@
 
   // every image of the case study opens bigger (click / Enter), with arrows to move between them
   safe(() => {
-    const imgs = () => [...document.querySelectorAll(".cb img:not(.no-lb), .cb .hs, .cs-section img")];
+    const imgs = () => [...document.querySelectorAll(".cb img:not(.no-lb):not(.sc-item img), .cb .hs, .cb .sc-item, .cs-section img")];
     let box, cur = 0, opener = null;
     const show = (i) => {
       const list = imgs(); cur = (i + list.length) % list.length;
@@ -272,7 +284,7 @@
       addEventListener("keydown", onKey);
       box.querySelector(".lb-close").focus();
     };
-    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img:not(.no-lb), .cb .hs, .cs-section img"); if (el) open(el); });
+    root.addEventListener("click", (e) => { const el = e.target.closest(".cb .sc-item, .cb .hs") || e.target.closest(".cb img:not(.no-lb), .cs-section img"); if (el) open(el); });
     imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
   }, "lightbox");
 

@@ -901,6 +901,18 @@ body.lb-open { overflow: hidden; }
 .cb-video iframe { display: block; width: 100%; height: 100%; border: 0; }
 .cb-full-block { padding: 0; }
 .cb-flat { border-bottom: 0; }
+/* scene: loose pieces placed as in the Figma; interactive ones scale up a little on hover */
+.cb-scene-block { padding: 0; }
+.cb-scene-block > * { max-width: none; }
+.cb-scene { position: relative; overflow: hidden; width: 100%; }
+.cb-scene .sc-still { position: absolute; display: block; pointer-events: none; user-select: none; }
+.cb-scene .sc-item {
+  position: absolute; padding: 0; border: 0; background: none; cursor: zoom-in; display: block;
+  transition: transform .35s var(--ease-out), filter .35s;
+}
+.cb-scene .sc-item img { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.cb-scene .sc-item:hover, .cb-scene .sc-item:focus-visible { transform: scale(1.07); z-index: 5; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .28)); outline: none; }
+@media (prefers-reduced-motion: reduce) { .cb-scene .sc-item { transition: none; } .cb-scene .sc-item:hover { transform: none; } }
 /* invisible click areas over a composed image: each opens its own piece in the viewer */
 .cb-full.has-spots { position: relative; }
 .cb-full .hs { position: absolute; padding: 0; border: 0; background: transparent; cursor: zoom-in; border-radius: 18px; transition: background .25s, box-shadow .25s; }
