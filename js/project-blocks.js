@@ -72,7 +72,7 @@
         {
           type: "scene", tone: "cream", w: 1440, h: 683, bg: "#9ba9f5", itemBg: "#9ba9f5",
           layers: [
-            { src: "assets/projects/matching-potions/c/potion-cluster.webp", alt: "Prosperity on a Jar identification card and potion", x: 55, y: 120, w: 348, h: 443 },
+            { src: "assets/projects/matching-potions/c/potion-cluster.webp", alt: "Prosperity on a Jar identification card and potion", nobg: true, x: 55, y: 120, w: 348, h: 443 },
             { src: "assets/projects/matching-potions/c/wl-lose.webp", full: "assets/projects/matching-potions/c/sf-lose.webp", alt: "Lose screen: Ohhh… nice soup", x: 422, y: 78, w: 335.2, h: 605 },
             { src: "assets/projects/matching-potions/c/wl-game.webp", full: "assets/projects/matching-potions/c/sf-game.webp", alt: "Match-3 gameplay", x: 791, y: 101, w: 268.8, h: 564.9 },
             { src: "assets/projects/matching-potions/c/wl-win.webp", full: "assets/projects/matching-potions/c/sf-win.webp", alt: "Win screen: Pure magic!", x: 1089.8, y: 79.3, w: 332.2, h: 603.7 },
