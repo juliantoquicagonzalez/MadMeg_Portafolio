@@ -49,7 +49,6 @@
           type: "feature", tone: "parchment", bleed: "5.4vw",
           title: "The Feel",
           text: "Bold, unique and fun. Most Match-3 follow certain style: clean, polished, perfect. We wanted to stand out and make something that felt alive, eye-catching and fun to look and play.",
-          more: { title: "Illustrated Game Icons" },
           image: mp("icons", 1729, 1008, "Match-3 board and the sheet of illustrated ingredients and boosters"),
         },
         {
@@ -65,7 +64,6 @@
           type: "feature", tone: "night",
           image: mp("ui-toolkit", 1750, 1020, "UI toolkit: buttons, bars, stars and potion bottles"),
         },
-        { type: "video", tone: "night", title: "Matching Potions gameplay video", src: "https://player.vimeo.com/video/1177791247?h=c8d50ffe95&dnt=1" },
         {
           type: "split", tone: "parchment", side: "left",
           title: "Sketched Wireframe & user flow",
@@ -73,6 +71,7 @@
           steps: ["Username input", "Potions selection", "Game", "Shelf", "Lose / Win"],
           image: mp("wireframe", 1600, 1045, "Hand-sketched wireframe of the game screens"),
         },
+        { type: "video", tone: "night", title: "Matching Potions gameplay video", src: "https://player.vimeo.com/video/1177791247?h=c8d50ffe95&dnt=1" },
         { type: "full", tone: "night", image: mp("key-art", 1920, 1080, "Matching Potions key art") },
       ],
     },
