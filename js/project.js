@@ -38,7 +38,9 @@
             ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
             ${b.sketch ? `<figure class="cb-sketch">${pic(b.sketch)}</figure>` : ""}
           </div>
-          ${b.phone
+          ${b.phone && b.frameless
+            ? `<figure class="cb-fig cb-phone-bare rv">${pic(b.image, "cb-cut")}</figure>`
+            : b.phone
             ? `<figure class="cb-fig rv"><div class="cb-phone is-solo ${b.tall ? "is-tall" : ""}">${pic(b.image)}</div></figure>`
             : `<figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
         </div>`,

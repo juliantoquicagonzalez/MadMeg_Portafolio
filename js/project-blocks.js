@@ -317,11 +317,11 @@
       },
       blocks: [
         {
-          type: "split", tone: "forest", side: "right", phone: true,
+          type: "split", tone: "forest", side: "right", phone: true, frameless: true,
           title: "You probably walk past edible wild plants all the time without noticing them.",
           text: "Wild Forager helps users notice their surroundings again. It’s not a harvesting shortcut made only for consumption, it’s a learning tool created to heal relationships between humans and their surrounding green neighbors.",
           steps: ["Educational", "Edgy", "Anti-System", "Food Sovereignty"],
-          image: wf("app-home", 412, 986, "Wild Forager map of plants nearby"),
+          image: wf("phone-home", 987, 1884, "Wild Forager map of plants nearby"),
         },
         {
           type: "gallery", tone: "moss", cols: 2,
@@ -354,7 +354,7 @@
           images: [wf("badge-1", 700, 701, "Round badge, dark"), wf("badge-2", 700, 701, "Round badge, green"), wf("badge-3", 700, 700, "Round badge, light")],
         },
         {
-          type: "split", tone: "forest", side: "left", phone: true, tall: true,
+          type: "split", tone: "forest", side: "left", phone: true, frameless: true,
           title: "The experience",
           text: "Browse each plant profile with illustrations, photos, traits, habitat, seasonality, and look-alike warnings so what is in front of each user can be compared carefully.",
           steps: [
@@ -366,7 +366,7 @@
             "Create your profile and report plants, warnings or sites",
             "Use all the info to do your own research and go deeper",
           ],
-          image: wf("app-plant", 412, 1578, "Plant profile screen"),
+          image: wf("phone-plant", 752, 1668, "Plant profile screen"),
         },
         {
           type: "gallery", tone: "mint", cols: 9, contain: true, icons: true,

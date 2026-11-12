@@ -782,6 +782,8 @@ body.lb-open { overflow: hidden; }
 .cb-sketch { margin: 26px 0 0; max-width: 360px; opacity: .92; }
 .cb-stat { margin: 22px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); font-family: var(--f-head); font-weight: 700; font-size: 18px; line-height: 1.35; max-width: 46ch; }
 .cb-note.is-left { text-align: left; }
+/* phones exported from Figma with their own body, glass and tilt: shown as they are */
+.cb-phone-bare img { width: auto; max-width: 100%; max-height: min(80vh, 720px); margin: 0 auto; }
 .cb-phone.is-solo { width: fit-content; max-width: 100%; margin: 0 auto; }
 /* phones keep their own proportions but never get taller than the screen */
 .cb-phone.is-solo img { width: auto; max-width: 100%; max-height: min(76vh, 640px); }
