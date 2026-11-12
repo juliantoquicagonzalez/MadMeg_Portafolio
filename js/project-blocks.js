@@ -128,7 +128,7 @@
           title: "Sketched Wireframe & user flow",
           text: "After various iterations, we came to a flow that made sense and felt natural:",
           steps: ["Username input", "Potions selection", "Game", "Shelf", "Lose / Win"],
-          image: mp("wireframe", 1565, 1045, "Hand-sketched wireframe of the game screens"),
+          image: { ...mp("wireframe", 1565, 1045, "Hand-sketched wireframe of the game screens"), lbbg: true },
         },
         { type: "video", tone: "night", title: "Matching Potions gameplay video", src: "https://player.vimeo.com/video/1177791247?h=c8d50ffe95&dnt=1" },
         { type: "full", tone: "night", image: mp("key-art", 1920, 1080, "Matching Potions key art") },
