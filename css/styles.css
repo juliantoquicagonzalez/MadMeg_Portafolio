@@ -782,10 +782,12 @@ body.lb-open { overflow: hidden; }
 .cb-sketch { margin: 26px 0 0; max-width: 360px; opacity: .92; }
 .cb-stat { margin: 22px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); font-family: var(--f-head); font-weight: 700; font-size: 18px; line-height: 1.35; max-width: 46ch; }
 .cb-note.is-left { text-align: left; }
-.cb-phone.is-solo { max-width: 300px; margin: 0 auto; }
+.cb-phone.is-solo { width: fit-content; max-width: 100%; margin: 0 auto; }
+/* phones keep their own proportions but never get taller than the screen */
+.cb-phone.is-solo img { width: auto; max-width: 100%; max-height: min(76vh, 640px); }
 /* long scrolling screenshots: show the top of the screen inside a normal phone shape */
-.cb-phone.is-tall { aspect-ratio: 9 / 19.5; }
-.cb-phone.is-tall img { height: 100%; object-fit: cover; object-position: top; }
+.cb-phone.is-solo.is-tall { width: min(290px, 100%); aspect-ratio: 9 / 19.5; }
+.cb-phone.is-tall img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: top; }
 .cb-gallery.is-contain.is-icons .cb-gal img { max-height: 90px; filter: none; }
 .cb-gallery.is-icons { align-items: center; max-width: 980px; margin: 0 auto; }
 .cb-gal figcaption span { display: block; margin-top: 8px; text-transform: none; letter-spacing: 0; font-size: 13px; line-height: 1.6; opacity: .85; text-align: left; }
@@ -839,6 +841,26 @@ body.lb-open { overflow: hidden; }
 .cb-gallery.is-center .cb-gal { flex: 0 0 calc((100% - (var(--cols) - 1) * clamp(14px, 2.4vw, 32px)) / var(--cols)); }
 .cb-gallery.is-square { align-items: stretch; }
 .cb-gallery.is-square .cb-gal img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; }
+/* carousel: pinned on desktop, swipe strip on small screens */
+.cb-carousel-block { padding-top: 0; padding-bottom: 0; overflow: clip; }
+.cb-carousel { max-width: 1560px; }
+.cb-car-stage {
+  position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h));
+  display: grid; grid-template-columns: var(--tw) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center;
+}
+.cb-car-view { overflow: hidden; min-width: 0; outline-offset: 6px; }
+.cb-car-track { display: flex; align-items: flex-end; gap: clamp(16px, 2.4vw, 36px); position: relative; width: max-content; will-change: transform; }
+.cb-car-item { margin: 0; flex: none; }
+.cb-car-item img { display: block; width: auto; max-width: none; height: min(calc(100vh - var(--nav-h) - 150px), 760px); border-radius: 6px; }
+.cb-car-item figcaption { margin-top: 12px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.cb-car-ctl { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.cb-car-btn {
+  width: 46px; height: 46px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid currentColor; background: transparent; color: inherit; font: 700 20px/1 var(--f-mono);
+  transition: background .2s, color .2s, transform .2s var(--ease-out);
+}
+.cb-car-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); transform: translateY(-2px); }
+.cb-car-count { font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; opacity: .8; }
 .cb-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .cb-gal figcaption { margin-top: 12px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .cb .cb-gal.rv { transition-delay: calc(var(--i) * 80ms); }
@@ -990,6 +1012,14 @@ body.lb-open { overflow: hidden; }
   .info-row { grid-template-columns: 1fr; }
   .info-row .info-box:first-child { border-right: 0; border-bottom: var(--line); }
   .cb-trio, .cb-split, .cb-palette, .cb-feature.has-text, .cb-phones-wrap.has-text, .cb-gallery-wrap.has-text { grid-template-columns: minmax(0, 1fr); }
+  .cb-carousel-block { padding-top: clamp(44px, 6vw, 88px); padding-bottom: clamp(44px, 6vw, 88px); }
+  .cb-carousel { height: auto !important; }
+  .cb-car-stage { position: static; height: auto; grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .cb-car-view { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * clamp(22px, 4.3vw, 62px)); padding: 0 clamp(22px, 4.3vw, 62px); }
+  .cb-car-view::-webkit-scrollbar { display: none; }
+  .cb-car-track { transform: none !important; }
+  .cb-car-item { scroll-snap-align: start; }
+  .cb-car-item img { height: min(62vh, 480px); }
   .cb-gallery[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
   .cb-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 420px; }
   .cb-phone:nth-child(even), .cb .cb-phone.rv.in:nth-child(even) { transform: translateY(18px); }

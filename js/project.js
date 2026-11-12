@@ -73,6 +73,26 @@
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
+      carousel: (b) => `
+        <div class="cb-carousel" style="--n:${b.images.length}">
+          <div class="cb-car-stage">
+            <div class="cb-col cb-car-text rv">
+              ${head(b.title)}${para(b.text)}
+              ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
+              ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
+              <div class="cb-car-ctl">
+                <button type="button" class="cb-car-btn" data-dir="-1" aria-label="Previous image">←</button>
+                <span class="cb-car-count" aria-live="polite">1 / ${b.images.length}</span>
+                <button type="button" class="cb-car-btn" data-dir="1" aria-label="Next image">→</button>
+              </div>
+            </div>
+            <div class="cb-car-view" tabindex="0" role="group" aria-roledescription="carousel" aria-label="${b.title || "Gallery"}: scroll sideways">
+              <div class="cb-car-track">
+                ${b.images.map((im, i) => `<figure class="cb-car-item">${pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
+              </div>
+            </div>
+          </div>
+        </div>`,
       text: (b) => `
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
@@ -147,6 +167,54 @@
         </a>
       </nav>`;
   }, "render");
+
+  // carousels: on desktop the section pins and the vertical scroll slides the images sideways
+  // (the text stays still); on small screens it is a plain swipeable strip. Arrows work in both.
+  safe(() => {
+    const mq = matchMedia("(max-width: 1080px)");
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const navH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 64;
+    document.querySelectorAll(".cb-carousel").forEach((car) => {
+      const view = car.querySelector(".cb-car-view"), track = car.querySelector(".cb-car-track");
+      const items = [...track.children], count = car.querySelector(".cb-car-count");
+      let maxShift = 0, idx = 0, queued = false;
+      const carTop = () => car.getBoundingClientRect().top + scrollY;
+      const range = () => car.offsetHeight - (innerHeight - navH());
+      const setIdx = (i) => { if (i !== idx || !count.dataset.on) { idx = i; count.dataset.on = "1"; count.textContent = `${i + 1} / ${items.length}`; } };
+      const nearest = (shift) => items.reduce((best, el, i) => (Math.abs(el.offsetLeft - shift) < Math.abs(items[best].offsetLeft - shift) ? i : best), 0);
+      function measure() {
+        if (mq.matches) { car.style.height = ""; track.style.transform = ""; return update(); }
+        maxShift = Math.max(0, track.scrollWidth - view.clientWidth);
+        car.style.height = `${innerHeight - navH() + maxShift}px`;
+        update();
+      }
+      function update() {
+        queued = false;
+        if (mq.matches) return setIdx(nearest(view.scrollLeft));
+        const r = range(), p = r > 0 ? clamp((scrollY + navH() - carTop()) / r, 0, 1) : 0;
+        track.style.transform = `translate3d(${-p * maxShift}px,0,0)`;
+        setIdx(nearest(p * maxShift));
+      }
+      const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+      function goTo(i) {
+        i = clamp(i, 0, items.length - 1);
+        if (mq.matches) return view.scrollTo({ left: items[i].offsetLeft - track.offsetLeft, behavior: "smooth" });
+        const shift = Math.min(items[i].offsetLeft, maxShift), r = range();
+        scrollTo({ top: carTop() - navH() + (maxShift ? (shift / maxShift) * r : 0), behavior: "smooth" });
+      }
+      car.querySelectorAll(".cb-car-btn").forEach((btn) => btn.addEventListener("click", () => goTo(idx + Number(btn.dataset.dir))));
+      view.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); goTo(idx + 1); } else if (e.key === "ArrowLeft") { e.preventDefault(); goTo(idx - 1); }
+      });
+      view.addEventListener("scroll", queue, { passive: true });
+      addEventListener("scroll", queue, { passive: true });
+      addEventListener("resize", measure);
+      addEventListener("load", measure);
+      mq.addEventListener("change", measure);
+      if (window.ResizeObserver) new ResizeObserver(measure).observe(track);
+      measure();
+    });
+  }, "carousel");
 
   // every image of the case study opens bigger (click / Enter), with arrows to move between them
   safe(() => {

@@ -14,6 +14,7 @@
      palette  — typefaces + colour swatches (drawn in code)
      gallery  — a row of images (cols), optional captions; `contain` keeps cut-outs whole
      full     — one image, edge to edge
+     carousel — text pinned on the left, images slide sideways (scroll, arrows or swipe)
    Every block takes a `tone` that picks the section colours from the project theme.
    Images live in assets/projects/<slug>/c/  (w/h = real pixel size, used to avoid layout jumps)
    ========================================================= */
@@ -356,19 +357,6 @@
           images: [wf("badge-1", 700, 701, "Round badge, dark"), wf("badge-2", 700, 701, "Round badge, green"), wf("badge-3", 700, 700, "Round badge, light")],
         },
         {
-          type: "palette", tone: "moss",
-          title: "Survivant font for titles and display",
-          fonts: [
-            { name: "Survivant", role: "For titles and display" },
-            { name: "General Sans", role: "Regular for body text, Medium and Bold for highlights" },
-          ],
-          text: "People once knew the plants around them. That kind of knowledge should not feel unusual. Wild Forager is meant to support slower, place-based plant learning.",
-          colors: [
-            { hex: "#102B15" }, { hex: "#345938" }, { hex: "#7B996A" },
-            { hex: "#5C9B37" }, { hex: "#FFE600" }, { hex: "#E4FDCD" },
-          ],
-        },
-        {
           type: "split", tone: "forest", side: "left", phone: true, tall: true,
           title: "The experience",
           text: "Browse each plant profile with illustrations, photos, traits, habitat, seasonality, and look-alike warnings so what is in front of each user can be compared carefully.",
@@ -393,23 +381,20 @@
           ],
         },
         {
-          type: "split", tone: "forest", side: "right",
+          type: "carousel", tone: "forest", cut: true,
           title: "The Illustrations",
           text: "The first batch of botanical illustrations were focused on common plants in Germany that have high risk of being misidentified, and their dangerous lookalikes are a menace for all foragers.",
           steps: ["The early blooming, blooming and late state", "Its unique characteristics and differentiators from its lookalikes", "The flowers close-up", "The stems details", "The leaf close-up"],
           note: "Currently, the illustrations are being tested for dynamic interaction within the app where users can spotlight each plant’s part, and recieve more information",
-          image: { ...wf("cows-parsley-study", 1300, 1762, "Cow’s Parsley botanical study"), alpha: false },
-        },
-        {
-          type: "gallery", tone: "forest", cols: 4, contain: true,
           images: [
+            { ...wf("cows-parsley-study", 1300, 1762, "Cow’s Parsley botanical study"), alpha: false },
             wf("bears-garlic", 900, 1237, "Bear’s Garlic"), wf("bellis", 900, 1153, "Bellis Perennis or Common Daisy"),
             wf("cows-parsley", 900, 1261, "Cow’s Parsley"), wf("portulak", 900, 1300, "Portulak"),
           ],
-          captions: ["Bear’s Garlic", "Bellis Perennis or Common Daisy", "Cow’s Parsley", "Portulak"],
+          captions: ["Botanical study", "Bear’s Garlic", "Bellis Perennis or Common Daisy", "Cow’s Parsley", "Portulak"],
         },
         {
-          type: "gallery", tone: "moss", cols: 3,
+          type: "carousel", tone: "moss",
           title: "Social media posts",
           text: "Social media Figma templates and a few specific designs to start building the community around ethical foraging. Most of wild forager’s content will be candid photos, and organic or UGC content. Keep on foraging!",
           images: [1, 2, 3, 4, 5, 6].map((i) => wf(`post-${i}`, 720, 900, "Wild Forager social media post")),
