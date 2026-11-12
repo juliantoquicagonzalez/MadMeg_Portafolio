@@ -77,7 +77,7 @@
         <div class="cb-carousel" style="--n:${b.images.length}">
           <div class="cb-car-stage">
             <div class="cb-col cb-car-text rv">
-              ${head(b.title)}${para(b.text)}
+              ${b.titleImage ? `<h2 class="cb-title cb-title-img"><img class="no-lb" src="${b.titleImage.src}" alt="${b.title}" width="${b.titleImage.w}" height="${b.titleImage.h}" /></h2>` : head(b.title)}${para(b.text)}
               ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
               ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
               <div class="cb-car-ctl">
@@ -88,7 +88,7 @@
             </div>
             <div class="cb-car-view" tabindex="0" role="group" aria-roledescription="carousel" aria-label="${b.title || "Gallery"}: scroll sideways">
               <div class="cb-car-track">
-                ${b.images.map((im, i) => `<figure class="cb-car-item">${b.phone ? `<div class="cb-phone">${pic(im, "", false)}</div>` : pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
+                ${b.images.map((im, i) => `<figure class="cb-car-item ${b.handles ? "has-handles" : ""}">${b.handles ? "<i></i><i></i><i></i><i></i>" : ""}${b.phone ? `<div class="cb-phone">${pic(im, "", false)}</div>` : pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@
 
   // every image of the case study opens bigger (click / Enter), with arrows to move between them
   safe(() => {
-    const imgs = () => [...document.querySelectorAll(".cb img, .cs-section img")];
+    const imgs = () => [...document.querySelectorAll(".cb img:not(.no-lb), .cs-section img")];
     let box, cur = 0, opener = null;
     const show = (i) => {
       const list = imgs(); cur = (i + list.length) % list.length;
@@ -253,7 +253,7 @@
       addEventListener("keydown", onKey);
       box.querySelector(".lb-close").focus();
     };
-    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img, .cs-section img"); if (el) open(el); });
+    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img:not(.no-lb), .cs-section img"); if (el) open(el); });
     imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
   }, "lightbox");
 

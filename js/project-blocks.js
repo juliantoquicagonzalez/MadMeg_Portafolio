@@ -276,6 +276,7 @@
         pink: { bg: "#fbd6e6", fg: "#24143f", accent: "#5b2be0" },
         lilac: { bg: "#d6cbf8", fg: "#1e1238", accent: "#5b2be0" },
         night: { bg: "#21123f", fg: "#fbe9f1", accent: "#f6b9d6" },
+        cream: { bg: "#f6f1e9", fg: "#1c1230", accent: "#5b2be0" },
       },
       blocks: [
         {
@@ -298,9 +299,10 @@
           images: [1, 2, 3, 4, 5].map((i) => am(`story-${i}`, 640, 1138, "Weekend horoscope story")),
         },
         {
-          type: "carousel", tone: "lilac",
+          type: "carousel", tone: "cream", handles: true,
           title: "From the stars, to the idea, to the meme",
-          text: "My role also involves designing memes with copys and style guides provided by the team. This means working on a wide range of styles, but maintaining the brand’s identity. We work on Canva so everyone can make adjustments in real time.",
+          titleImage: am("memes-title", 1254, 342, "From the stars, to the idea, to the meme"),
+          text: "My role also involves designing memes with copys and style guides provided by the team. <mark>This means working on a wide range of styles, but maintaining the brand’s identity.</mark> We work on Canva so everyone can make adjustments in real time.",
           images: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => am(`meme-${i}`, 720, 900, "Meme designed for the account")),
         },
       ],
