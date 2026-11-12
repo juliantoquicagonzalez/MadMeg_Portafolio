@@ -79,7 +79,7 @@
           ],
         },
         {
-          type: "scene", tone: "night", w: 1920, h: 1080, itemBg: "#f3e8d2",
+          type: "scene", tone: "night", w: 1920, h: 1080,
           layers: [
             { src: "assets/projects/matching-potions/c/tk-bg.webp", x: 0, y: 0, w: 1920, h: 1080, still: true },
             { src: "assets/projects/matching-potions/c/tk-00.webp", alt: "Toolkit page", x: 79, y: 39, w: 1751, h: 1021, still: true },
