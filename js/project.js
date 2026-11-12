@@ -102,7 +102,7 @@
     return blocks
       .map((b) => {
         const t = theme[b.tone] || Object.values(theme)[0];
-        return `<section class="cb-block cb-${b.type}-block" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent}">${html[b.type](b)}</section>`;
       })
       .join("");
   }

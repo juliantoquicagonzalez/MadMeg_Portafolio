@@ -881,6 +881,7 @@ body.lb-open { overflow: hidden; }
 .cb-gal figcaption { margin-top: 12px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .cb .cb-gal.rv { transition-delay: calc(var(--i) * 80ms); }
 .cb-full-block { padding: 0; }
+.cb-flat { border-bottom: 0; }
 .cb-full-block > * { max-width: none; }
 
 /* reveal on scroll (same rhythm as the rest of the site) */

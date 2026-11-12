@@ -63,16 +63,8 @@
           image: mp("wireframe", 1600, 1045, "Hand-sketched wireframe of the game screens"),
         },
         { type: "full", tone: "cream", image: mp("typography", 2400, 780, "Chaloops font for the titles, Providence Sans for body text, and the game’s colour palette: Mystic Amethyst #5D4AD9, Deep Midnight #272559, Lapis Powder #0A3EA6, #5CB6F9, #592202 and #CE5936") },
-        { type: "full", tone: "cream", image: mp("game-screens", 2400, 1063, "Game screens: intro journal, potions selection, Elixir of Clarity recipe, the potion shelf and the Dew of Eternity identification card") },
-        {
-          type: "phones", tone: "parchment",
-          images: [
-            mp("win", 700, 1370, "Win screen: Pure magic!"),
-            mp("gameplay", 640, 1422, "Match-3 gameplay"),
-            mp("lose", 700, 1370, "Lose screen: Ohhh… nice soup"),
-          ],
-          extra: mp("potions", 1531, 193, "The potion bottles of the game"),
-        },
+        { type: "full", tone: "cream", flat: true, image: mp("game-screens", 2400, 1063, "Game screens: intro journal, potions selection, Elixir of Clarity recipe, the potion shelf and the Dew of Eternity identification card") },
+        { type: "full", tone: "cream", image: mp("win-lose", 2400, 1138, "Match-3 gameplay screen, with the lose screen (Ohhh… nice soup) and the win screen (Pure magic!)") },
         {
           type: "feature", tone: "night",
           image: mp("ui-toolkit", 1750, 1020, "UI toolkit: buttons, bars, stars and potion bottles"),
