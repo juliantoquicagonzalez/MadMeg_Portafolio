@@ -105,7 +105,7 @@
           const im = `<img src="${l.src}" alt="${l.alt || ""}" width="${Math.round(l.w * 2)}" height="${Math.round(l.h * 2)}" loading="lazy" decoding="async" />`;
           return l.still
             ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
-            : `<button type="button" class="sc-item" data-full="${l.src}" data-alt="${l.alt || ""}" data-bg="${b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
+            : `<button type="button" class="sc-item" data-full="${l.full || l.src}" data-alt="${l.alt || ""}" data-bg="${l.full ? "" : b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
         };
         return `<div class="cb-scene rv" style="aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
       },

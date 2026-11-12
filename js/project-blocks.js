@@ -62,20 +62,20 @@
           type: "scene", tone: "cream", flat: true, w: 1440, h: 638, bg: "#9ba9f5", itemBg: "#9ba9f5", radius: "clamp(24px, 3.5vw, 52px) clamp(24px, 3.5vw, 52px) 0 0",
           layers: [
             { src: "assets/projects/matching-potions/c/gs-title.webp", alt: "Game Screens", x: 571.3, y: 42.4, w: 297.9, h: 33.8, still: true },
-            { src: "assets/projects/matching-potions/c/gs-1.webp", alt: "Intro: the alchemy journal", x: 90, y: 140.1, w: 256.2, h: 483 },
-            { src: "assets/projects/matching-potions/c/gs-2.webp", alt: "Potions selection, level 2", x: 360.5, y: 92, w: 225.3, h: 461.5 },
-            { src: "assets/projects/matching-potions/c/gs-3.webp", alt: "Elixir of Clarity recipe", x: 610.3, y: 151.2, w: 217.9, h: 458.1 },
-            { src: "assets/projects/matching-potions/c/gs-4.webp", alt: "The potion shelf", x: 856.6, y: 107.9, w: 231.5, h: 464.4 },
-            { src: "assets/projects/matching-potions/c/gs-5.webp", alt: "Dew of Eternity identification card", x: 1113.3, y: 130.5, w: 236.7, h: 466.7 },
+            { src: "assets/projects/matching-potions/c/gs-1.webp", full: "assets/projects/matching-potions/c/sf-1.webp", alt: "Intro: the alchemy journal", x: 90, y: 140.1, w: 256.2, h: 483 },
+            { src: "assets/projects/matching-potions/c/gs-2.webp", full: "assets/projects/matching-potions/c/sf-2.webp", alt: "Potions selection, level 2", x: 360.5, y: 92, w: 225.3, h: 461.5 },
+            { src: "assets/projects/matching-potions/c/gs-3.webp", full: "assets/projects/matching-potions/c/sf-3.webp", alt: "Elixir of Clarity recipe", x: 610.3, y: 151.2, w: 217.9, h: 458.1 },
+            { src: "assets/projects/matching-potions/c/gs-4.webp", full: "assets/projects/matching-potions/c/sf-4.webp", alt: "The potion shelf", x: 856.6, y: 107.9, w: 231.5, h: 464.4 },
+            { src: "assets/projects/matching-potions/c/gs-5.webp", full: "assets/projects/matching-potions/c/sf-5.webp", alt: "Dew of Eternity identification card", x: 1113.3, y: 130.5, w: 236.7, h: 466.7 },
           ],
         },
         {
           type: "scene", tone: "cream", w: 1440, h: 683, bg: "#9ba9f5", itemBg: "#9ba9f5",
           layers: [
             { src: "assets/projects/matching-potions/c/potion-cluster.webp", alt: "Prosperity on a Jar identification card and potion", x: 55, y: 120, w: 348, h: 443 },
-            { src: "assets/projects/matching-potions/c/wl-lose.webp", alt: "Lose screen: Ohhh… nice soup", x: 422, y: 78, w: 335.2, h: 605 },
-            { src: "assets/projects/matching-potions/c/wl-game.webp", alt: "Match-3 gameplay", x: 791, y: 101, w: 268.8, h: 564.9 },
-            { src: "assets/projects/matching-potions/c/wl-win.webp", alt: "Win screen: Pure magic!", x: 1089.8, y: 79.3, w: 332.2, h: 603.7 },
+            { src: "assets/projects/matching-potions/c/wl-lose.webp", full: "assets/projects/matching-potions/c/sf-lose.webp", alt: "Lose screen: Ohhh… nice soup", x: 422, y: 78, w: 335.2, h: 605 },
+            { src: "assets/projects/matching-potions/c/wl-game.webp", full: "assets/projects/matching-potions/c/sf-game.webp", alt: "Match-3 gameplay", x: 791, y: 101, w: 268.8, h: 564.9 },
+            { src: "assets/projects/matching-potions/c/wl-win.webp", full: "assets/projects/matching-potions/c/sf-win.webp", alt: "Win screen: Pure magic!", x: 1089.8, y: 79.3, w: 332.2, h: 603.7 },
           ],
         },
         {
