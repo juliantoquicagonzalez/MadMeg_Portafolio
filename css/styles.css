@@ -788,7 +788,7 @@ body::after {
 .cb img:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .lb { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(12, 8, 24, .93); cursor: zoom-out; animation: lbIn .25s ease; }
 @keyframes lbIn { from { opacity: 0; } }
-.lb > img { max-width: min(94vw, 1800px); max-height: 90vh; width: auto; height: auto; object-fit: contain; border-radius: 6px; cursor: default; }
+.lb > img { max-width: min(94vw, 1800px); max-height: 90vh; background-clip: padding-box; width: auto; height: auto; object-fit: contain; border-radius: 6px; cursor: default; }
 .lb-btn { position: absolute; width: 48px; height: 48px; border-radius: 999px; border: 1.5px solid #fff; background: rgba(0, 0, 0, .4); color: #fff; font: 700 22px/1 var(--f-mono); cursor: pointer; transition: background .2s, color .2s; }
 .lb-btn:hover { background: #fff; color: #000; }
 .lb-close { top: 18px; right: 18px; }

@@ -234,8 +234,16 @@
     const show = (i) => {
       const list = imgs(); cur = (i + list.length) % list.length;
       const el = list[cur];
-      box.querySelector("img").src = el.currentSrc || el.src;
-      box.querySelector("img").alt = el.alt || "";
+      const big = box.querySelector("img");
+      big.src = el.currentSrc || el.src;
+      big.alt = el.alt || "";
+      // cut-outs (transparent images) open on the colour of their own section, so they stay readable
+      const sec = el.closest(".cb-block");
+      const bg = sec ? sec.style.getPropertyValue("--bg") : "";
+      const cut = el.classList.contains("cb-cut") && bg;
+      big.style.background = cut ? bg : "";
+      big.style.padding = cut ? "clamp(14px, 2.4vw, 36px)" : "";
+      big.style.boxSizing = "border-box";
       box.querySelector(".lb-count").textContent = `${cur + 1} / ${list.length}`;
     };
     const close = () => {
