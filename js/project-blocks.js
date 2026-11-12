@@ -40,14 +40,16 @@
       },
       blocks: [
         {
-          type: "trio", tone: "night",
-          left: { title: "The Goal", text: "For this Game, we wanted to make the player feel inside of an alchemyst laboratory, taking on the role of a student starting their first year of Elixirs and Potions. We also wanted to make something different, that felt more human and fun than regular Match-3 games." },
-          right: { title: "The Feel", text: "Bold, unique and fun. Most Match-3 follow certain style: clean, polished, perfect. We wanted to stand out and make something that felt alive, eye-catching and fun to look and play." },
+          type: "split", tone: "night", textRight: true,
+          title: "The Goal",
+          text: "For this Game, we wanted to make the player feel inside of an alchemyst laboratory, taking on the role of a student starting their first year of Elixirs and Potions. We also wanted to make something different, that felt more human and fun than regular Match-3 games.",
           image: mp("book", 1313, 948, "Elixirs and Potions — Year 1 journal"),
         },
         {
-          type: "feature", tone: "parchment",
-          title: "Illustrated Game Icons",
+          type: "feature", tone: "parchment", bleed: "5.4vw",
+          title: "The Feel",
+          text: "Bold, unique and fun. Most Match-3 follow certain style: clean, polished, perfect. We wanted to stand out and make something that felt alive, eye-catching and fun to look and play.",
+          more: { title: "Illustrated Game Icons" },
           image: mp("icons", 1729, 1008, "Match-3 board and the sheet of illustrated ingredients and boosters"),
         },
         {
@@ -101,7 +103,7 @@
           text: "The isotype may also be used with the typographic variation of the principal logo, taking the star out of the composition to improve readibility.",
           image: { ...lh("logo-variations", 1058, 208, "Logo variations with the hare isotype", "svg"), alpha: false },
         },
-        { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
+        { type: "full", tone: "ink", bleed: "3.4vw", bleedTop: "1.7vw", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
         {
           type: "palette", tone: "coconut", cols: 2,
           title: "Color Palette & Typography",
@@ -232,7 +234,7 @@
           image: { ...al("lineup-3d", 1920, 1080, "3D characters line up"), alpha: false },
         },
         {
-          type: "feature", tone: "ink",
+          type: "feature", tone: "ink", bleedTop: "3.6vw",
           title: "Lyric video soon to be released",
           note: "Animated by Samuel Poveda, Angie López and Carolina Osorio",
           image: { ...al("lyric-video", 960, 540, "Frame from the lyric video"), alpha: false },

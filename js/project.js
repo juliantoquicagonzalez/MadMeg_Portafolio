@@ -31,7 +31,7 @@
           <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
         </div>`,
       split: (b) => `
-        <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""}">
+        <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""} ${b.textRight ? "is-textright" : ""}">
           <div class="cb-col rv">${head(b.title)}${para(b.text)}
             ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
             ${b.stat ? `<p class="cb-stat">${b.stat}</p>` : ""}
@@ -46,7 +46,7 @@
         </div>`,
       feature: (b) => `
         <div class="cb-feature ${b.title || b.text ? "has-text" : ""}">
-          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
+          ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}${b.more ? `<div class="cb-sep">${head(b.more.title)}${para(b.more.text)}</div>` : ""}</div>` : ""}
           <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
             ${b.note ? `<figcaption class="cb-note">${b.note}</figcaption>` : ""}</figure>
         </div>`,
@@ -102,9 +102,16 @@
       full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
     };
     return blocks
-      .map((b) => {
+      .map((b, i) => {
         const t = theme[b.tone] || Object.values(theme)[0];
-        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent}">${html[b.type](b)}</section>`;
+        // "bleed": the main image reaches into the next section (bleed) or the previous one (bleedTop),
+        // like the pieces that spill over the page edge in the Figma; the neighbours make room for it
+        const prev = blocks[i - 1] || {}, next = blocks[i + 1] || {};
+        const bl = [
+          b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
+          prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
+        ].filter(Boolean).join(";");
+        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }
