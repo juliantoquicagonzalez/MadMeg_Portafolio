@@ -99,7 +99,7 @@
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       video: (b) => `
         <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
-      full: (b) => `<figure class="cb-full rv">${pic(b.image)}</figure>`,
+      full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%"></button>`).join("")}</figure>`,
     };
     return blocks
       .map((b, i) => {
@@ -229,18 +229,18 @@
 
   // every image of the case study opens bigger (click / Enter), with arrows to move between them
   safe(() => {
-    const imgs = () => [...document.querySelectorAll(".cb img:not(.no-lb), .cs-section img")];
+    const imgs = () => [...document.querySelectorAll(".cb img:not(.no-lb), .cb .hs, .cs-section img")];
     let box, cur = 0, opener = null;
     const show = (i) => {
       const list = imgs(); cur = (i + list.length) % list.length;
       const el = list[cur];
       const big = box.querySelector("img");
-      big.src = el.currentSrc || el.src;
-      big.alt = el.alt || "";
+      big.src = el.dataset.full || el.currentSrc || el.src;
+      big.alt = el.dataset.alt || el.alt || "";
       // cut-outs (transparent images) open on the colour of their own section, so they stay readable
       const sec = el.closest(".cb-block");
-      const bg = sec ? sec.style.getPropertyValue("--bg") : "";
-      const cut = el.classList.contains("cb-cut") && bg;
+      const bg = el.dataset.bg || (sec ? sec.style.getPropertyValue("--bg") : "");
+      const cut = (el.classList.contains("cb-cut") || el.dataset.bg) && bg;
       big.style.background = cut ? bg : "";
       big.style.padding = cut ? "clamp(14px, 2.4vw, 36px)" : "";
       big.style.boxSizing = "border-box";
@@ -272,7 +272,7 @@
       addEventListener("keydown", onKey);
       box.querySelector(".lb-close").focus();
     };
-    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img:not(.no-lb), .cs-section img"); if (el) open(el); });
+    root.addEventListener("click", (e) => { const el = e.target.closest(".cb img:not(.no-lb), .cb .hs, .cs-section img"); if (el) open(el); });
     imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
   }, "lightbox");
 
