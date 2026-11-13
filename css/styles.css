@@ -1146,9 +1146,9 @@ body.lb-open { overflow: hidden; }
 }
 
 /* carousel with a phone on top: the images slide behind it and come out on its left */
-.cb-car-view.has-phone { --pl: clamp(70px, 9vw, 150px); --ih: min(calc((100vh - var(--nav-h) - 130px) / 1.9), 440px); position: relative; min-height: calc(var(--ih) * 1.9); display: flex; align-items: center; }
-.cb-car-phone { position: absolute; z-index: 3; left: var(--pl); top: 50%; transform: translateY(-50%); height: calc(var(--ih) * 1.86); width: auto; max-width: none; filter: drop-shadow(0 18px 24px rgba(40, 20, 60, .28)); pointer-events: none; }
-.cb-car-view.has-phone .cb-car-track { align-items: center; padding-left: calc(var(--pl) + var(--ih) * .97 + 26px); }
+.cb-car-view.has-phone { --pl: clamp(70px, 9vw, 150px); --ih: min(calc((100vh - var(--nav-h) - 110px) / 2.1), 440px); position: relative; min-height: calc(var(--ih) * 2.1); display: flex; align-items: center; }
+.cb-car-phone { position: absolute; z-index: 3; left: var(--pl); top: 50%; transform: translateY(calc(-50% - var(--ih) * .078)); height: calc(var(--ih) * 2.01); /* the post on its screen is exactly as tall as the posts */ width: auto; max-width: none; filter: drop-shadow(0 18px 24px rgba(40, 20, 60, .28)); pointer-events: none; }
+.cb-car-view.has-phone .cb-car-track { align-items: center; padding-left: calc(var(--pl) + var(--ih) * 1.043 + 26px); }
 .cb-car-view.has-phone .cb-car-item img { height: var(--ih); }
 @media (max-width: 760px) {
   .cb-car-view.has-phone { --ih: 300px; }
