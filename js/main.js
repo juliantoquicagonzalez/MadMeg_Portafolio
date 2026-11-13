@@ -268,7 +268,7 @@
   /* ---------- 5. Contact form (sent by email through Web3Forms) ---------- */
   // Web3Forms access key: it is public by design (it only lets people send messages to the address it was created with).
   // Get it at https://web3forms.com (enter the email that should receive the messages) and paste it here.
-  const WEB3FORMS_KEY = "PEGA-AQUI-LA-ACCESS-KEY";
+  const WEB3FORMS_KEY = "67f2204a-e2af-4e97-9b87-bffd0c8c6104";
   safe(() => {
     const form = document.getElementById("msgForm");
     if (!form) return;
