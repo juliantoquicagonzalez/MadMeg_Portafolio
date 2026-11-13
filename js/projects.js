@@ -172,6 +172,8 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/the-luck-and-the-hare/card.webp",
     "hero": "assets/projects/the-luck-and-the-hare/hero.webp",
+    "heroW": 1440,
+    "heroH": 810,
     "sections": []
   },
   {
