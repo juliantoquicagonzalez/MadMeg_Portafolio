@@ -1122,3 +1122,6 @@ body.lb-open { overflow: hidden; }
 .cb-gallery.is-zoom .cb-gal img { transition: transform .35s var(--ease-out), filter .35s; cursor: zoom-in; }
 .cb-gallery.is-zoom .cb-gal img:hover { transform: scale(1.07); filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .3)); }
 @media (prefers-reduced-motion: reduce) { .cb-gallery.is-zoom .cb-gal img:hover { transform: none; } }
+
+/* a little bigger than the frame: only its empty margins get cropped by the section */
+.cb-edge .cb-scene.is-grow { scale: 1.14; transform-origin: 50% 50%; overflow: visible; }

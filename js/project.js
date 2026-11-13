@@ -107,7 +107,7 @@
             ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
             : `<button type="button" class="sc-item" data-full="${l.full || l.src}" data-alt="${l.alt || ""}" data-bg="${l.full || l.nobg ? "" : b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
         };
-        return `<div class="cb-scene rv" style="--ar:${b.w / b.h};aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
+        return `<div class="cb-scene rv ${b.grow ? "is-grow" : ""}" style="--ar:${b.w / b.h};aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
       },
       video: (b) => `
         <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,

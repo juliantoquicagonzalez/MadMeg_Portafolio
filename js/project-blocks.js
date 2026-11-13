@@ -347,7 +347,7 @@
       },
       blocks: [
         {
-          type: "scene", tone: "forest", edge: true, w: 1440, h: 752,
+          type: "scene", tone: "forest", edge: true, w: 1440, h: 752, grow: true,
           layers: [
             { src: "assets/projects/wild-forager/c/frame-notice-bg.webp", alt: "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.", x: 0, y: 0, w: 1440, h: 752, still: true },
             { src: "assets/projects/wild-forager/c/phone-notice.webp", full: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 222, y: 41, w: 343, h: 640 },
