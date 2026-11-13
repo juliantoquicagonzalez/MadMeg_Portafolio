@@ -42,7 +42,7 @@
             ? `<figure class="cb-fig cb-phone-bare rv">${pic(b.image, "cb-cut")}</figure>`
             : b.phone
             ? `<figure class="cb-fig rv"><div class="cb-phone is-solo ${b.tall ? "is-tall" : ""}">${pic(b.image)}</div></figure>`
-            : `<figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
+            : `<figure class="cb-fig rv ${b.big ? "is-big" : ""}">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
         </div>`,
       feature: (b) => `
         <div class="cb-feature ${b.title || b.text ? "has-text" : ""}">

@@ -775,6 +775,8 @@ body::after {
 .cb-split.is-textright { --tw2: clamp(300px, 28vw, 440px); grid-template-columns: minmax(0, 1fr) var(--tw2); gap: 0; align-items: stretch; }
 .cb-split.is-textright .cb-fig { align-self: center; padding-right: clamp(24px, 4vw, 64px); display: grid; place-items: center; }
 .cb-split.is-textright .cb-fig img { width: auto; max-width: 100%; max-height: min(80vh, 720px); margin: 0 auto; }
+.cb-split.is-textright .cb-fig.is-big { padding-right: clamp(12px, 2vw, 32px); }
+.cb-split.is-textright .cb-fig.is-big img { width: 100%; max-height: min(92vh, 860px); }
 .cb-split.is-textright .cb-col {
   order: 2; align-self: stretch; display: flex; flex-direction: column; justify-content: center;
   margin: calc(-1 * var(--cb-pt)) 0;

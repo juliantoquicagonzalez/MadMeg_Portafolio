@@ -52,7 +52,7 @@
           image: mp("icons", 1729, 1008, "Match-3 board and the sheet of illustrated ingredients and boosters"),
         },
         {
-          type: "split", tone: "night", textRight: true,
+          type: "split", tone: "night", textRight: true, big: true,
           title: "Potions, Shelfs and Cards",
           text: "Everytime you unlock a potion it automatically goes to your shelf, where you’ll display your whole collection. Each potion has an identification card, where you can discover its alchemy secrets, tips, way of use and cautions.",
           image: mp("shelves", 1144, 869, "Potion shelves"),
