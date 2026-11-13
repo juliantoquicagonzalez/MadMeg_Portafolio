@@ -752,10 +752,6 @@ body::after {
 .has-bleed[style*="--bleed-top:"] { padding-top: 0; }
 .has-bleed[style*="--bleed-top:"] .cb-fig, .has-bleed[style*="--bleed-top:"] .cb-full { margin-top: calc(-1 * var(--bleed-top)); }
 .cb-block > * { max-width: none; margin: 0 auto; }
-.cb-kicker {
-  font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em;
-  color: var(--accent); margin-bottom: 10px;
-}
 .cb-title {
   margin: 0 0 18px;
   font-family: var(--f-head); font-weight: 700;
@@ -807,9 +803,6 @@ body.lb-open { overflow: hidden; }
 .cb-phone.is-solo { width: fit-content; max-width: 100%; margin: 0 auto; }
 /* phones keep their own proportions but never get taller than the screen */
 .cb-phone.is-solo img { width: auto; max-width: 100%; max-height: min(76vh, 640px); }
-/* long scrolling screenshots: show the top of the screen inside a normal phone shape */
-.cb-phone.is-solo.is-tall { width: min(290px, 100%); aspect-ratio: 9 / 19.5; }
-.cb-phone.is-tall img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: top; }
 .cb-gallery.is-contain.is-icons .cb-gal img { max-height: 90px; filter: none; }
 .cb-gallery.is-icons { align-items: center; max-width: 980px; margin: 0 auto; }
 .cb-gal figcaption span { display: block; margin-top: 8px; text-transform: none; letter-spacing: 0; font-size: 13px; line-height: 1.6; opacity: .85; text-align: left; }
@@ -1126,3 +1119,28 @@ body.lb-open { overflow: hidden; }
 /* a little bigger than the frame: only its empty margins get cropped by the section */
 .cb-edge .cb-scene.is-grow { scale: 1.14; transform-origin: 50% 50%; overflow: visible; }
 .cb-edge.cb-scene-block, .cb-edge.cb-full-block { padding: 0; }
+
+/* ---------- phones: the case study gives the images the room, text stays compact ---------- */
+@media (max-width: 760px) {
+  :root { --pc: 18px; }
+  .cb-block { --cb-pt: 36px; }
+  .cb-text { font-size: 13.5px; line-height: 1.6; max-width: none; }
+  .cb-title { font-size: clamp(26px, 8vw, 34px); margin-bottom: 12px; }
+  .cb-split, .cb-trio, .cb-feature.has-text, .cb-phones-wrap.has-text, .cb-gallery-wrap.has-text, .cb-split.is-textright { gap: 22px; }
+  .cb-split.is-textright .cb-fig { padding-right: 0; }
+  .cb-split.is-textright .cb-fig img, .cb-split.is-textright .cb-fig.is-big img { width: 100%; max-width: 100%; max-height: none; }
+  .cb-gallery { gap: 12px; }
+  .cb-car-view { margin: 0 calc(-1 * var(--pc)); padding: 0 var(--pc); }
+  .cb-car-item img { height: min(68vh, 520px); }
+  .cb-steps li { font-size: 11.5px; }
+  .cb-video { border-radius: 6px; }
+}
+
+/* phones: frames with baked text are shown at a readable size and swipe sideways (the badges strip just fits) */
+@media (max-width: 760px) {
+  .cb-edge:not(.cb-fit) { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .cb-edge:not(.cb-fit)::-webkit-scrollbar { display: none; }
+  .cb-edge:not(.cb-fit) .cb-full, .cb-edge:not(.cb-fit) .cb-scene { width: 920px; max-width: none; margin: 0; scale: 1; }
+  .cb-edge:not(.cb-fit) .cb-full img { width: 100%; }
+  .cb-edge.cb-fit .cb-scene { width: 100%; }
+}

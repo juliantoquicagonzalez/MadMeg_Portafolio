@@ -365,7 +365,7 @@
           images: [wf("logo-a", 886, 393, "Wild Forager horizontal logo"), wf("logo-b", 886, 393, "Wild Forager horizontal logo, light version")],
         },
         {
-          type: "scene", tone: "forest", edge: true, w: 1440, h: 322,
+          type: "scene", tone: "forest", edge: true, w: 1440, h: 322, fit: true,
           layers: [
             { color: "#102b15", x: 0, y: 0, w: 480, h: 322, still: true },
             { color: "#345938", x: 480, y: 0, w: 480, h: 322, still: true },

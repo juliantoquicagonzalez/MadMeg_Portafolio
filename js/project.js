@@ -108,10 +108,10 @@
             ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
             : `<button type="button" class="sc-item" data-full="${l.full || l.src}" data-alt="${l.alt || ""}" data-bg="${l.full || l.nobg ? "" : b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
         };
-        return `<div class="cb-scene rv ${b.grow ? "is-grow" : ""}" style="--ar:${b.w / b.h};aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
+        return `<div class="cb-scene rv ${b.grow ? "is-grow" : ""} ${b.fit ? "is-fit" : ""}" style="--ar:${b.w / b.h};aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
       },
       video: (b) => `
-        <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
+        <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"></iframe></div>`,
       full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""} ${b.still ? "is-still" : ""}" style="--ar:${b.image.w / b.image.h}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;background-image:url(${b.image.src});background-size:${Math.round(1e6 / s.w) / 100}% ${Math.round(1e6 / s.h) / 100}%;background-position:${s.w >= 100 ? 0 : Math.round((s.x / (100 - s.w)) * 1e4) / 100}% ${s.h >= 100 ? 0 : Math.round((s.y / (100 - s.h)) * 1e4) / 100}%"></button>`).join("")}</figure>`,
     };
     return blocks
@@ -124,7 +124,7 @@
           b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
           prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
         ].filter(Boolean).join(";");
-        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.fit ? "cb-fit" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }
@@ -260,10 +260,10 @@
       // icons shown inside circles open inside their circle too
       const circ = el.closest(".is-circles");
       big.style.borderRadius = circ ? "50%" : "";
-      big.style.width = circ ? "min(70vh, 70vw)" : "";
-      big.style.height = circ ? "min(70vh, 70vw)" : "";
+      big.style.width = circ ? "min(52vh, 82vw)" : "";
+      big.style.height = circ ? "min(52vh, 82vw)" : "";
       big.style.objectFit = circ ? "contain" : "";
-      if (circ) { big.style.background = "#7b996a"; big.style.padding = "14%"; }
+      if (circ) { big.style.background = "#7b996a"; big.style.padding = "calc(min(52vh, 82vw) * 0.1)"; }
       box.querySelector(".lb-count").textContent = `${cur + 1} / ${list.length}`;
     };
     const close = () => {
