@@ -44,7 +44,9 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/matching-potions/card.webp",
     "hero": "assets/projects/matching-potions/hero.webp",
-    "sections": []
+    "sections": [],
+    "heroW": 2880,
+    "heroH": 994
   },
   {
     "slug": "wild-forager",
@@ -83,7 +85,9 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/wild-forager/card.webp",
     "hero": "assets/projects/wild-forager/hero.webp",
-    "sections": []
+    "sections": [],
+    "heroW": 2880,
+    "heroH": 994
   },
   {
     "slug": "astrologia-millennial",
