@@ -265,7 +265,10 @@
       .join("");
   }, "note");
 
-  /* ---------- 5. Contact form (sent by email through FormSubmit) ---------- */
+  /* ---------- 5. Contact form (sent by email through Web3Forms) ---------- */
+  // Web3Forms access key: it is public by design (it only lets people send messages to the address it was created with).
+  // Get it at https://web3forms.com (enter the email that should receive the messages) and paste it here.
+  const WEB3FORMS_KEY = "PEGA-AQUI-LA-ACCESS-KEY";
   safe(() => {
     const form = document.getElementById("msgForm");
     if (!form) return;
@@ -285,13 +288,14 @@
       if (bad) return say("Please fill in your name, a valid email and a message.", "is-err");
       btn.disabled = true; say("Sending…");
       try {
-        const res = await fetch("https://formsubmit.co/ajax/majomadrigal99@gmail.com", {
+        if (!WEB3FORMS_KEY || WEB3FORMS_KEY.startsWith("PEGA")) throw new Error("no access key yet");
+        const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ name, email, message, _replyto: email, _subject: "New message from madmeg.net", _template: "table", _captcha: "false" }),
+          body: JSON.stringify({ access_key: WEB3FORMS_KEY, name, email, message, subject: "New message from madmeg.net", from_name: "madmeg.net", replyto: email }),
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok || data.success === "false" || data.success === false) throw new Error("send failed");
+        if (!res.ok || !data.success) throw new Error("send failed");
         form.reset(); say("Thank you! Your message was sent, I'll get back to you soon.", "is-ok");
       } catch (err) {
         say("Couldn't send it. Please write to majomadrigal99@gmail.com.", "is-err");
