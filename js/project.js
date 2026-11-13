@@ -18,7 +18,7 @@
   const root = document.getElementById("project");
 
   /* ---------- composed sections (js/project-blocks.js) ---------- */
-  function renderBlocks({ theme, blocks }) {
+  function renderBlocks({ theme, blocks, font }) {
     const pic = (im, cls = "", lazy = true) =>
       `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${im.lbbg ? "data-lbbg" : ""} ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
     const para = (t) => (t ? `<p class="cb-text">${t}</p>` : "");
@@ -31,8 +31,9 @@
           <figure class="cb-fig rv">${pic(b.image, "cb-cut")}</figure>
         </div>`,
       split: (b) => `
-        <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""} ${b.textRight ? "is-textright" : ""}">
+        <div class="cb-split ${b.side === "left" ? "is-left" : ""} ${b.wide ? "is-wide" : ""} ${b.textRight ? "is-textright" : ""} ${b.bleedRight ? "is-bleedright" : ""} ${b.lead ? "is-lead" : ""}">
           <div class="cb-col rv">${head(b.title)}${para(b.text)}
+            ${b.sub ? `<p class="cb-sub">${b.sub}</p>` : ""}
             ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
             ${b.stat ? `<p class="cb-stat">${b.stat}</p>` : ""}
             ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
@@ -42,12 +43,12 @@
             ? `<figure class="cb-fig cb-phone-bare rv">${pic(b.image, "cb-cut")}</figure>`
             : b.phone
             ? `<figure class="cb-fig rv"><div class="cb-phone is-solo ${b.tall ? "is-tall" : ""}">${pic(b.image)}</div></figure>`
-            : `<figure class="cb-fig rv ${b.big ? "is-big" : ""}">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}</figure>`}
+            : `<figure class="cb-fig rv ${b.big ? "is-big" : ""}">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}${(b.tags || []).map((g) => `<span class="cb-tag" style="left:${g.x}%;top:${g.y}%">${g.t}</span>`).join("")}</figure>`}
         </div>`,
       feature: (b) => `
         <div class="cb-feature ${b.title || b.text ? "has-text" : ""}">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}${b.more ? `<div class="cb-sep">${head(b.more.title)}${para(b.more.text)}</div>` : ""}</div>` : ""}
-          <figure class="cb-fig rv">${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
+          <figure class="cb-fig rv" ${b.maxw ? `style="max-width:${b.maxw};margin:0 auto"` : ""}>${pic(b.image, b.image.alpha === false ? "" : "cb-cut")}
             ${b.note ? `<figcaption class="cb-note">${b.note}</figcaption>` : ""}</figure>
         </div>`,
       phones: (b) => `
@@ -97,6 +98,14 @@
             </div>
           </div>
         </div>`,
+      cards: (b) => `
+        ${b.title || b.text ? `<div class="cb-center cb-cards-head rv">${head(b.title)}${para(b.text)}</div>` : ""}
+        <div class="cb-cards rv">${b.colors.map((c) => `<div class="cb-card" style="--c:${c.hex};--cn:${c.name2 || "inherit"};--ch:${c.fg || "#000"}"><b>${c.name}</b><span>HEX CODE: ${c.hex.replace("#", "")}</span></div>`).join("")}</div>`,
+      typeset: (b) => `
+        <div class="cb-typeset">
+          <div class="cb-col rv">${head(b.title)}${para(b.text)}</div>
+          <div class="cb-specimens rv">${b.fonts.map((f) => `<div class="cb-spec"><span class="cb-aa" style="font-family:${f.family};font-weight:${f.weight};font-size:${f.size}">Aa</span><span class="cb-spec-name"><b style="font-family:${f.family};font-weight:${f.weight}">${f.name}</b><span>${f.role}</span></span></div>`).join("")}</div>
+        </div>`,
       text: (b) => `
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       scene: (b) => {
@@ -126,7 +135,7 @@
           b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
           prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
         ].filter(Boolean).join(";");
-        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.fit ? "cb-fit" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${font ? `ff-${font}` : ""} ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.fit ? "cb-fit" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${t.title ? `--title:${t.title};` : ""}${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }

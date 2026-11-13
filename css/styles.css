@@ -1168,3 +1168,70 @@ body.lb-open { overflow: hidden; }
 @media (max-width: 760px) { .cb-car-stage.is-big .cb-car-item img { height: min(72vh, 560px); } }
 /* square-cornered posts: no rounding and no shadow, so no dark corners appear */
 .cb-car-stage.is-big .cb-car-item img, .lb > img { border-radius: 0; filter: none; }
+
+/* ---------- The Luck & The Hare: its own type and the Figma "WebSite" layout ---------- */
+.ff-luck { --tw: clamp(260px, 34vw, 500px); }
+.ff-luck .cb-title {
+  font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 900; letter-spacing: -.01em;
+  font-size: clamp(36px, 5.3vw, 76px); line-height: 1.02; color: var(--title, var(--fg));
+}
+.ff-luck .cb-text { font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 500; font-size: 16px; line-height: 1.45; opacity: 1; }
+.ff-luck .is-lead .cb-text, .ff-luck .cb-typeset .cb-text { font-size: clamp(17px, 1.6vw, 23px); line-height: 1.38; max-width: 22em; }
+.ff-luck .cb-sub { margin: clamp(28px, 4vw, 64px) 0 0; font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 500; font-size: 13px; }
+.ff-luck .cb-gal figcaption { font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+.ff-luck .cb-gallery.is-square .cb-gal img { border-radius: 0; }
+
+/* welcome: the photo runs to the right edge and covers the full height of the section */
+.cb-split.is-bleedright { grid-template-columns: minmax(0, 1fr) 45.07vw; gap: clamp(28px, 4vw, 64px); align-items: stretch; }
+.cb-split.is-bleedright .cb-col { align-self: center; max-width: 361px; }
+.ff-luck .is-bleedright .cb-title { font-size: clamp(34px, 3.6vw, 52px); }
+.ff-luck .is-bleedright .cb-text { font-size: 14px; }
+.cb-split.is-bleedright .cb-fig {
+  position: relative; align-self: stretch;
+  margin: calc(-1 * var(--cb-pt)) calc(-1 * var(--pc)) calc(-1 * var(--cb-pt)) 0;
+}
+.cb-split.is-bleedright .cb-fig img { width: 100%; height: 100%; aspect-ratio: 649 / 548; object-fit: cover; }
+.cb-tag {
+  position: absolute; pointer-events: none; white-space: nowrap;
+  font: 700 clamp(9px, .85vw, 12px)/1 'Cabinet Grotesk', var(--f-head); color: #f2abda;
+  padding: .45em .6em; border: 1px solid #f2abda; border-radius: 999px; background: rgba(0, 0, 0, .55);
+}
+
+/* colour cards, two per row like the Figma (628 × 153 each) */
+.cb-cards-head { text-align: left; }
+.cb-cards-head .cb-text { margin: 0; }
+.cb-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2.2vw, 32px); }
+.cb-card {
+  aspect-ratio: 628 / 153; background: var(--c); color: var(--ch);
+  border: 1.5px solid rgba(255, 245, 234, .35);
+  padding: clamp(14px, 1.75vw, 25px) clamp(14px, 1.75vw, 25px); display: flex; flex-direction: column; gap: 6px;
+}
+.cb-card b { font: 700 clamp(20px, 1.95vw, 28px)/1.1 'Telma', serif; color: var(--cn, var(--ch)); }
+.cb-card span { font: 700 clamp(10px, .9vw, 13px)/1.3 'Cabinet Grotesk', var(--f-head); }
+
+/* type specimen: text on the left, the three "Aa" on the right */
+.cb-typeset { display: grid; grid-template-columns: minmax(0, 36%) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.cb-specimens { display: grid; gap: clamp(8px, 1.4vw, 20px); font-size: clamp(90px, 12.5vw, 180px); }
+.cb-spec { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: center; gap: clamp(14px, 2vw, 30px); }
+.cb-aa { justify-self: end; line-height: .95; }
+.cb-spec-name { display: flex; flex-direction: column; gap: 4px; }
+.cb-spec-name b { font-size: clamp(16px, 1.55vw, 22px); line-height: 1.2; }
+.cb-spec-name span { font: 500 clamp(13px, 1.1vw, 16px)/1.3 'Cabinet Grotesk', var(--f-head); }
+
+/* closing note on red */
+.ff-luck.cb-text-block { padding-top: clamp(80px, 9.6vw, 138px); padding-bottom: clamp(80px, 9.6vw, 138px); }
+.ff-luck.cb-text-block .cb-center { max-width: 270px; text-align: left; margin: 0 auto; }
+.ff-luck.cb-text-block .cb-title { font-size: clamp(30px, 2.8vw, 40px); }
+.ff-luck.cb-text-block .cb-text { font-size: 13px; }
+
+@media (max-width: 760px) {
+  .ff-luck .cb-title { font-size: clamp(30px, 9vw, 40px); }
+  .cb-split.is-bleedright { grid-template-columns: minmax(0, 1fr); }
+  .cb-split.is-bleedright .cb-col { max-width: none; }
+  .cb-split.is-bleedright .cb-fig { margin: 0 calc(-1 * var(--pc)) calc(-1 * var(--cb-pt)); }
+  .cb-tag { font-size: 9px; }
+  .cb-cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .cb-typeset { grid-template-columns: minmax(0, 1fr); }
+  .cb-specimens { font-size: 26vw; }
+  .ff-luck .cb-feature .cb-fig[style] { max-width: 70% !important; }
+}

@@ -135,19 +135,27 @@
     },
 
     "the-luck-and-the-hare": {
-      // brand palette from the Figma (Coconut Dream, Blushing Sweet, Black Ink, Conviction Red)
+      // order and layout follow the Figma (PURPLE-JAMS, frame "WebSite"); its stock placeholders are left out.
+      // Palette: Coconut Dream, Blushing Sweet, Black Ink, Conviction Red. Fonts: Cabinet Grotesk + Telma.
+      font: "luck",
       theme: {
         coconut: { bg: "#fff5ea", fg: "#000000", accent: "#ba1d21" },
-        ink: { bg: "#000000", fg: "#fff5ea", accent: "#f2abda" },
+        ink: { bg: "#000000", fg: "#fff5ea", accent: "#f2abda", title: "#f2abda" },
         blush: { bg: "#f2abda", fg: "#000000", accent: "#ba1d21" },
+        red: { bg: "#ba1d21", fg: "#fff5ea", accent: "#f2abda", title: "#f2abda" },
       },
       blocks: [
         {
-          type: "split", tone: "ink", side: "right",
+          // text on the left, the cap reaching the right edge with the brand words floating on it
+          type: "split", tone: "ink", bleedRight: true,
           title: "Welcome to the burrow!",
           text: "The Luck & The Hare is a plant-based sanctuary for the rebels, the fast-movers, and the dreamers. Here we present the branding and web design produced for this project.",
-          steps: ["Unapologetic", "Vintage", "Editorial", "Artsy", "Bold", "Vegan"],
+          sub: "Branding / Packaging / WebDesign",
           image: { ...lh("cap", 1024, 1024, "Cap with the brand’s star and “The anti-dairy social club”"), alpha: false },
+          tags: [
+            { t: "Unapologetic", x: 14.8, y: 13.1 }, { t: "Vegan", x: 82.3, y: 21.7 }, { t: "Bold", x: 6.2, y: 36.7 },
+            { t: "Artsy", x: 78.9, y: 56.6 }, { t: "Editorial", x: 12, y: 77.6 }, { t: "Vintage", x: 62.1, y: 81 },
+          ],
         },
         {
           type: "split", tone: "coconut", side: "left",
@@ -155,42 +163,37 @@
           text: "The primary logo combines two fonts representing the brand’s nature. On one hand, the delicate, ephemeral and ethereal feeling of The Luck; and on the other, the strength and boldness of The Hare. The star, on the middle represents the union of both worlds. Every element comes together forging the brand’s elegance and aesthetic manifest.",
           image: { ...lh("logo-full", 652, 439, "The Luck & The Hare primary logo", "svg"), alpha: false },
         },
+        { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
+        { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
         {
-          type: "feature", tone: "coconut",
-          text: "The isotype may also be used with the typographic variation of the principal logo, taking the star out of the composition to improve readibility.",
-          image: { ...lh("logo-variations", 1058, 208, "Logo variations with the hare isotype", "svg"), alpha: false },
-        },
-        { type: "full", tone: "ink", bleed: "3.4vw", bleedTop: "1.7vw", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
-        {
-          type: "palette", tone: "coconut", cols: 2,
-          title: "Color Palette & Typography",
+          type: "cards", tone: "ink",
+          title: "Color Palette",
           text: "The palette carries the spirit of soft and bold in equal measure. Vegan food and principles, with colorful, risky and bold colors to bring something new to the community.",
-          fonts: [
-            { name: "Cabinet Grotesk Black", role: "For display and titles" },
-            { name: "Cabinet Grotesk Bold", role: "For body and dense texts" },
-            { name: "Telma", role: "For highlights and details" },
-          ],
           colors: [
-            { hex: "#FFF5EA", name: "Coconut Dream" },
             { hex: "#F2ABDA", name: "Blushing Sweet" },
-            { hex: "#000000", name: "Black Ink" },
-            { hex: "#BA1D21", name: "Conviction Red" },
+            { hex: "#000000", name: "Black Ink", name2: "#f2abda", fg: "#fff5ea" },
+            { hex: "#BA1D21", name: "Conviction Red", name2: "#f2abda", fg: "#fff5ea" },
+            { hex: "#FFF5EA", name: "Coconut Dream" },
           ],
         },
         {
-          type: "gallery", tone: "blush", contain: true, cols: 5,
+          type: "typeset", tone: "coconut",
+          title: "Typography",
+          text: "The typeface pairing reflects the same balance the brand is built on: warmth and grounding, playfulness and purpose, elegance and audacious.",
+          fonts: [
+            { family: "'Cabinet Grotesk', sans-serif", weight: 900, size: "1em", name: "Cabinet Grotesk Black", role: "For display and titles" },
+            { family: "'Cabinet Grotesk', sans-serif", weight: 700, size: ".76em", name: "Cabinet Grotesk Bold", role: "For body and dense texts" },
+            { family: "'Telma', serif", weight: 700, size: ".62em", name: "Telma", role: "For highlights and details" },
+          ],
+        },
+        {
+          type: "split", tone: "coconut", side: "left", lead: true,
           title: "Graphic elements",
-          text: "A set of illustrations were developed to extend the brand's world beyond the logo, used for packaging, merch and web illustrations.",
-          images: [
-            lh("hare-sassy", 233, 243, "Sassy hare", "svg"),
-            lh("hare-ears-up", 168, 361, "Ears-up hare", "svg"),
-            lh("hare-night-leaper", 253, 229, "Night leaper hare", "svg"),
-            lh("hare-napping", 218, 253, "Napping hare", "svg"),
-            lh("hare-curled", 218, 226, "Curled hare", "svg"),
-          ],
+          text: "A set of illustrations were developed to extend the brand’s world beyond the logo. Coffee, tea and croissants meet The Hare: the mascot who embodies the brand’s essence.",
+          image: { ...lh("hares-cluster", 705, 518, "The Hare in five poses: sassy, night leaper, ears up, napping and curled", "svg"), alpha: false },
         },
         {
-          type: "gallery", tone: "coconut", contain: true, cols: 3,
+          type: "gallery", tone: "blush", contain: true, cols: 3,
           text: "The Hare is also the ambassador for The Luck & The Hare’s coffee blends. 3 different roasts to match every single mood: the napper, the hopper or the leaper. Which one represents you today?",
           images: [
             lh("coffee-napper", 900, 1169, "The gentle napper — light roast"),
@@ -200,14 +203,15 @@
           captions: ["The gentle napper", "The early hopper", "The night leaper"],
         },
         {
-          type: "gallery", tone: "ink", cols: 3, square: true,
-          images: [
-            lh("merch-shirt", 1024, 1024, "T-shirt mockup"),
-            lh("merch-mug", 1232, 864, "Mug mockup"),
-            lh("merch-cap", 1024, 1024, "Cap mockup"),
-          ],
+          type: "gallery", tone: "coconut", cols: 2, square: true,
+          images: [lh("merch-mug", 1232, 864, "Mug: “No harm, just charm!”"), lh("merch-shirt", 1024, 1024, "T-shirt: “Eat kindly, stay lucky.”")],
         },
         { type: "full", tone: "blush", image: lh("web-shop", 1440, 701, "Web design: the shop") },
+        {
+          type: "text", tone: "red",
+          title: "Thanks for watching!",
+          text: "The Luck & The Hare is a plant-based sanctuary for the rebels, the fast-movers, and the dreamers. We’re Anna, Joshua and Poppy, three friends united by a cause 6 years ago.",
+        },
       ],
     },
 
