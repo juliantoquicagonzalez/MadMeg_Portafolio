@@ -1159,3 +1159,5 @@ body.lb-open { overflow: hidden; }
 /* bigger carousel: the images take the room the phone used to occupy */
 .cb-carousel-block .cb-car-stage.is-big .cb-car-item img, .cb-car-stage.is-big .cb-car-item img { height: min(calc(100vh - var(--nav-h) - 90px), 820px); }
 @media (max-width: 760px) { .cb-car-stage.is-big .cb-car-item img { height: min(72vh, 560px); } }
+/* square-cornered posts: no rounding and no shadow, so no dark corners appear */
+.cb-car-stage.is-big .cb-car-item img, .lb > img { border-radius: 0; filter: none; }
