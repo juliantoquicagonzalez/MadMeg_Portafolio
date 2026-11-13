@@ -71,7 +71,7 @@
       gallery: (b) => `
         <div class="cb-gallery-wrap ${b.title || b.text ? "has-text" : ""}">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
-          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""} ${b.circles ? "is-circles" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""} ${b.circles ? "is-circles" : ""} ${b.zoom ? "is-zoom" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
@@ -107,11 +107,11 @@
             ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
             : `<button type="button" class="sc-item" data-full="${l.full || l.src}" data-alt="${l.alt || ""}" data-bg="${l.full || l.nobg ? "" : b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;
         };
-        return `<div class="cb-scene rv" style="aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
+        return `<div class="cb-scene rv" style="--ar:${b.w / b.h};aspect-ratio:${b.w}/${b.h};${b.radius ? `border-radius:${b.radius};` : ""}${b.bg ? `background:${b.bg};` : ""}">${b.layers.map(layer).join("")}</div>`;
       },
       video: (b) => `
         <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
-      full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;background-image:url(${b.image.src});background-size:${Math.round(1e6 / s.w) / 100}% ${Math.round(1e6 / s.h) / 100}%;background-position:${s.w >= 100 ? 0 : Math.round((s.x / (100 - s.w)) * 1e4) / 100}% ${s.h >= 100 ? 0 : Math.round((s.y / (100 - s.h)) * 1e4) / 100}%"></button>`).join("")}</figure>`,
+      full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""} ${b.still ? "is-still" : ""}" style="--ar:${b.image.w / b.image.h}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;background-image:url(${b.image.src});background-size:${Math.round(1e6 / s.w) / 100}% ${Math.round(1e6 / s.h) / 100}%;background-position:${s.w >= 100 ? 0 : Math.round((s.x / (100 - s.w)) * 1e4) / 100}% ${s.h >= 100 ? 0 : Math.round((s.y / (100 - s.h)) * 1e4) / 100}%"></button>`).join("")}</figure>`,
     };
     return blocks
       .map((b, i) => {

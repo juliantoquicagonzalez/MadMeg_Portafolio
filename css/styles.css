@@ -1115,3 +1115,10 @@ body.lb-open { overflow: hidden; }
 .static *, .static *::before, .static *::after { transition: none !important; animation: none !important; }
 .static .piece { opacity: 1 !important; transform: rotate(var(--r)) !important; }
 .static .cs-section, .static .cb .rv { opacity: 1 !important; transform: none !important; }
+
+/* edge-to-edge frames never get taller than the screen */
+.cb-edge .cb-full, .cb-edge .cb-scene { width: min(100%, calc((100vh - var(--nav-h) - 24px) * var(--ar, 1.6))); margin-left: auto; margin-right: auto; }
+.cb-full.is-still .hs:hover, .cb-full.is-still .hs:focus-visible { transform: none; filter: none; }
+.cb-gallery.is-zoom .cb-gal img { transition: transform .35s var(--ease-out), filter .35s; cursor: zoom-in; }
+.cb-gallery.is-zoom .cb-gal img:hover { transform: scale(1.07); filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .3)); }
+@media (prefers-reduced-motion: reduce) { .cb-gallery.is-zoom .cb-gal img:hover { transform: none; } }

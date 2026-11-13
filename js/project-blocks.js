@@ -343,10 +343,17 @@
         forest: { bg: "#102b15", fg: "#e4fdcd", accent: "#ffe600" },
         moss: { bg: "#345938", fg: "#e4fdcd", accent: "#ffe600" },
         mint: { bg: "#e4fdcd", fg: "#102b15", accent: "#5c9b37" },
+        sage: { bg: "#7b996a", fg: "#102b15", accent: "#ffe600" },
       },
       blocks: [
-        { type: "full", tone: "forest", edge: true, spots: [{ src: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 16.39, y: 6.65, w: 20.83, h: 82.45 }], image: wf("frame-notice", 2880, 1504, "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.") },
-        { type: "full", tone: "moss", edge: true, spots: [
+        {
+          type: "scene", tone: "forest", edge: true, w: 1440, h: 752,
+          layers: [
+            { src: "assets/projects/wild-forager/c/frame-notice-bg.webp", alt: "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.", x: 0, y: 0, w: 1440, h: 752, still: true },
+            { src: "assets/projects/wild-forager/c/phone-notice.webp", full: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 222, y: 41, w: 343, h: 640 },
+          ],
+        },
+        { type: "full", tone: "moss", edge: true, still: true, spots: [
             { src: "assets/projects/wild-forager/c/mood-logo.webp", alt: "Logo and brand moodboard", x: 5.35, y: 19.74, w: 24.65, h: 30.02 },
             { src: "assets/projects/wild-forager/c/mood-type.webp", alt: "Typography moodboard", x: 65.56, y: 23.44, w: 29.1, h: 29.55 },
             { src: "assets/projects/wild-forager/c/mood-ui.webp", alt: "Visual style moodboard", x: 16.25, y: 46.29, w: 34.17, h: 33.25 },
@@ -354,16 +361,16 @@
           ], image: wf("frame-mood", 2880, 1672, "Moodboards and refs: logo and brand, typography, visual style and illustration") },
         { type: "full", tone: "forest", edge: true, image: wf("frame-fist", 2880, 1006, "The Fist Up: Wild Forager is designed to slow the process down. The raised fist holding dandelions, a wink to the next revolution.") },
         {
-          type: "gallery", tone: "mint", cols: 2, contain: true,
+          type: "gallery", tone: "mint", cols: 2, contain: true, zoom: true,
           images: [wf("logo-a", 886, 393, "Wild Forager horizontal logo"), wf("logo-b", 886, 393, "Wild Forager horizontal logo, light version")],
         },
         {
-          type: "gallery", tone: "forest", cols: 3, contain: true,
+          type: "gallery", tone: "forest", cols: 3, contain: true, zoom: true,
           images: [wf("badge-1", 700, 701, "Round badge, dark"), wf("badge-2", 700, 701, "Round badge, green"), wf("badge-3", 700, 700, "Round badge, light")],
         },
         { type: "full", tone: "moss", edge: true, spots: [{ src: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 9.03, y: 17.54, w: 21.53, h: 58.82 }, { src: "assets/projects/wild-forager/c/scr-plant.webp", alt: "Plant profile: Pineappleweed", x: 61.81, y: 12.9, w: 15.62, h: 49.54 }], image: wf("frame-experience", 2880, 1938, "The experience: the map, plant profile and the app's key moments, with annotations") },
         {
-          type: "gallery", tone: "mint", cols: 9, contain: true, icons: true, circles: true,
+          type: "gallery", tone: "mint", cols: 9, contain: true, icons: true, circles: true, zoom: true,
           text: "Type of flowers · Type of leafs",
           images: [
             wf("ic-1", 248, 253, "Many-petal flower"), wf("ic-2", 232, 245, "Four-petal flower"), wf("ic-3", 256, 254, "Five-petal flower"),
