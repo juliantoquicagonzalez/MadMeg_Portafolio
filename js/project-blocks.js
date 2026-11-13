@@ -163,6 +163,12 @@
           text: "The primary logo combines two fonts representing the brand’s nature. On one hand, the delicate, ephemeral and ethereal feeling of The Luck; and on the other, the strength and boldness of The Hare. The star, on the middle represents the union of both worlds. Every element comes together forging the brand’s elegance and aesthetic manifest.",
           image: { ...lh("logo-full", 652, 439, "The Luck & The Hare primary logo", "svg"), alpha: false },
         },
+        {
+          // the logo's variations: kept from the previous version, right after The Logo
+          type: "feature", tone: "coconut",
+          text: "The isotype may also be used with the typographic variation of the principal logo, taking the star out of the composition to improve readibility.",
+          image: { ...lh("logo-variations", 1058, 208, "Logo variations with the hare isotype", "svg"), alpha: false },
+        },
         { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
         { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
         {
