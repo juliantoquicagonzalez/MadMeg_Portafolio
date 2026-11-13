@@ -1268,3 +1268,8 @@ body.lb-open { overflow: hidden; }
 @media (max-width: 760px) {
   .cb-cards-wrap.has-bg { aspect-ratio: auto; padding: 36px 18px; }
 }
+
+/* looping clip, edge to edge */
+.cb-clip-block { padding: 0; overflow: hidden; }
+.cb-clip { margin: 0; line-height: 0; }
+.cb-clip video { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); background: #000; }

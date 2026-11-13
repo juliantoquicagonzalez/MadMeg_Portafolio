@@ -175,7 +175,8 @@
           ],
         },
         { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
-        { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
+        // the storefront frame is now a clip: the stickers pop in over the espresso machine (STICKERS_FRAME)
+        { type: "clip", tone: "ink", src: "assets/projects/the-luck-and-the-hare/c/stickers-frame.mp4", poster: "assets/projects/the-luck-and-the-hare/c/stickers-frame-poster.webp", w: 2560, h: 1428, alt: "Coffee stickers popping in over an espresso machine" },
         // the strip again, then the colours over the coffee-beans photo (Figma)
         { type: "marquee", tone: "blush", src: "assets/projects/the-luck-and-the-hare/c/sticker-strip.webp", w: 720, h: 113 },
         {

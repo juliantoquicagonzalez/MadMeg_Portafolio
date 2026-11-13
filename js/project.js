@@ -110,6 +110,8 @@
         </div>`,
       // a row of equal panels, each with its own background (colour variations of a logo)
       panels: (b) => `<div class="cb-panels">${b.panels.map((p) => `<div class="cb-panel" style="background:${p.bg}"><img class="no-lb" src="${p.src}" alt="${p.alt}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" /></div>`).join("")}</div>`,
+      // a short looping clip (muted, inline): plays only while it is on screen
+      clip: (b) => `<figure class="cb-clip" style="--ar:${b.w / b.h}"><video src="${b.src}" poster="${b.poster}" width="${b.w}" height="${b.h}" muted loop playsinline preload="auto" aria-label="${b.alt}"></video></figure>`,
       // endless strip of stickers (a seamless tile that slides sideways; decorative, so not clickable)
       marquee: (b) => `<div class="cb-marquee" aria-hidden="true" style="background-image:url(${b.src});--tw:${b.w};--th:${b.h}"></div>`,
       text: (b) => `
@@ -316,6 +318,14 @@
     root.addEventListener("click", (e) => { const el = e.target.closest(".cb .sc-item, .cb .hs") || e.target.closest(".cb img:not(.no-lb), .cs-section img"); if (el) open(el); });
     imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
   }, "lightbox");
+
+  // clips play while visible and pause when they leave (saves battery); with "reduce motion" they stay on the poster
+  safe(() => {
+    const vids = [...document.querySelectorAll(".cb-clip video")];
+    if (!vids.length || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver((es) => es.forEach((e) => { const v = e.target; if (e.isIntersecting) { const r = v.play(); if (r && r.catch) r.catch(() => {}); } else v.pause(); }), { threshold: 0.25 });
+    vids.forEach((v) => { v.muted = true; io.observe(v); });
+  }, "clips");
 
   // sections rise in as they enter (with a safety net so nothing stays hidden)
   safe(() => {
