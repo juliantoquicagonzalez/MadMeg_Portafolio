@@ -536,7 +536,7 @@ body::after {
 .paper-wrap { position: relative; }
 .big-paper {
   background: #fff5f4;
-  padding: 30px 12% 52px 32%;
+  padding: 30px 5% 52px 32%;
   color: var(--ink);
 }
 .big-paper > h3 {
@@ -549,7 +549,7 @@ body::after {
   font-family: var(--f-mono); font-size: clamp(13px, 1.12vw, 16.5px); line-height: 1.12;
 }
 .note {
-  margin: 22px 0 0 2%;
+  margin: 22px 0 0 13%;         /* the shoe only grazes the note's corner, like the Figma */
   background: #fffcbb;
   padding: 16px 18px 20px;
 }
@@ -580,18 +580,24 @@ body::after {
 .sticky.orange { background: #f9c691; }
 
 .ill {
-  position: absolute; left: -3%; top: 0; bottom: 30px; /* as tall as the paper */
+  /* as tall as the paper (Figma) but never wider than 81% of the column, so the
+     pencil stays ~20px from the text and the shoe off the note's text at any width */
+  position: absolute; left: -7%; top: 0; bottom: 30px; width: 81%;
   z-index: 3;
   display: flex; align-items: flex-end;
 }
-.ill img { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 18px 24px rgba(31, 20, 80, .35)); }
+.ill img {
+  width: 100%; height: 100%; max-width: none;
+  object-fit: contain; object-position: 58% 100%;
+  filter: drop-shadow(0 18px 24px rgba(31, 20, 80, .35));
+}
 
 .aka { position: absolute; right: 2%; bottom: 0; z-index: 4; }
 .aka span {
   display: inline-block;
   background: #000; color: #a99cff;
   font-family: var(--f-display); font-size: clamp(20px, 1.95vw, 29px); line-height: 1;
-  padding: 12px 28px 11px;
+  padding: .2em 28px .62em;     /* tumb sits low in its line box: this centers the ink */
   border-radius: 999px;
   border: 2px solid #fef4fe;
 }
@@ -626,9 +632,10 @@ body::after {
 .app-icons u {
   display: block; height: 9px; border-radius: 99px;
   border: 2px solid var(--lav);
-  background: linear-gradient(90deg, #fef4fe 0 86%, transparent 86%);
+  background: linear-gradient(90deg, #fef4fe 0 var(--lvl, 86%), transparent var(--lvl, 86%));
   background-clip: content-box; padding: 1px;
 }
+.app-icons i[title="Blender"] u { --lvl: 50%; }
 .skills-grid ul { list-style: none; margin: 0; padding: 0; max-width: 210px; }
 .skills-grid li {
   font-family: var(--f-mono); font-size: 12px; line-height: 14px;
