@@ -71,7 +71,7 @@
       gallery: (b) => `
         <div class="cb-gallery-wrap ${b.title || b.text ? "has-text" : ""}">
           ${b.title || b.text ? `<div class="cb-center rv">${head(b.title)}${para(b.text)}</div>` : ""}
-          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
+          <div class="cb-gallery ${b.contain ? "is-contain" : ""} ${b.square ? "is-square" : ""} ${b.icons ? "is-icons" : ""} ${b.center ? "is-center" : ""} ${b.circles ? "is-circles" : ""}" style="--cols:${b.cols || 3};${b.maxh ? `--maxh:${b.maxh}px;` : ""}${b.ratio ? `grid-template-columns:${b.ratio.map((r) => `minmax(0,${r}fr)`).join(" ")}` : ""}">
             ${b.images.map((im, i) => `<figure class="cb-gal rv" style="--i:${i}">${pic(im, b.contain && im.alpha !== false ? "cb-cut" : "")}${b.captions ? `<figcaption>${b.captions[i]}${b.descs ? `<span>${b.descs[i]}</span>` : ""}</figcaption>` : ""}</figure>`).join("")}
           </div>
         </div>`,
@@ -123,7 +123,7 @@
           b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
           prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
         ].filter(Boolean).join(";");
-        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }

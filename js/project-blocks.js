@@ -345,13 +345,7 @@
         mint: { bg: "#e4fdcd", fg: "#102b15", accent: "#5c9b37" },
       },
       blocks: [
-        {
-          type: "split", tone: "forest", side: "right", phone: true, frameless: true,
-          title: "You probably walk past edible wild plants all the time without noticing them.",
-          text: "Wild Forager helps users notice their surroundings again. It’s not a harvesting shortcut made only for consumption, it’s a learning tool created to heal relationships between humans and their surrounding green neighbors.",
-          steps: ["Educational", "Edgy", "Anti-System", "Food Sovereignty"],
-          image: wf("phone-home", 987, 1884, "Wild Forager map of plants nearby"),
-        },
+        { type: "full", tone: "forest", edge: true, image: wf("frame-notice", 2880, 1504, "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.") },
         {
           type: "gallery", tone: "moss", cols: 2,
           title: "Moodboards & Refs",
@@ -382,23 +376,9 @@
           type: "gallery", tone: "forest", cols: 3, contain: true,
           images: [wf("badge-1", 700, 701, "Round badge, dark"), wf("badge-2", 700, 701, "Round badge, green"), wf("badge-3", 700, 700, "Round badge, light")],
         },
+        { type: "full", tone: "moss", edge: true, image: wf("frame-experience", 2880, 1560, "The experience: the map, plant profile and the app's key moments, with annotations") },
         {
-          type: "split", tone: "forest", side: "left", phone: true, frameless: true,
-          title: "The experience",
-          text: "Browse each plant profile with illustrations, photos, traits, habitat, seasonality, and look-alike warnings so what is in front of each user can be compared carefully.",
-          steps: [
-            "Use the map to identify plants nearby",
-            "See each plant’s information, photos and characteristics",
-            "Identify each plant’s morphology with illustrative, clear and simple guides",
-            "Beware of toxic lookalikes and cautions",
-            "Send your own reports, photos, recipes and locations",
-            "Create your profile and report plants, warnings or sites",
-            "Use all the info to do your own research and go deeper",
-          ],
-          image: wf("phone-plant", 752, 1668, "Plant profile screen"),
-        },
-        {
-          type: "gallery", tone: "mint", cols: 9, contain: true, icons: true,
+          type: "gallery", tone: "moss", cols: 9, contain: true, icons: true, circles: true,
           text: "Type of flowers · Type of leafs",
           images: [
             wf("ic-1", 248, 253, "Many-petal flower"), wf("ic-2", 232, 245, "Four-petal flower"), wf("ic-3", 256, 254, "Five-petal flower"),
