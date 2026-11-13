@@ -123,7 +123,7 @@
           b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
           prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
         ].filter(Boolean).join(";");
-        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }

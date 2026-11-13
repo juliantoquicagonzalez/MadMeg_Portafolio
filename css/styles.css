@@ -14,6 +14,7 @@
   --line: 1.5px solid var(--ink);
   --line-cream: 1.5px solid rgba(246, 241, 233, .28);
   --nav-h: 64px;
+  --pm: 62px; /* side margin of every project page (same as the description box) */
 
   --f-display: "tumb", system-ui, sans-serif;
   --f-head: "Gambetta", Georgia, serif;
@@ -527,14 +528,14 @@ body::after {
   grid-area: left;
   position: relative;
   z-index: 2;            /* stickies / aka sit on top of the right column's line */
-  padding-left: 23%;           /* paper starts here; illustration overlaps it */
-  padding-right: 10.5%;        /* breathing room between paper and the divider line */
+  padding-left: 27%;           /* paper starts here; illustration overlaps it */
+  padding-right: 7%;        /* breathing room between paper and the divider line */
   padding-bottom: 30px;
 }
 .paper-wrap { position: relative; }
 .big-paper {
   background: #fff5f4;
-  padding: 30px 18% 52px 12%;
+  padding: 30px 12% 52px 32%;
   color: var(--ink);
 }
 .big-paper > h3 {
@@ -578,12 +579,11 @@ body::after {
 .sticky.orange { background: #f9c691; }
 
 .ill {
-  position: absolute; left: 0; top: 8px; bottom: 30px;
-  width: 43%;
+  position: absolute; left: -3%; top: 0; bottom: 30px; /* as tall as the paper */
   z-index: 3;
   display: flex; align-items: flex-end;
 }
-.ill img { width: 100%; height: auto; filter: drop-shadow(0 18px 24px rgba(31, 20, 80, .35)); }
+.ill img { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 18px 24px rgba(31, 20, 80, .35)); }
 
 .aka { position: absolute; right: 2%; bottom: 0; z-index: 4; }
 .aka span {
@@ -673,9 +673,9 @@ body::after {
   border-bottom: var(--line);
   background: linear-gradient(160deg, var(--p0), var(--p1));
 }
-.p-banner img { display: block; width: 100%; height: auto; max-width: 1440px; margin: 0 auto; }
+.p-banner img { display: block; width: 100%; height: auto; max-width: none; }
 .p-top {
-  --nw: 62px; /* width of the roman-numeral box = side margin on both sides */
+  --nw: var(--pm); /* width of the roman-numeral box = side margin on both sides */
   display: grid;
   grid-template-columns: 1.55fr 1fr;
   grid-template-areas: "title role" "desc info";
@@ -739,7 +739,7 @@ body::after {
   background: var(--bg); color: var(--fg);
   --tw: clamp(240px, 23vw, 330px); /* the text column: all the info of a section lives here, on the left */
   --cb-pt: clamp(44px, 6vw, 88px);
-  padding: calc(var(--cb-pt) + var(--extra-top, 0px)) clamp(22px, 4.3vw, 62px) calc(var(--cb-pt) + var(--extra-bottom, 0px));
+  padding: calc(var(--cb-pt) + var(--extra-top, 0px)) var(--pm) calc(var(--cb-pt) + var(--extra-bottom, 0px));
   border-bottom: var(--line);
   overflow: hidden;
 }
@@ -750,7 +750,7 @@ body::after {
 .has-bleed[style*="--bleed:"] .cb-fig, .has-bleed[style*="--bleed:"] .cb-full { margin-bottom: calc(-1 * var(--bleed)); }
 .has-bleed[style*="--bleed-top:"] { padding-top: 0; }
 .has-bleed[style*="--bleed-top:"] .cb-fig, .has-bleed[style*="--bleed-top:"] .cb-full { margin-top: calc(-1 * var(--bleed-top)); }
-.cb-block > * { max-width: 1560px; margin: 0 auto; }
+.cb-block > * { max-width: none; margin: 0 auto; }
 .cb-kicker {
   font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em;
   color: var(--accent); margin-bottom: 10px;
@@ -771,13 +771,14 @@ body::after {
 }
 .cb-sep { margin-top: 30px; }
 /* text on the right, separated by a vertical line that runs the whole height of the section; the image spills to the left edge */
-.cb-split.is-textright { grid-template-columns: minmax(0, 1fr) var(--tw); align-items: stretch; }
-.cb-split.is-textright .cb-fig { align-self: center; margin-left: calc(-1 * clamp(22px, 4.3vw, 62px)); }
+.cb-split.is-textright { --tw2: clamp(300px, 28vw, 440px); grid-template-columns: minmax(0, 1fr) var(--tw2); gap: 0; align-items: stretch; }
+.cb-split.is-textright .cb-fig { align-self: center; padding-right: clamp(24px, 4vw, 64px); display: grid; place-items: center; }
+.cb-split.is-textright .cb-fig img { width: auto; max-width: 84%; max-height: min(72vh, 620px); margin: 0 auto; }
 .cb-split.is-textright .cb-col {
   order: 2; align-self: stretch; display: flex; flex-direction: column; justify-content: center;
   border-left: 1.5px solid currentColor;
-  margin: calc(-1 * var(--cb-pt)) calc(-1 * clamp(22px, 4.3vw, 62px)) calc(-1 * var(--cb-pt)) 0;
-  padding: var(--cb-pt) clamp(22px, 4.3vw, 62px) var(--cb-pt) clamp(24px, 3vw, 48px);
+  margin: calc(-1 * var(--cb-pt)) 0;
+  padding: var(--cb-pt) 0 var(--cb-pt) clamp(24px, 3vw, 48px);
 }
 .cb-media { display: grid; gap: clamp(28px, 4vw, 56px); min-width: 0; }
 .cb-extra { max-width: 1000px; margin: 0 auto; }
@@ -862,7 +863,7 @@ body.lb-open { overflow: hidden; }
 .cb-gallery.is-square .cb-gal img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; }
 /* carousel: pinned on desktop, swipe strip on small screens */
 .cb-carousel-block { padding-top: 0; padding-bottom: 0; overflow: clip; }
-.cb-carousel { max-width: 1560px; }
+.cb-carousel { max-width: none; }
 .cb-car-stage {
   position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h));
   display: grid; grid-template-columns: var(--tw) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center;
@@ -899,10 +900,12 @@ body.lb-open { overflow: hidden; }
 .cb .cb-gal.rv { transition-delay: calc(var(--i) * 80ms); }
 .cb-video { aspect-ratio: 16 / 9; max-width: 1280px; margin: 0 auto; border: 1.5px solid currentColor; border-radius: 10px; overflow: hidden; background: #000; box-shadow: 0 24px 50px -20px rgba(0, 0, 0, .6); }
 .cb-video iframe { display: block; width: 100%; height: 100%; border: 0; }
-.cb-full-block { padding: 0; }
+.cb-full-block { padding: var(--cb-pt) var(--pm); }
 .cb-flat { border-bottom: 0; }
 /* scene: loose pieces placed as in the Figma; interactive ones scale up a little on hover */
-.cb-scene-block { padding: 0; }
+.cb-scene-block { padding: var(--cb-pt) var(--pm); }
+.cb-scene-block.pb0 { padding-bottom: 0; }
+.cb-scene-block.pt0 { padding-top: 0; }
 .cb-scene-block > * { max-width: none; }
 .cb-scene { position: relative; overflow: hidden; width: 100%; }
 .cb-scene .sc-still { position: absolute; display: block; pointer-events: none; user-select: none; }
@@ -918,6 +921,7 @@ body.lb-open { overflow: hidden; }
 .cb-full .hs { position: absolute; padding: 0; border: 0; background: transparent; cursor: zoom-in; border-radius: 18px; transition: background .25s, box-shadow .25s; }
 .cb-full .hs:hover, .cb-full .hs:focus-visible { background: rgba(255, 255, 255, .14); box-shadow: 0 0 0 3px rgba(255, 255, 255, .55) inset; outline: none; }
 .cb-full-block > * { max-width: none; }
+.cb-full-block .cb-full img { width: 100%; height: auto; }
 
 /* reveal on scroll (same rhythm as the rest of the site) */
 .cb .rv { opacity: 0; transform: translateY(36px); transition: opacity .8s ease, transform 1s var(--ease-out); }
@@ -991,7 +995,7 @@ body.lb-open { overflow: hidden; }
 }
 @media (max-width: 760px) {
   .msg-form { grid-template-columns: 1fr; }
-  :root { --nav-h: 56px; }
+  :root { --nav-h: 56px; --pm: 48px; }
   .nav > * { padding: 0 14px; font-size: 11px; }
   .nav .nav-logo { min-width: 0; font-size: 19px; }
   .nav .nav-social { display: none; }
@@ -1039,6 +1043,7 @@ body.lb-open { overflow: hidden; }
   .about-left { display: flex; flex-direction: column; padding: 0 0 70px; }
   .about-left .ill { order: -1; }
   .ill { position: relative; width: 62%; height: 300px; margin: 0 auto -40px; }
+  .ill img { height: auto; width: 100%; }
   .big-paper { padding: 32px 22px 30px; }
   .note { margin: 26px 0 0; }
   .info-sec h3 { white-space: normal; }
@@ -1069,7 +1074,7 @@ body.lb-open { overflow: hidden; }
   .cb-carousel-block { padding-top: clamp(44px, 6vw, 88px); padding-bottom: clamp(44px, 6vw, 88px); }
   .cb-carousel { height: auto !important; }
   .cb-car-stage { position: static; height: auto; grid-template-columns: minmax(0, 1fr); align-items: start; }
-  .cb-car-view { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * clamp(22px, 4.3vw, 62px)); padding: 0 clamp(22px, 4.3vw, 62px); }
+  .cb-car-view { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--pm)); padding: 0 var(--pm); }
   .cb-car-view::-webkit-scrollbar { display: none; }
   .cb-car-track { transform: none !important; }
   .cb-car-item { scroll-snap-align: start; }

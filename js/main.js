@@ -74,7 +74,6 @@
   safe(() => {
     if (stage.children.length > 0) return; // idempotent
     const toRoman = (n) => ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"][n] || n;
-    document.getElementById("deckCount").textContent = `${toRoman(projects.length)} cards`;
 
     // Card back — identical for every card, designed by Maria (assets/card-back.webp)
     const backHTML = `
