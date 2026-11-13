@@ -256,6 +256,13 @@
       big.style.background = cut ? bg : "";
       big.style.padding = cut ? "clamp(14px, 2.4vw, 36px)" : "";
       big.style.boxSizing = "border-box";
+      // icons shown inside circles open inside their circle too
+      const circ = el.closest(".is-circles");
+      big.style.borderRadius = circ ? "50%" : "";
+      big.style.width = circ ? "min(70vh, 70vw)" : "";
+      big.style.height = circ ? "min(70vh, 70vw)" : "";
+      big.style.objectFit = circ ? "contain" : "";
+      if (circ) { big.style.background = "#7b996a"; big.style.padding = "14%"; }
       box.querySelector(".lb-count").textContent = `${cur + 1} / ${list.length}`;
     };
     const close = () => {
