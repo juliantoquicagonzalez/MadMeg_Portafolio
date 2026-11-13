@@ -143,7 +143,7 @@
           b.bleed ? `--bleed:${b.bleed}` : "", b.bleedTop ? `--bleed-top:${b.bleedTop}` : "",
           prev.bleed ? `--extra-top:${prev.bleed}` : "", next.bleedTop ? `--extra-bottom:${next.bleedTop}` : "",
         ].filter(Boolean).join(";");
-        return `<section class="cb-block cb-${b.type}-block ${font ? `ff-${font}` : ""} ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.fit ? "cb-fit" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${t.title ? `--title:${t.title};` : ""}${bl}">${html[b.type](b)}</section>`;
+        return `<section class="cb-block cb-${b.type}-block ${font ? `ff-${font}` : ""} ${b.flat ? "cb-flat" : ""} ${b.pb0 ? "pb0" : ""} ${b.edge ? "cb-edge" : ""} ${b.centerStart ? "cb-start-center" : ""} ${b.fit ? "cb-fit" : ""} ${b.pt0 ? "pt0" : ""} ${b.bleed || b.bleedTop ? "has-bleed" : ""}" style="--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};${t.title ? `--title:${t.title};` : ""}${bl}">${html[b.type](b)}</section>`;
       })
       .join("");
   }
@@ -318,6 +318,15 @@
     root.addEventListener("click", (e) => { const el = e.target.closest(".cb .sc-item, .cb .hs") || e.target.closest(".cb img:not(.no-lb), .cs-section img"); if (el) open(el); });
     imgs().forEach((el) => { el.tabIndex = 0; el.setAttribute("role", "button"); el.addEventListener("keydown", (e) => { if (e.key === "Enter") open(el); }); });
   }, "lightbox");
+
+  // wide pieces that scroll sideways on phones open centred (the menu sits in the middle of its frame)
+  safe(() => {
+    const els = [...document.querySelectorAll(".cb-start-center")];
+    if (!els.length) return;
+    const centre = () => els.forEach((el) => { if (el.scrollWidth > el.clientWidth) el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2; });
+    centre(); addEventListener("load", centre);
+    els.forEach((el) => el.querySelectorAll("img").forEach((im) => im.addEventListener("load", centre)));
+  }, "centre-start");
 
   // clips play while visible and pause when they leave (saves battery); with "reduce motion" they stay on the poster
   safe(() => {

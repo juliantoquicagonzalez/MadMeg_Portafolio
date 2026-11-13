@@ -218,7 +218,8 @@
           type: "gallery", tone: "coconut", cols: 2, square: true,
           images: [lh("merch-mug", 1232, 864, "Mug: “No harm, just charm!”"), lh("merch-shirt", 1024, 1024, "T-shirt: “Eat kindly, stay lucky.”")],
         },
-        { type: "full", tone: "blush", image: lh("web-shop", 1440, 701, "Web design: the shop") },
+        // the menu frame (Figma), edge to edge; replaces the "Shop" web mockup
+        { type: "full", tone: "ink", edge: true, centerStart: true, image: lh("menu", 1440, 744, "Menu: All-day eats, Our roastery, Drinks & tea, Desserts and Treats") },
         {
           type: "text", tone: "red",
           title: "Thanks for watching!",
