@@ -244,8 +244,8 @@
     const track = document.getElementById("marquee");
     if (track.children.length > 0) return;
     const tools = [
-      ["photoshop", "Photoshop"], ["illustrator", "Illustrator"], ["figma", "Figma"], ["blender", "Blender"],
-      ["zbrush", "ZBrush"], ["procreate", "Procreate"], [null, "Canva", "Ca"], [null, "CapCut", "Cc"], [null, "Unity", "Un"]
+      ["photoshop", "Photoshop"], ["illustrator", "Illustrator"], ["figma", "Figma"],
+      ["zbrush", "ZBrush"], ["procreate", "Procreate"], ["canva", "Canva"], ["capcut", "CapCut"]
     ];
     const item = ([icon, name, abbr]) =>
       `<div class="tool">${icon ? `<img src="assets/icons/${icon}.webp" alt="" width="34" height="34" />` : `<b>${abbr}</b>`}${name}</div>`;

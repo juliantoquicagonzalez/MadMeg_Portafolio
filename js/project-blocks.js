@@ -306,6 +306,8 @@
         lilac: { bg: "#d6cbf8", fg: "#1e1238", accent: "#5b2be0" },
         night: { bg: "#21123f", fg: "#fbe9f1", accent: "#f6b9d6" },
         cream: { bg: "#f6f1e9", fg: "#1c1230", accent: "#5b2be0" },
+        peach: { bg: "#ffe6d9", fg: "#21123f", accent: "#5b2be0" },
+        periwinkle: { bg: "#c4cbff", fg: "#1c1230", accent: "#5b2be0" },
       },
       blocks: [
         {
@@ -317,7 +319,7 @@
           images: [am("post-0", 572, 900, "Horóscopo semanal"), ...[1, 2, 3, 4, 5].map((i) => am(`post-${i}`, 1080, 1350, "Weekly horoscope post"))],
         },
         {
-          type: "carousel", tone: "night", phone: true,
+          type: "carousel", tone: "peach", phone: true,
           title: "Weekend stories",
           text: "More than 260 weeks covered, as well as 200 weekends reports on stories, and annual and daily astrology catch-up on other media.",
           images: [1, 2, 3, 4, 5].map((i) => am(`story-${i}`, 640, 1138, "Weekend horoscope story")),
@@ -329,6 +331,7 @@
           text: "My role also involves designing memes with copys and style guides provided by the team. <mark>This means working on a wide range of styles, but maintaining the brand’s identity.</mark> We work on Canva so everyone can make adjustments in real time.",
           images: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => am(`meme-${i}`, 720, 900, "Meme designed for the account")),
         },
+        { type: "full", tone: "periwinkle", image: am("may-stars", 2596, 283, "May the stars be always on your favor") },
       ],
     },
 
