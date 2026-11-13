@@ -176,14 +176,14 @@
         },
         { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
         { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
+        // the strip again, then the colours over the coffee-beans photo (Figma)
+        { type: "marquee", tone: "blush", src: "assets/projects/the-luck-and-the-hare/c/sticker-strip.webp", w: 720, h: 113 },
         {
-          type: "cards", tone: "ink",
-          title: "Color Palette",
-          text: "The palette carries the spirit of soft and bold in equal measure. Vegan food and principles, with colorful, risky and bold colors to bring something new to the community.",
+          type: "cards", tone: "ink", bg: "assets/projects/the-luck-and-the-hare/c/beans.webp",
           colors: [
             { hex: "#F2ABDA", name: "Blushing Sweet" },
-            { hex: "#000000", name: "Black Ink", name2: "#f2abda", fg: "#fff5ea" },
-            { hex: "#BA1D21", name: "Conviction Red", name2: "#f2abda", fg: "#fff5ea" },
+            { hex: "#000000", name: "Black Ink", name2: "#f2abda", fg: "#f2abda" },
+            { hex: "#BA1D21", name: "Conviction Red", name2: "#f2abda", fg: "#f2abda" },
             { hex: "#FFF5EA", name: "Coconut Dream" },
           ],
         },

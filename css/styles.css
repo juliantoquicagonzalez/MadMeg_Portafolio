@@ -1256,3 +1256,15 @@ body.lb-open { overflow: hidden; }
 .cb-panel { aspect-ratio: 560 / 235; display: grid; place-items: center; }
 .cb-panel img { width: 44%; height: auto; cursor: default; }
 @media (max-width: 760px) { .cb-panels { grid-template-columns: minmax(0, 1fr); } .cb-panel img { width: 52%; } }
+
+/* colours over the coffee-beans photo: 1440 × 612 in the Figma, cards 628 × 153 at (76,138) */
+.cb-cards-block.ff-luck { padding: 0; overflow: hidden; }
+.cb-cards-wrap.has-bg {
+  aspect-ratio: 1440 / 612; background-size: cover; background-position: center;
+  padding: 9.583% 5.278% 0;
+}
+.cb-cards-wrap.has-bg .cb-cards { column-gap: 2.22%; row-gap: 2.15vw; }
+.cb-cards-wrap.has-bg .cb-card { border: 1px solid #000; }
+@media (max-width: 760px) {
+  .cb-cards-wrap.has-bg { aspect-ratio: auto; padding: 36px 18px; }
+}

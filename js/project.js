@@ -100,7 +100,9 @@
         </div>`,
       cards: (b) => `
         ${b.title || b.text ? `<div class="cb-center cb-cards-head rv">${head(b.title)}${para(b.text)}</div>` : ""}
-        <div class="cb-cards rv">${b.colors.map((c) => `<div class="cb-card" style="--c:${c.hex};--cn:${c.name2 || "inherit"};--ch:${c.fg || "#000"}"><b>${c.name}</b><span>HEX CODE: ${c.hex.replace("#", "")}</span></div>`).join("")}</div>`,
+        <div class="cb-cards-wrap ${b.bg ? "has-bg" : ""}" ${b.bg ? `style="background-image:url(${b.bg})"` : ""}>
+          <div class="cb-cards rv">${b.colors.map((c) => `<div class="cb-card" style="--c:${c.hex};--cn:${c.name2 || "inherit"};--ch:${c.fg || "#000"}"><b>${c.name}</b><span>HEX CODE: ${c.hex.replace("#", "")}</span></div>`).join("")}</div>
+        </div>`,
       typeset: (b) => `
         <div class="cb-typeset">
           <div class="cb-col rv">${head(b.title)}${para(b.text)}</div>
