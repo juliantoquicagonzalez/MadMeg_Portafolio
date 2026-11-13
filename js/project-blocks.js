@@ -175,8 +175,6 @@
           ],
         },
         { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
-        // the storefront frame is now a clip: the stickers pop in over the espresso machine (STICKERS_FRAME)
-        { type: "clip", tone: "ink", src: "assets/projects/the-luck-and-the-hare/c/stickers-frame.mp4", poster: "assets/projects/the-luck-and-the-hare/c/stickers-frame-poster.webp", w: 2560, h: 1428, alt: "Coffee stickers popping in over an espresso machine" },
         // the strip again, then the colours over the coffee-beans photo (Figma)
         { type: "marquee", tone: "blush", src: "assets/projects/the-luck-and-the-hare/c/sticker-strip.webp", w: 720, h: 113 },
         {
@@ -198,6 +196,8 @@
             { family: "'Telma', serif", weight: 700, size: ".62em", name: "Telma", role: "For highlights and details" },
           ],
         },
+        // the clip frame (Figma order: Typography, this, Graphic elements): the stickers pop in over the espresso machine (STICKERS_FRAME)
+        { type: "clip", tone: "ink", src: "assets/projects/the-luck-and-the-hare/c/stickers-frame.mp4", poster: "assets/projects/the-luck-and-the-hare/c/stickers-frame-poster.webp", w: 2560, h: 1428, alt: "Coffee stickers popping in over an espresso machine" },
         {
           type: "split", tone: "coconut", side: "left", lead: true,
           title: "Graphic elements",
