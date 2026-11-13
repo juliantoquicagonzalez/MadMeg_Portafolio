@@ -106,6 +106,10 @@
           <div class="cb-col rv">${head(b.title)}${para(b.text)}</div>
           <div class="cb-specimens rv">${b.fonts.map((f) => `<div class="cb-spec"><span class="cb-aa" style="font-family:${f.family};font-weight:${f.weight};font-size:${f.size}">Aa</span><span class="cb-spec-name"><b style="font-family:${f.family};font-weight:${f.weight}">${f.name}</b><span>${f.role}</span></span></div>`).join("")}</div>
         </div>`,
+      // a row of equal panels, each with its own background (colour variations of a logo)
+      panels: (b) => `<div class="cb-panels">${b.panels.map((p) => `<div class="cb-panel" style="background:${p.bg}"><img class="no-lb" src="${p.src}" alt="${p.alt}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" /></div>`).join("")}</div>`,
+      // endless strip of stickers (a seamless tile that slides sideways; decorative, so not clickable)
+      marquee: (b) => `<div class="cb-marquee" aria-hidden="true" style="background-image:url(${b.src});--tw:${b.w};--th:${b.h}"></div>`,
       text: (b) => `
         <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
       scene: (b) => {

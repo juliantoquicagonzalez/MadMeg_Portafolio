@@ -1235,3 +1235,24 @@ body.lb-open { overflow: hidden; }
   .cb-specimens { font-size: 26vw; }
   .ff-luck .cb-feature .cb-fig[style] { max-width: 70% !important; }
 }
+
+/* sticker strip: a 720px tile repeated and slid by exactly one tile, so the loop has no jump */
+.cb-marquee-block { padding: 0; overflow: hidden; }
+.cb-marquee {
+  --h: clamp(64px, 7.85vw, 113px);            /* 113px at the Figma's 1440 */
+  --tilew: calc(var(--h) * var(--tw) / var(--th));
+  height: var(--h);
+  width: calc(100% + var(--tilew));
+  background-repeat: repeat-x; background-position: left center; background-size: auto 100%;
+  animation: stickerSlide 40s linear infinite;
+  will-change: transform;
+}
+@keyframes stickerSlide { to { transform: translateX(calc(-1 * var(--tilew))); } }
+@media (prefers-reduced-motion: reduce) { .cb-marquee { animation: none; } }
+
+/* three colour variations side by side: the background splits in three */
+.cb-panels-block { padding: 0; overflow: hidden; }
+.cb-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cb-panel { aspect-ratio: 560 / 235; display: grid; place-items: center; }
+.cb-panel img { width: 44%; height: auto; cursor: default; }
+@media (max-width: 760px) { .cb-panels { grid-template-columns: minmax(0, 1fr); } .cb-panel img { width: 52%; } }

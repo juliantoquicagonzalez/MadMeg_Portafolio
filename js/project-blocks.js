@@ -145,6 +145,8 @@
         red: { bg: "#ba1d21", fg: "#fff5ea", accent: "#f2abda", title: "#f2abda" },
       },
       blocks: [
+        // sticker strip from the Figma, sliding sideways without end
+        { type: "marquee", tone: "blush", src: "assets/projects/the-luck-and-the-hare/c/sticker-strip.webp", w: 720, h: 113 },
         {
           // text on the left, the cap reaching the right edge with the brand words floating on it
           type: "split", tone: "ink", bleedRight: true,
@@ -164,10 +166,13 @@
           image: { ...lh("logo-full", 652, 439, "The Luck & The Hare primary logo", "svg"), alpha: false },
         },
         {
-          // the logo's variations: kept from the previous version, right after The Logo
-          type: "feature", tone: "coconut",
-          text: "The isotype may also be used with the typographic variation of the principal logo, taking the star out of the composition to improve readibility.",
-          image: { ...lh("logo-variations", 1058, 208, "Logo variations with the hare isotype", "svg"), alpha: false },
+          // colour variations of the isotype: the background splits in three (Figma)
+          type: "panels", tone: "coconut",
+          panels: [
+            { bg: "#fff5ea", src: "assets/projects/the-luck-and-the-hare/c/isotype-on-cream.svg", alt: "Isotype on Coconut Dream, pink star", w: 262, h: 150 },
+            { bg: "#f2abda", src: "assets/projects/the-luck-and-the-hare/c/isotype-on-pink.svg", alt: "Isotype on Blushing Sweet, red star", w: 262, h: 150 },
+            { bg: "#ba1d21", src: "assets/projects/the-luck-and-the-hare/c/isotype-on-red.svg", alt: "Isotype on Conviction Red, cream star", w: 262, h: 150 },
+          ],
         },
         { type: "feature", tone: "blush", maxw: "43%", image: { ...lh("isotype", 262, 150, "The hare isotype with the star", "svg"), alpha: false } },
         { type: "full", tone: "ink", image: lh("storefront", 2400, 1153, "Storefront with the brand’s illustrations") },
