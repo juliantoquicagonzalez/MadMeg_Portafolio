@@ -103,6 +103,7 @@
         const layer = (l) => {
           const pos = `left:${pc(l.x, b.w)};top:${pc(l.y, b.h)};width:${pc(l.w, b.w)};height:${pc(l.h, b.h)}`;
           const im = `<img src="${l.src}" alt="${l.alt || ""}" width="${Math.round(l.w * 2)}" height="${Math.round(l.h * 2)}" loading="lazy" decoding="async" />`;
+          if (l.color) return `<div class="sc-still" style="${pos};background:${l.color}"></div>`;
           return l.still
             ? `<img class="sc-still no-lb" src="${l.src}" alt="${l.alt || ""}" style="${pos}" loading="lazy" decoding="async" />`
             : `<button type="button" class="sc-item" data-full="${l.full || l.src}" data-alt="${l.alt || ""}" data-bg="${l.full || l.nobg ? "" : b.itemBg || ""}" aria-label="Open: ${l.alt || "image"}" style="${pos}">${im}</button>`;

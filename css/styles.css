@@ -1125,3 +1125,4 @@ body.lb-open { overflow: hidden; }
 
 /* a little bigger than the frame: only its empty margins get cropped by the section */
 .cb-edge .cb-scene.is-grow { scale: 1.14; transform-origin: 50% 50%; overflow: visible; }
+.cb-edge.cb-scene-block, .cb-edge.cb-full-block { padding: 0; }

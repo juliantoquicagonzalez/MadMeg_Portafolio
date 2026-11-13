@@ -353,6 +353,28 @@
             { src: "assets/projects/wild-forager/c/phone-notice.webp", full: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 222, y: 41, w: 343, h: 640 },
           ],
         },
+        { type: "full", tone: "moss", edge: true, still: true, spots: [
+            { src: "assets/projects/wild-forager/c/mood-logo.webp", alt: "Logo and brand moodboard", x: 5.35, y: 19.74, w: 24.65, h: 30.02 },
+            { src: "assets/projects/wild-forager/c/mood-type.webp", alt: "Typography moodboard", x: 65.56, y: 23.44, w: 29.1, h: 29.55 },
+            { src: "assets/projects/wild-forager/c/mood-ui.webp", alt: "Visual style moodboard", x: 16.25, y: 46.29, w: 34.17, h: 33.25 },
+            { src: "assets/projects/wild-forager/c/mood-illustration.webp", alt: "Illustration moodboard", x: 48.61, y: 59.45, w: 25.62, h: 35.89 },
+          ], image: wf("frame-mood", 2880, 1672, "Moodboards and refs: logo and brand, typography, visual style and illustration") },
+        { type: "full", tone: "forest", edge: true, image: wf("frame-fist", 2880, 1006, "The Fist Up: Wild Forager is designed to slow the process down. The raised fist holding dandelions, a wink to the next revolution.") },
+        {
+          type: "gallery", tone: "mint", cols: 2, contain: true, zoom: true,
+          images: [wf("logo-a", 886, 393, "Wild Forager horizontal logo"), wf("logo-b", 886, 393, "Wild Forager horizontal logo, light version")],
+        },
+        {
+          type: "scene", tone: "forest", edge: true, w: 1440, h: 322,
+          layers: [
+            { color: "#102b15", x: 0, y: 0, w: 480, h: 322, still: true },
+            { color: "#345938", x: 480, y: 0, w: 480, h: 322, still: true },
+            { color: "#5c9b37", x: 960, y: 0, w: 480, h: 322, still: true },
+            { src: "assets/projects/wild-forager/c/bg-b1.webp", alt: "Round badge, light", x: 122, y: 46, w: 233, h: 233 },
+            { src: "assets/projects/wild-forager/c/bg-b2.webp", alt: "Round badge, green", x: 603, y: 46, w: 233, h: 233 },
+            { src: "assets/projects/wild-forager/c/bg-b3.webp", alt: "Round badge, dark", x: 1085, y: 48, w: 229, h: 229 },
+          ],
+        },
         { type: "full", tone: "moss", edge: true, image: wf("frame-experience", 2880, 1938, "The experience: the map, plant profile and the app's key moments, with annotations") },
         {
           type: "gallery", tone: "mint", cols: 9, contain: true, icons: true, circles: true, zoom: true,
