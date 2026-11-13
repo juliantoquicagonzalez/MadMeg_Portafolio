@@ -347,13 +347,13 @@
       },
       blocks: [
         {
-          type: "scene", tone: "forest", edge: true, w: 1440, h: 752, grow: true,
+          type: "scene", tone: "forest", edge: true, w: 1440, h: 820, grow: true,
           layers: [
-            { src: "assets/projects/wild-forager/c/frame-notice-bg.webp", alt: "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.", x: 0, y: 0, w: 1440, h: 752, still: true },
-            { src: "assets/projects/wild-forager/c/phone-notice.webp", full: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 222, y: 41, w: 343, h: 640 },
+            { src: "assets/projects/wild-forager/c/frame-notice-bg.webp", alt: "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.", x: 0, y: 34, w: 1440, h: 752, still: true },
+            { src: "assets/projects/wild-forager/c/phone-notice.webp", full: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 222, y: 75, w: 343, h: 640 },
           ],
         },
-        { type: "full", tone: "moss", edge: true, still: true, spots: [
+        { type: "full", tone: "sage", edge: true, still: true, spots: [
             { src: "assets/projects/wild-forager/c/mood-logo.webp", alt: "Logo and brand moodboard", x: 5.35, y: 19.74, w: 24.65, h: 30.02 },
             { src: "assets/projects/wild-forager/c/mood-type.webp", alt: "Typography moodboard", x: 65.56, y: 23.44, w: 29.1, h: 29.55 },
             { src: "assets/projects/wild-forager/c/mood-ui.webp", alt: "Visual style moodboard", x: 16.25, y: 46.29, w: 34.17, h: 33.25 },
