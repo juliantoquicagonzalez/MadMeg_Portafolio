@@ -14,6 +14,7 @@
   --line: 1.5px solid var(--ink);
   --line-cream: 1.5px solid rgba(246, 241, 233, .28);
   --nav-h: 64px;
+  --pc: calc(var(--pm) + 22px); /* where the project description text starts: all content aligns to it */
   --pm: 62px; /* side margin of every project page (same as the description box) */
 
   --f-display: "tumb", system-ui, sans-serif;
@@ -739,8 +740,8 @@ body::after {
   background: var(--bg); color: var(--fg);
   --tw: clamp(240px, 23vw, 330px); /* the text column: all the info of a section lives here, on the left */
   --cb-pt: clamp(44px, 6vw, 88px);
-  padding: calc(var(--cb-pt) + var(--extra-top, 0px)) var(--pm) calc(var(--cb-pt) + var(--extra-bottom, 0px));
-  border-bottom: var(--line);
+  padding: calc(var(--cb-pt) + var(--extra-top, 0px)) var(--pc) calc(var(--cb-pt) + var(--extra-bottom, 0px));
+  border-bottom: 0;
   overflow: hidden;
 }
 /* pieces that spill over into the next / previous section (as in the Figma) */
@@ -773,10 +774,9 @@ body::after {
 /* text on the right, separated by a vertical line that runs the whole height of the section; the image spills to the left edge */
 .cb-split.is-textright { --tw2: clamp(300px, 28vw, 440px); grid-template-columns: minmax(0, 1fr) var(--tw2); gap: 0; align-items: stretch; }
 .cb-split.is-textright .cb-fig { align-self: center; padding-right: clamp(24px, 4vw, 64px); display: grid; place-items: center; }
-.cb-split.is-textright .cb-fig img { width: auto; max-width: 84%; max-height: min(72vh, 620px); margin: 0 auto; }
+.cb-split.is-textright .cb-fig img { width: auto; max-width: 100%; max-height: min(80vh, 720px); margin: 0 auto; }
 .cb-split.is-textright .cb-col {
   order: 2; align-self: stretch; display: flex; flex-direction: column; justify-content: center;
-  border-left: 1.5px solid currentColor;
   margin: calc(-1 * var(--cb-pt)) 0;
   padding: var(--cb-pt) 0 var(--cb-pt) clamp(24px, 3vw, 48px);
 }
@@ -900,10 +900,10 @@ body.lb-open { overflow: hidden; }
 .cb .cb-gal.rv { transition-delay: calc(var(--i) * 80ms); }
 .cb-video { aspect-ratio: 16 / 9; max-width: 1280px; margin: 0 auto; border: 1.5px solid currentColor; border-radius: 10px; overflow: hidden; background: #000; box-shadow: 0 24px 50px -20px rgba(0, 0, 0, .6); }
 .cb-video iframe { display: block; width: 100%; height: 100%; border: 0; }
-.cb-full-block { padding: var(--cb-pt) var(--pm); }
+.cb-full-block { padding: var(--cb-pt) var(--pc); }
 .cb-flat { border-bottom: 0; }
 /* scene: loose pieces placed as in the Figma; interactive ones scale up a little on hover */
-.cb-scene-block { padding: var(--cb-pt) var(--pm); }
+.cb-scene-block { padding: var(--cb-pt) var(--pc); }
 .cb-scene-block.pb0 { padding-bottom: 0; }
 .cb-scene-block.pt0 { padding-top: 0; }
 .cb-scene-block > * { max-width: none; }
@@ -1074,7 +1074,7 @@ body.lb-open { overflow: hidden; }
   .cb-carousel-block { padding-top: clamp(44px, 6vw, 88px); padding-bottom: clamp(44px, 6vw, 88px); }
   .cb-carousel { height: auto !important; }
   .cb-car-stage { position: static; height: auto; grid-template-columns: minmax(0, 1fr); align-items: start; }
-  .cb-car-view { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--pm)); padding: 0 var(--pm); }
+  .cb-car-view { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--pc)); padding: 0 var(--pc); }
   .cb-car-view::-webkit-scrollbar { display: none; }
   .cb-car-track { transform: none !important; }
   .cb-car-item { scroll-snap-align: start; }
