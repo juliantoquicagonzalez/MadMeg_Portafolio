@@ -81,6 +81,7 @@
             <div class="cb-col cb-car-text rv">
               ${b.titleImage ? `<h2 class="cb-title cb-title-img"><img class="no-lb" src="${b.titleImage.src}" alt="${b.title}" width="${b.titleImage.w}" height="${b.titleImage.h}" /></h2>` : head(b.title)}${para(b.text)}
               ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
+              ${b.stat ? `<p class="cb-stat">${b.stat}</p>` : ""}
               ${b.note ? `<p class="cb-note is-left">${b.note}</p>` : ""}
               <div class="cb-car-ctl">
                 <button type="button" class="cb-car-btn" data-dir="-1" aria-label="Previous image">←</button>
@@ -88,7 +89,8 @@
                 <button type="button" class="cb-car-btn" data-dir="1" aria-label="Next image">→</button>
               </div>
             </div>
-            <div class="cb-car-view" tabindex="0" role="group" aria-roledescription="carousel" aria-label="${b.title || "Gallery"}: scroll sideways">
+            <div class="cb-car-view ${b.phoneImg ? "has-phone" : ""}" tabindex="0" role="group" aria-roledescription="carousel" aria-label="${b.title || "Gallery"}: scroll sideways">
+              ${b.phoneImg ? `<img class="cb-car-phone no-lb" src="${b.phoneImg.src}" alt="${b.phoneImg.alt}" width="${b.phoneImg.w}" height="${b.phoneImg.h}" />` : ""}
               <div class="cb-car-track">
                 ${b.images.map((im, i) => `<figure class="cb-car-item ${b.handles ? "has-handles" : ""} ${b.dark ? "is-dark" : ""}">${b.handles ? "<i></i><i></i><i></i><i></i>" : ""}${b.phone ? `<div class="cb-phone">${pic(im, "", false)}</div>` : pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
               </div>
@@ -203,19 +205,23 @@
       const items = [...track.children], count = car.querySelector(".cb-car-count");
       let maxShift = 0, idx = 0, queued = false;
       const carTop = () => car.getBoundingClientRect().top + scrollY;
-      const range = () => car.offsetHeight - (innerHeight - navH());
+      // a short pause (hold) before and after the sideways travel, so a carousel does not fly past when scrolling between frames
+      const hold = () => Math.round(innerHeight * 0.3);
+      const range = () => Math.max(1, car.offsetHeight - (innerHeight - navH()) - 2 * hold());
       const setIdx = (i) => { if (i !== idx || !count.dataset.on) { idx = i; count.dataset.on = "1"; count.textContent = `${i + 1} / ${items.length}`; } };
       const nearest = (shift) => items.reduce((best, el, i) => (Math.abs(el.offsetLeft - shift) < Math.abs(items[best].offsetLeft - shift) ? i : best), 0);
       function measure() {
         if (mq.matches) { car.style.height = ""; track.style.transform = ""; return update(); }
-        maxShift = Math.max(0, track.scrollWidth - view.clientWidth);
-        car.style.height = `${innerHeight - navH() + maxShift}px`;
+        const ph = view.querySelector(".cb-car-phone");
+        // with a phone on top the images keep going until the last one has slid out to the left of the phone
+        maxShift = ph ? Math.max(0, items[items.length - 1].offsetLeft + items[items.length - 1].offsetWidth - (ph.offsetLeft - 18)) : Math.max(0, track.scrollWidth - view.clientWidth);
+        car.style.height = `${innerHeight - navH() + maxShift + 2 * hold()}px`;
         update();
       }
       function update() {
         queued = false;
         if (mq.matches) return setIdx(nearest(view.scrollLeft));
-        const r = range(), p = r > 0 ? clamp((scrollY + navH() - carTop()) / r, 0, 1) : 0;
+        const r = range(), p = maxShift > 0 ? clamp((scrollY + navH() - carTop() - hold()) / r, 0, 1) : 0;
         track.style.transform = `translate3d(${-p * maxShift}px,0,0)`;
         setIdx(nearest(p * maxShift));
       }
@@ -224,7 +230,7 @@
         i = clamp(i, 0, items.length - 1);
         if (mq.matches) return view.scrollTo({ left: items[i].offsetLeft - track.offsetLeft, behavior: "smooth" });
         const shift = Math.min(items[i].offsetLeft, maxShift), r = range();
-        scrollTo({ top: carTop() - navH() + (maxShift ? (shift / maxShift) * r : 0), behavior: "smooth" });
+        scrollTo({ top: carTop() - navH() + hold() + (maxShift ? (shift / maxShift) * r : 0), behavior: "smooth" });
       }
       car.querySelectorAll(".cb-car-btn").forEach((btn) => btn.addEventListener("click", () => goTo(idx + Number(btn.dataset.dir))));
       view.addEventListener("keydown", (e) => {

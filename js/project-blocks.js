@@ -309,16 +309,11 @@
       },
       blocks: [
         {
-          type: "split", tone: "pink", side: "right", phone: true,
+          type: "carousel", tone: "pink", phoneImg: am("phone", 650, 1252, "Instagram: the account’s weekly horoscope post on a phone"),
           title: "Horoscopes, creative writing and editing",
           text: "As part of my contribution to the team, I’ve crafted daily, weekly, monthly and annual astrological reports on a relatable and fun tone. No complex words or technical concepts hard to understand, just the pure substance of it. We’re like your obsessed-with-the-stars bff who just wants the best for you, and is def gonna tell you.",
           stat: "Our horoscope’s audience has grown from 35k likes and 150 comments per post on 2022, to 66.2k likes and 3k comments per post on average.",
           note: "Important note: my role here involves writing and layout, not illustration",
-          image: am("feed", 572, 1454, "The account’s weekly horoscope post on Instagram"),
-        },
-        {
-          type: "carousel", tone: "pink",
-          title: "Weekly horoscopes",
           images: [1, 2, 3, 4, 5].map((i) => am(`post-${i}`, 720, 900, "Weekly horoscope post")),
         },
         {
