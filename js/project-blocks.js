@@ -387,7 +387,7 @@
           ],
         },
         {
-          type: "carousel", tone: "forest", cut: true,
+          type: "carousel", tone: "forest", cut: true, dark: true,
           title: "The Illustrations",
           text: "The first batch of botanical illustrations were focused on common plants in Germany that have high risk of being misidentified, and their dangerous lookalikes are a menace for all foragers.",
           steps: ["The early blooming, blooming and late state", "Its unique characteristics and differentiators from its lookalikes", "The flowers close-up", "The stems details", "The leaf close-up"],

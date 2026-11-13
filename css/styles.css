@@ -875,6 +875,7 @@ body.lb-open { overflow: hidden; }
 .cb-car-track { display: flex; align-items: flex-end; gap: clamp(16px, 2.4vw, 36px); position: relative; width: max-content; will-change: transform; }
 .cb-car-item { margin: 0; flex: none; }
 .cb-car-item img { display: block; width: auto; max-width: none; height: min(calc(100vh - var(--nav-h) - 150px), 760px); border-radius: 6px; }
+.cb-car-item.is-dark img { background: #1d2018; border-radius: 6px; filter: none; }
 .cb-car-item figcaption { margin-top: 12px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .cb-car-ctl { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
 .cb-car-btn {

@@ -90,7 +90,7 @@
             </div>
             <div class="cb-car-view" tabindex="0" role="group" aria-roledescription="carousel" aria-label="${b.title || "Gallery"}: scroll sideways">
               <div class="cb-car-track">
-                ${b.images.map((im, i) => `<figure class="cb-car-item ${b.handles ? "has-handles" : ""}">${b.handles ? "<i></i><i></i><i></i><i></i>" : ""}${b.phone ? `<div class="cb-phone">${pic(im, "", false)}</div>` : pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
+                ${b.images.map((im, i) => `<figure class="cb-car-item ${b.handles ? "has-handles" : ""} ${b.dark ? "is-dark" : ""}">${b.handles ? "<i></i><i></i><i></i><i></i>" : ""}${b.phone ? `<div class="cb-phone">${pic(im, "", false)}</div>` : pic(im, b.cut && im.alpha !== false ? "cb-cut" : "", false)}${b.captions ? `<figcaption>${b.captions[i] || ""}</figcaption>` : ""}</figure>`).join("")}
               </div>
             </div>
           </div>
