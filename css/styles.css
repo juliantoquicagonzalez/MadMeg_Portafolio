@@ -924,8 +924,9 @@ body.lb-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .cb-scene .sc-item { transition: none; } .cb-scene .sc-item:hover { transform: none; } }
 /* invisible click areas over a composed image: each opens its own piece in the viewer */
 .cb-full.has-spots { position: relative; }
-.cb-full .hs { position: absolute; padding: 0; border: 0; background: transparent; cursor: zoom-in; border-radius: 18px; transition: background .25s, box-shadow .25s; }
-.cb-full .hs:hover, .cb-full .hs:focus-visible { background: rgba(255, 255, 255, .14); box-shadow: 0 0 0 3px rgba(255, 255, 255, .55) inset; outline: none; }
+.cb-full .hs { position: absolute; padding: 0; border: 0; background-repeat: no-repeat; cursor: zoom-in; transition: transform .35s var(--ease-out), filter .35s; }
+.cb-full .hs:hover, .cb-full .hs:focus-visible { transform: scale(1.06); z-index: 5; filter: drop-shadow(0 14px 20px rgba(0, 0, 0, .35)); outline: none; }
+@media (prefers-reduced-motion: reduce) { .cb-full .hs { transition: none; } .cb-full .hs:hover { transform: none; } }
 .cb-full-block > * { max-width: none; }
 .cb-full-block .cb-full img { width: 100%; height: auto; }
 

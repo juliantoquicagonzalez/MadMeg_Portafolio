@@ -111,7 +111,7 @@
       },
       video: (b) => `
         <div class="cb-video rv"><iframe title="${b.title}" src="${b.src}" loading="lazy" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>`,
-      full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%"></button>`).join("")}</figure>`,
+      full: (b) => `<figure class="cb-full rv ${b.spots ? "has-spots" : ""}">${pic(b.image, b.spots ? "no-lb" : "")}${(b.spots || []).map((s) => `<button type="button" class="hs" data-full="${s.src}" data-alt="${s.alt}" data-bg="${s.bg || ""}" aria-label="Open: ${s.alt}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;background-image:url(${b.image.src});background-size:${Math.round(1e6 / s.w) / 100}% ${Math.round(1e6 / s.h) / 100}%;background-position:${s.w >= 100 ? 0 : Math.round((s.x / (100 - s.w)) * 1e4) / 100}% ${s.h >= 100 ? 0 : Math.round((s.y / (100 - s.h)) * 1e4) / 100}%"></button>`).join("")}</figure>`,
     };
     return blocks
       .map((b, i) => {

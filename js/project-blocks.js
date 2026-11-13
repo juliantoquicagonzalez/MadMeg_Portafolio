@@ -369,7 +369,7 @@
         },
         { type: "full", tone: "moss", edge: true, spots: [{ src: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 9.03, y: 17.54, w: 21.53, h: 58.82 }, { src: "assets/projects/wild-forager/c/scr-plant.webp", alt: "Plant profile: Pineappleweed", x: 61.81, y: 12.9, w: 15.62, h: 49.54 }], image: wf("frame-experience", 2880, 1938, "The experience: the map, plant profile and the app's key moments, with annotations") },
         {
-          type: "gallery", tone: "moss", cols: 9, contain: true, icons: true, circles: true,
+          type: "gallery", tone: "mint", cols: 9, contain: true, icons: true, circles: true,
           text: "Type of flowers · Type of leafs",
           images: [
             wf("ic-1", 248, 253, "Many-petal flower"), wf("ic-2", 232, 245, "Four-petal flower"), wf("ic-3", 256, 254, "Five-petal flower"),
