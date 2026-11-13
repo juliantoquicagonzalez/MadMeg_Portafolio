@@ -219,12 +219,13 @@
         paper: { bg: "#efe7dc", fg: "#1a1616", accent: "#8c2a24" },
       },
       blocks: [
-        { type: "full", tone: "moss", edge: true, spots: [
-            { src: "assets/projects/wild-forager/c/mood-logo.webp", alt: "Logo and brand moodboard", x: 5.35, y: 19.74, w: 24.65, h: 30.02 },
-            { src: "assets/projects/wild-forager/c/mood-type.webp", alt: "Typography moodboard", x: 65.56, y: 23.44, w: 29.1, h: 29.55 },
-            { src: "assets/projects/wild-forager/c/mood-ui.webp", alt: "Visual style moodboard", x: 16.25, y: 46.29, w: 34.17, h: 33.25 },
-            { src: "assets/projects/wild-forager/c/mood-illustration.webp", alt: "Illustration moodboard", x: 48.61, y: 59.45, w: 25.62, h: 35.89 },
-          ], image: wf("frame-mood", 2880, 1672, "Moodboards and refs: logo and brand, typography, visual style and illustration") },
+        {
+          type: "gallery", tone: "paper", cols: 2,
+          title: "Moodboards & Refs",
+          text: "Working really close to Alice in Doomland’s band director, we created this comic-like, 2D aesthetic, using references such as Little Nightmares, Alice Madness Returns and Don’t Starve, where horror meets childness to create a unique, eery and intriguing aesthetic.",
+          images: [al("mood-aesthetic", 1400, 875, "General aesthetic moodboard"), al("mood-light", 1400, 875, "Lighting and colors moodboard")],
+          captions: ["General aesthetic moodboard", "Lighting and colors moodboard"],
+        },
         {
           type: "gallery", tone: "paper", cols: 4,
           text: "Each character is a band member, with its unique personality embedded into Alice’s Story",
@@ -345,22 +346,19 @@
       },
       blocks: [
         { type: "full", tone: "forest", edge: true, spots: [{ src: "assets/projects/wild-forager/c/scr-home.webp", alt: "Plants near you: map and plant list", x: 16.39, y: 6.65, w: 20.83, h: 82.45 }], image: wf("frame-notice", 2880, 1504, "You probably walk past edible wild plants all the time without noticing them. Wild Forager helps users notice their surroundings again.") },
+        { type: "full", tone: "moss", edge: true, spots: [
+            { src: "assets/projects/wild-forager/c/mood-logo.webp", alt: "Logo and brand moodboard", x: 5.35, y: 19.74, w: 24.65, h: 30.02 },
+            { src: "assets/projects/wild-forager/c/mood-type.webp", alt: "Typography moodboard", x: 65.56, y: 23.44, w: 29.1, h: 29.55 },
+            { src: "assets/projects/wild-forager/c/mood-ui.webp", alt: "Visual style moodboard", x: 16.25, y: 46.29, w: 34.17, h: 33.25 },
+            { src: "assets/projects/wild-forager/c/mood-illustration.webp", alt: "Illustration moodboard", x: 48.61, y: 59.45, w: 25.62, h: 35.89 },
+          ], image: wf("frame-mood", 2880, 1672, "Moodboards and refs: logo and brand, typography, visual style and illustration") },
         {
-          type: "gallery", tone: "moss", cols: 2,
-          title: "Moodboards & Refs",
-          images: [
-            wf("mood-logo", 888, 725, "Logo and brand moodboard"), wf("mood-type", 1100, 647, "Typography moodboard"),
-            wf("mood-illustration", 1031, 827, "Illustration moodboard"), wf("mood-ui", 1100, 599, "App UI and visual style moodboard"),
-          ],
-          captions: ["Logo & brand", "Typography", "Illustration", "Visual style"],
-          descs: [
-            "Lino-cut, flat colors and strong shapes. Inspired on “Food not bombs” logo and the raised fist symbolizing food sovereignty and people’s dignity.",
-            "Relaxed, playful, handwritten and bold. But also professional, neutral and easy to understand. Rebelliousness meets accessibility while staying bold.",
-            "Colorful, detailed and accurate, but also easy to read and clear. Botanical traditional illustration, created for the people and not scientists.",
-            "Lino-cut inspired, strong silhouettes and shapes. Negative and positive space relationship. Hand made, bold, fun and unique.",
-          ],
+          type: "split", tone: "mint", side: "left",
+          title: "The Fist Up",
+          text: "Wild Forager is designed to slow the process down: observe first, compare carefully, and prioritize habitats over harvest. Made to help users engage with the Wild as a part of it, and not as an intruder.",
+          stat: "The Fist Up as a wink to the next revolution: not only technologic but also environmentally friendly. The dandelion as a symbol of the hope and dreams of a better future.",
+          image: wf("fist", 905, 1160, "Raised fist holding dandelions"),
         },
-        { type: "full", tone: "forest", edge: true, image: wf("frame-fist", 2880, 1006, "The Fist Up: Wild Forager is designed to slow the process down. The raised fist holding dandelions, a wink to the next revolution.") },
         {
           type: "gallery", tone: "mint", cols: 2, contain: true,
           images: [wf("logo-a", 886, 393, "Wild Forager horizontal logo"), wf("logo-b", 886, 393, "Wild Forager horizontal logo, light version")],
