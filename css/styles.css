@@ -26,7 +26,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); overflow-x: clip; } /* mobile Chrome widens the page to fit off-screen pieces unless html clips too */
 body {
   margin: 0;
   background: var(--cream);
