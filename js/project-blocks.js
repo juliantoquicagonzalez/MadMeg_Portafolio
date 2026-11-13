@@ -37,6 +37,7 @@
         parchment: { bg: "#f3e8d2", fg: "#2b1a10", accent: "#5d4ad9" },
         amethyst: { bg: "#5d4ad9", fg: "#f6f1e9", accent: "#ffd76a" },  // Mystic Amethyst
         cream: { bg: "#f6f1e9", fg: "#2b1a10", accent: "#5d4ad9" },
+        periwinkle: { bg: "#9ba9f5", fg: "#1f1e1e", accent: "#5d4ad9" },
       },
       blocks: [
         {
@@ -59,7 +60,7 @@
         },
         { type: "full", tone: "cream", image: mp("typography", 2107, 544, "Chaloops font for the titles, Providence Sans for body text, and the game’s colour palette: Mystic Amethyst #5D4AD9, Deep Midnight #272559, Lapis Powder #0A3EA6, #5CB6F9, #592202 and #CE5936") },
         {
-          type: "scene", tone: "cream", flat: true, pb0: true, w: 1440, h: 638, bg: "#9ba9f5", itemBg: "#9ba9f5", radius: "clamp(24px, 3.5vw, 52px) clamp(24px, 3.5vw, 52px) 0 0",
+          type: "scene", tone: "periwinkle", flat: true, pb0: true, w: 1440, h: 638, itemBg: "#9ba9f5",
           layers: [
             { src: "assets/projects/matching-potions/c/gs-title.webp", alt: "Game Screens", x: 571.3, y: 42.4, w: 297.9, h: 33.8, still: true },
             { src: "assets/projects/matching-potions/c/gs-1.webp", full: "assets/projects/matching-potions/c/sf-1.webp", alt: "Intro: the alchemy journal", x: 90, y: 140.1, w: 256.2, h: 483 },
@@ -70,7 +71,7 @@
           ],
         },
         {
-          type: "scene", tone: "cream", pt0: true, w: 1440, h: 683, bg: "#9ba9f5", itemBg: "#9ba9f5", radius: "0 0 clamp(24px, 3.5vw, 52px) clamp(24px, 3.5vw, 52px)",
+          type: "scene", tone: "periwinkle", pt0: true, w: 1440, h: 683, itemBg: "#9ba9f5",
           layers: [
             { src: "assets/projects/matching-potions/c/potion-cluster.webp", alt: "Prosperity on a Jar identification card and potion", nobg: true, x: 55, y: 120, w: 348, h: 443 },
             { src: "assets/projects/matching-potions/c/wl-lose.webp", full: "assets/projects/matching-potions/c/sf-lose.webp", alt: "Lose screen: Ohhh… nice soup", x: 422, y: 78, w: 335.2, h: 605 },
