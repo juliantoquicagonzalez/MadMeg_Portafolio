@@ -1155,3 +1155,7 @@ body.lb-open { overflow: hidden; }
   .cb-car-phone { display: none; }
   .cb-car-view.has-phone .cb-car-track { padding-left: 0; }
 }
+
+/* bigger carousel: the images take the room the phone used to occupy */
+.cb-carousel-block .cb-car-stage.is-big .cb-car-item img, .cb-car-stage.is-big .cb-car-item img { height: min(calc(100vh - var(--nav-h) - 90px), 820px); }
+@media (max-width: 760px) { .cb-car-stage.is-big .cb-car-item img { height: min(72vh, 560px); } }

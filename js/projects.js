@@ -136,7 +136,9 @@ window.PROJECTS = [
     ],
     "cover": "assets/projects/astrologia-millennial/card.webp",
     "hero": "assets/projects/astrologia-millennial/hero.webp",
-    "sections": []
+    "sections": [],
+    "heroW": 2880,
+    "heroH": 996
   },
   {
     "slug": "the-luck-and-the-hare",

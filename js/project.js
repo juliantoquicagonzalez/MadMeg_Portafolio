@@ -77,7 +77,7 @@
         </div>`,
       carousel: (b) => `
         <div class="cb-carousel" style="--n:${b.images.length}">
-          <div class="cb-car-stage">
+          <div class="cb-car-stage ${b.big ? "is-big" : ""}">
             <div class="cb-col cb-car-text rv">
               ${b.titleImage ? `<h2 class="cb-title cb-title-img"><img class="no-lb" src="${b.titleImage.src}" alt="${b.title}" width="${b.titleImage.w}" height="${b.titleImage.h}" /></h2>` : head(b.title)}${para(b.text)}
               ${b.steps ? `<ol class="cb-steps">${b.steps.map((s) => `<li>${s}</li>`).join("")}</ol>` : ""}
