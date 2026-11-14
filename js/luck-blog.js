@@ -2,7 +2,8 @@
    The Luck & The Hare — behaviour of the interactive BLOG sketch
    (markup in luck-web.html, styles in css/luck-blog.css + luck-home.css).
    Categories and tags filter the entries, the search box filters as you type,
-   "Infinite scroll" loads more entries while you scroll (or a button when it is off).
+   The "Infinite scroll" switch is on by default (as in the Figma, so the page keeps its short length);
+   switching it off shows a "Load more" button that adds a few more entries.
    Nothing leaves the page: it is a sketch.
    ========================================================= */
 (() => {
@@ -70,6 +71,7 @@
     } else {
       box.innerHTML = Array.from({ length: state.batches }, (_, k) => batchHtml(list, k)).join("");
     }
+    // the page keeps the length of the Figma frame: more entries only appear when "Infinite scroll" is off and the visitor asks for them
     more.hidden = state.infinite || !list.length || state.batches >= MAX_BATCHES;
     $$(".lwb-cat").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.cat === state.cat)));
   };
@@ -98,10 +100,6 @@
       render();
     });
     $(".lwh-btn", more).addEventListener("click", grow);
-    const sentinel = $("#lwb-sentinel");
-    if (window.IntersectionObserver) {
-      new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting) && state.infinite && !root.hidden) grow(); }, { root: screen, rootMargin: "0px 0px 120px 0px" }).observe(sentinel);
-    }
   }, "infinite");
 
   render();
