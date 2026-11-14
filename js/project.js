@@ -20,7 +20,7 @@
   /* ---------- composed sections (js/project-blocks.js) ---------- */
   function renderBlocks({ theme, blocks, font }) {
     const pic = (im, cls = "", lazy = true) =>
-      `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${im.lbbg ? "data-lbbg" : ""} ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
+      `<img class="${cls}" src="${im.src}" alt="${im.alt || ""}" width="${im.w}" height="${im.h}" ${im.lbbg ? "data-lbbg" : ""} ${im.pos ? `style="object-position:${im.pos}"` : ""} ${lazy ? 'loading="lazy"' : ""} decoding="async" />`;
     const para = (t) => (t ? `<p class="cb-text">${t}</p>` : "");
     const head = (t) => (t ? `<h2 class="cb-title">${t}</h2>` : "");
     const fonts = (b) => b.fonts.map((f) => `<div class="cb-font"><span class="cb-font-name">${f.name}</span><span class="cb-font-role">${f.role}</span></div>`).join("");

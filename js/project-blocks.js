@@ -216,7 +216,12 @@
         },
         {
           type: "gallery", tone: "coconut", cols: 2, square: true, maxw: "760px",
-          images: [lh("merch-mug", 1232, 864, "Mug: “No harm, just charm!”"), lh("merch-shirt", 1024, 1024, "T-shirt: “Eat kindly, stay lucky.”")],
+          images: [
+            lh("merch-mug", 1232, 864, "Mug: “No harm, just charm!”"),
+            lh("merch-shirt", 1024, 1024, "T-shirt: “Eat kindly, stay lucky.”"),
+            { ...lh("merch-bag", 872, 696, "The Night Leaper coffee bag next to the “Eat kindly, stay lucky.” mug"), pos: "71% 50%" },
+            lh("merch-store", 1080, 1080, "Storefront: “Coffee, Dark. Conscience, Clear.”"),
+          ],
         },
         // the menu frame (Figma), edge to edge; replaces the "Shop" web mockup
         { type: "full", tone: "ink", edge: true, centerStart: true, image: lh("menu", 1440, 744, "Menu: All-day eats, Our roastery, Drinks & tea, Desserts and Treats") },
