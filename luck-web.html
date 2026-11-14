@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website sneak peek — The Luck &amp; The Hare — Madmeg</title>
+  <meta name="description" content="A first look at the website sketched for The Luck &amp; The Hare, a plant-based coffee shop: home, shop and blog." />
+  <link rel="icon" type="image/svg+xml" href="assets/letters/star.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=gambetta@700&display=swap" rel="stylesheet" />
+  <!-- The Luck & The Hare: its brand fonts (Fontshare serves one family per request) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,900&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=telma@700&display=swap" rel="stylesheet" />
+  <!-- Tumb, licensed through Maria's Adobe Fonts (Creative Cloud) web project -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/sxu4bkt.css" />
+  <link rel="stylesheet" href="css/styles.css?v=202611141230" />
+</head>
+<body>
+  <header class="nav">
+    <a class="nav-logo" href="index.html"><img src="assets/letters/star.svg" alt="" />Madmeg</a>
+    <a class="nav-link is-active" href="index.html#work"><span>Work</span></a>
+    <a class="nav-link" href="index.html#about"><span>About</span></a>
+    <a class="nav-link" href="index.html#contact"><span>Contact</span></a>
+    <div class="nav-spacer"></div>
+  </header>
+
+  <main class="lw">
+    <section class="lw-intro">
+      <a class="lw-back" href="project.html?p=the-luck-and-the-hare">← Back to The Luck &amp; The Hare</a>
+      <p class="lw-k">Sneak peek · work in progress</p>
+      <h1 class="lw-title">The website,<br />a first look.</h1>
+      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, merch and gifts, and a blog for the community. Browse the tabs and scroll inside the window.</p>
+    </section>
+
+    <section class="lw-stage" aria-label="Website sketch">
+      <div class="lw-browser">
+        <div class="lw-chrome">
+          <span class="lw-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div class="lw-tabs" role="tablist" aria-label="Pages of the website">
+            <button type="button" role="tab" id="tab-home" aria-controls="lw-screen" aria-selected="true" data-page="home" data-path="">Home</button>
+            <button type="button" role="tab" id="tab-shop" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="shop" data-path="shop">Shop</button>
+            <button type="button" role="tab" id="tab-blog" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="blog" data-path="blog">Blog</button>
+          </div>
+        </div>
+        <div class="lw-address"><span class="lw-lock" aria-hidden="true">●</span><span id="lw-url">theluckandthehare.com/</span></div>
+        <div class="lw-screen" id="lw-screen" role="tabpanel" tabindex="0" aria-labelledby="tab-home">
+          <img id="lw-img" src="assets/projects/the-luck-and-the-hare/web/home.webp" alt="Home page: hero with the Night Leaper bag and mug, welcome to the burrow, top dishes, full menu, visit us in-store and the food truck schedule" width="1440" height="4947" decoding="async" />
+        </div>
+      </div>
+      <p class="lw-hint" id="lw-hint">Scroll inside the window ↓</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2026 María José Madrigal</div>
+    <div class="grow"><a href="project.html?p=the-luck-and-the-hare">← Back to the case study</a></div>
+    <a href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
+  </footer>
+
+  <script>
+    (() => {
+      const pages = {
+        home: { src: "assets/projects/the-luck-and-the-hare/web/home.webp", h: 4947, alt: "Home page: hero with the Night Leaper bag and mug, welcome to the burrow, top dishes, full menu, visit us in-store and the food truck schedule" },
+        shop: { src: "assets/projects/the-luck-and-the-hare/web/shop.webp", h: 3226, alt: "Shop page: Colombian coffee blends with the Early Hopper product, T-shirts, mugs, caps and kits and gifts" },
+        blog: { src: "assets/projects/the-luck-and-the-hare/web/blog.webp", h: 2154, alt: "Blog page: categories, featured article about the march for animal rights, recent posts and the newsletter sign-up" },
+      };
+      const tabs = [...document.querySelectorAll(".lw-tabs [role=tab]")];
+      const img = document.getElementById("lw-img"), screen = document.getElementById("lw-screen");
+      const url = document.getElementById("lw-url"), hint = document.getElementById("lw-hint");
+      const show = (name, focus) => {
+        const p = pages[name]; if (!p) return;
+        tabs.forEach((t) => { const on = t.dataset.page === name; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on) { screen.setAttribute("aria-labelledby", t.id); url.textContent = "theluckandthehare.com/" + t.dataset.path; if (focus) t.focus(); } });
+        img.src = p.src; img.alt = p.alt; img.height = p.h;
+        screen.scrollTop = 0;
+        try { history.replaceState(null, "", name === "home" ? location.pathname : "#" + name); } catch (e) {}
+      };
+      tabs.forEach((t, i) => {
+        t.addEventListener("click", () => show(t.dataset.page));
+        t.addEventListener("keydown", (e) => {
+          const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+          if (d) { e.preventDefault(); show(tabs[(i + d + tabs.length) % tabs.length].dataset.page, true); }
+        });
+      });
+      // the hint fades once the visitor has scrolled the window
+      screen.addEventListener("scroll", () => { if (screen.scrollTop > 40) hint.classList.add("is-gone"); }, { passive: true });
+      const start = location.hash.slice(1);
+      if (pages[start]) show(start);
+    })();
+  </script>
+</body>
+</html>

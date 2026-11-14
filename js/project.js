@@ -115,7 +115,8 @@
       // endless strip of stickers (a seamless tile that slides sideways; decorative, so not clickable)
       marquee: (b) => `<div class="cb-marquee" aria-hidden="true" style="background-image:url(${b.src});--tw:${b.w};--th:${b.h}"></div>`,
       text: (b) => `
-        <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>`,
+        <div class="cb-center rv">${head(b.title)}${para(b.text)}${b.note ? `<p class="cb-note">${b.note}</p>` : ""}</div>
+        ${b.cta ? `<div class="cb-cta-wrap rv">${b.cta.k ? `<p class="cb-cta-k">${b.cta.k}</p>` : ""}<a class="cb-cta" href="${b.cta.href}">${b.cta.label}<span aria-hidden="true">→</span></a></div>` : ""}`,
       scene: (b) => {
         // a composition of separate pieces (exported from Figma) laid out as in the design; the interactive ones open on their own and grow a little on hover
         const pc = (v, t) => `${Math.round((v / t) * 10000) / 100}%`;

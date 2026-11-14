@@ -229,6 +229,8 @@
           type: "text", tone: "red",
           title: "Thanks for watching!",
           text: "The Luck & The Hare is a plant-based sanctuary for the rebels, the fast-movers, and the dreamers. We’re Anna, Joshua and Poppy, three friends united by a cause 6 years ago.",
+          // invitation to the website sketch (luck-web.html), kept out of the case study itself
+          cta: { k: "Curious how the website would look?", label: "See the website sneak peek ", href: "luck-web.html" },
         },
       ],
     },
