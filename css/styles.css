@@ -1335,3 +1335,14 @@ body.lb-open { overflow: hidden; }
 .cb-cta:focus-visible { outline: 3px solid #fff5ea; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .cb-cta, .cb-cta span { transition: none; } .cb-cta:hover { transform: none; } }
 .lw-screen > img[hidden] { display: none; }
+
+/* the page of the sketched site: scrolling snaps so the browser window is framed right under the nav */
+html.lw-snap { scroll-snap-type: y mandatory; }
+/* (the html element already has scroll-padding-top: nav height) */
+.lw-snap .lw-intro { scroll-snap-align: start; }
+.lw-snap .lw-browser { scroll-snap-align: start; scroll-margin-top: 12px; }
+.lw-snap .footer { scroll-snap-align: end; }
+@media (max-width: 760px) { html.lw-snap { scroll-snap-type: y proximity; } }
+@media (prefers-reduced-motion: reduce) { html.lw-snap { scroll-snap-type: none; } }
+/* enough pink below the window so the page can scroll far enough for it to sit right under the nav */
+.lw-snap .lw-stage { min-height: calc(100vh - var(--nav-h)); }
