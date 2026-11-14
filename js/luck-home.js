@@ -120,14 +120,30 @@
     });
 
     // menu: the frame follows how far the menu has travelled up the window
+    // The menu panel is pinned in the middle of the window for a while (a pause to read it):
+    // --stick centres it under the nav, and the section is made taller by the length of the pause.
+    const section = root.querySelector(".lwh-menu"), stage = root.querySelector(".lwh-menu-stage");
+    let stickCss = 0; // (shared with the scroll mapping below)
+    const layout = () => {
+      const z = parseFloat(root.style.zoom) || 1, Hd = screen.clientHeight / z;
+      const stick = 42 + ((Hd - 42) - 719) / 2 - 98;           // panel is 719 tall and starts 98px into the stage
+      const hold = reduce ? 0 : Math.round(Hd * 0.75);          // pause: three quarters of a window of scrolling
+      root.style.setProperty("--stick", stick + "px");
+      section.style.height = 915 + hold + "px";
+      stickCss = stick * z;
+    };
+    layout();
+    if (window.ResizeObserver) new ResizeObserver(layout).observe(screen);
+    addEventListener("resize", layout);
     const menu = document.getElementById("lwh-menu-seq");
     if (menu) lazy(menu, () => {
       const seq = frames(menu);
       let cur = 0, ready = false, shown = -1;
       const target = () => {
         if (reduce) return seq.n - 1;
-        const sr = screen.getBoundingClientRect(), r = menu.getBoundingClientRect(), H = sr.height;
-        const p = clamp((H * 0.95 - (r.top - sr.top)) / (H * 0.8), 0, 1); // starts as the menu enters, ends when it has reached the upper part
+        const sr = screen.getBoundingClientRect(), r = stage.getBoundingClientRect(), H = sr.height;
+        const from = H * 0.95, to = Math.max(H * 0.1, stickCss + 1);
+        const p = clamp((from - (r.top - sr.top)) / (from - to), 0, 1); // starts as the menu enters, ends when it gets pinned
         return p * (seq.n - 1);
       };
       const tick = () => {

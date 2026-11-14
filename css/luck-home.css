@@ -6,7 +6,7 @@
    ========================================================= */
 .lwh {
   --cream: #fff5ea; --bubble: #f2abda; --cherry: #ba1d21; --onyx: #000;
-  position: relative; width: 1440px; overflow: hidden;
+  position: relative; width: 1440px; overflow: clip; /* clip, not hidden: keeps position:sticky working for the nav and the menu */
   background: var(--cream); color: var(--onyx);
   font-family: 'Cabinet Grotesk', system-ui, sans-serif; line-height: normal;
   -webkit-font-smoothing: antialiased;
@@ -136,6 +136,8 @@
 
 /* ---------- menu ---------- */
 .lwh-menu { position: relative; height: 915px; background: var(--cream); }
+/* the menu stays in place while its animation ends, so there is time to read it (height of the pause is set by the script) */
+.lwh-menu-stage { position: sticky; top: var(--stick, 42px); height: 915px; }
 .lwh-menu-panel {
   position: absolute; left: 153px; top: 98px; width: 1140px; height: 719px;
   background: var(--bubble); border: 1px solid #000; border-radius: 17.498px; overflow: hidden;
