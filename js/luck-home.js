@@ -85,18 +85,22 @@
     requestAnimationFrame(tick);
   }, "strips");
 
-  /* ---- top dishes: click a dish to see it as a line drawing ---- */
+  /* ---- top dishes: pass the mouse over a dish to see it as a line drawing (tap / Enter on touch and keyboard) ---- */
   safe(() => {
     const cards = [...root.querySelectorAll(".lwh-card")];
     const set = (card, on) => { card.classList.toggle("is-outline", on); card.setAttribute("aria-pressed", String(on)); };
     cards.forEach((card) => {
+      const slot = card.parentElement;
+      let mouse = false;
+      slot.addEventListener("pointerenter", (e) => { mouse = e.pointerType === "mouse"; if (mouse) set(card, true); });
+      slot.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") set(card, false); });
       const toggle = () => { const on = !card.classList.contains("is-outline"); cards.forEach((c) => set(c, false)); set(card, on); };
-      card.addEventListener("click", (e) => { if (e.target.closest(".lwh-btn")) return; toggle(); });
+      card.addEventListener("click", (e) => { if (e.target.closest(".lwh-btn") || mouse) return; toggle(); });
       card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
     });
   }, "dishes");
 
-  /* ---- stores: the accordion shows one store at a time ---- */
+  /* ---- stores: the accordion shows one store at a time; hovering a store opens it (click on touch) ---- */
   safe(() => {
     const stores = [...root.querySelectorAll(".lwh-store")];
     const open = (store) => stores.forEach((s) => {
@@ -106,6 +110,10 @@
     });
     stores.forEach((s, i) => {
       const photo = s.querySelector(".lwh-store-photo");
+      let timer = 0;
+      // a short hover-intent delay so the row does not jitter while the cards slide under the pointer
+      s.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { clearTimeout(timer); timer = setTimeout(() => open(s), 110); } });
+      s.addEventListener("pointerleave", () => clearTimeout(timer));
       photo.addEventListener("click", () => open(s));
       photo.addEventListener("keydown", (e) => {
         const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
@@ -131,5 +139,10 @@
         set(d, on);
       });
     });
+    // Monday is open by default; its height is measured again once the fonts are in
+    const keep = () => { const o = days.find((d) => d.classList.contains("is-open")); if (o) o.style.height = o.scrollHeight + "px"; };
+    set(days[0], true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(keep);
+    addEventListener("load", keep);
   }, "days");
 })();

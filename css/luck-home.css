@@ -112,6 +112,8 @@
 .lwh-stars { position: absolute; left: 56px; top: 306px; width: 1334px; height: 183px; transform: rotate(180deg); pointer-events: none; }
 .lwh-stars img { width: 100%; height: 100%; }
 .lwh-cards { position: absolute; left: 255px; top: 224px; display: flex; gap: 48px; align-items: flex-start; }
+/* fixed-size slot: the card shrinks inside it when it turns into the outline, so the pointer never "falls out" and flickers */
+.lwh-card-slot { width: 280.263px; height: 471.408px; }
 .lwh-card {
   width: 280.263px; border: 1px solid #000; border-radius: 14px; overflow: hidden; cursor: pointer;
   background: var(--bubble); transition: transform .25s;
