@@ -16,7 +16,9 @@
   <!-- Tumb, licensed through Maria's Adobe Fonts (Creative Cloud) web project -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/sxu4bkt.css" />
-  <link rel="stylesheet" href="css/styles.css?v=202611141310" />
+  <link rel="stylesheet" href="css/styles.css?v=202611141450" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/luck-home.css?v=202611141450" />
 </head>
 <body>
   <header class="nav">
@@ -32,7 +34,7 @@
       <a class="lw-back" href="project.html?p=the-luck-and-the-hare">← Back to The Luck &amp; The Hare</a>
       <p class="lw-k">Sneak peek · work in progress</p>
       <h1 class="lw-title">The website,<br />a first look.</h1>
-      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, T-shirts, mugs and caps, and a blog for the community. Browse the tabs, from the home to each product page, and scroll inside the window.</p>
+      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, T-shirts, mugs and caps, and a blog for the community. Browse the tabs, from the home to each product page, and scroll inside the window. The home is alive: hover the buttons, touch the stickers, pick a dish, switch stores and unfold the days.</p>
     </section>
 
     <section class="lw-stage" aria-label="Website sketch">
@@ -51,7 +53,215 @@
         </div>
         <div class="lw-address"><span class="lw-lock" aria-hidden="true">●</span><span id="lw-url">theluckandthehare.com/</span></div>
         <div class="lw-screen" id="lw-screen" role="tabpanel" tabindex="0" aria-labelledby="tab-home">
-          <img id="lw-img" src="assets/projects/the-luck-and-the-hare/web/home.webp" alt="Home page: hero with the Night Leaper bag and mug, welcome to the burrow, top dishes, full menu, visit us in-store and the food truck schedule" width="1440" height="4947" decoding="async" />
+        <div class="lwh" id="lwh" aria-label="Interactive sketch of the home page">
+        <header class="lwh-nav">
+          <a class="lwh-nav-logo" href="#lwh" data-noop aria-label="The Luck &amp; The Hare, home"><img src="assets/projects/the-luck-and-the-hare/web/home/nav-logo.svg" alt="" width="75" height="29" /></a>
+          <div class="lwh-nav-spacer"></div>
+          <button type="button" class="lwh-nav-btn">SHOP</button>
+          <button type="button" class="lwh-nav-btn">BLOG</button>
+          <button type="button" class="lwh-nav-btn">CONTACT</button>
+          <button type="button" class="lwh-nav-btn">CART</button>
+          <button type="button" class="lwh-nav-btn">ORDER NOW</button>
+        </header>
+
+        <section class="lwh-hero">
+          <img src="assets/projects/the-luck-and-the-hare/web/home/hero.webp" alt="The Night Leaper coffee bag and mug on a café table" width="2000" height="967" decoding="async" />
+          <div class="lwh-hero-fade"></div>
+          <img class="lwh-hero-logo" src="assets/projects/the-luck-and-the-hare/web/home/hero-logo.svg" alt="The Luck &amp; The Hare" width="299" height="118" />
+          <p class="lwh-hero-text">Specialized in dark roasts and accessible vegan treats. We focus on the ethics so you can focus on the coffee.</p>
+          <button type="button" class="lwh-btn lwh-btn--bubble">Visit us</button>
+        </section>
+
+        <section class="lwh-welcome">
+          <div class="lwh-photo"><img src="assets/projects/the-luck-and-the-hare/web/home/team.webp" alt="Anna, Joshua and Poppy in their aprons" width="1328" height="950" loading="lazy" decoding="async" /></div>
+          <button type="button" class="lwh-sticker lwh-sticker--team" aria-label="Hare sticker: tap to make it wiggle"><img src="assets/projects/the-luck-and-the-hare/web/home/hare-sticker.svg" alt="" width="237" height="243" /></button>
+          <div class="lwh-welcome-text">
+            <h2>Welcome to the burrow!</h2>
+            <p class="p1">The Luck &amp; The Hare is a plant-based sanctuary for the rebels, the fast-movers, and the dreamers. We’re Anna, Joshua and Poppy, three friends united by a cause 6 years ago.</p>
+            <p class="p2">Our commitment to life goes beyond our plant-based menu. We are proud to share that a portion of every purchase is donated to animal sanctuaries across the country.</p>
+            <hr />
+            <button type="button" class="lwh-btn lwh-btn--black">Know more</button>
+          </div>
+        </section>
+
+        <div class="lwh-strip lwh-strip--red" data-phrase="Eat kindly, stay lucky" data-cols="#fff5ea,#f2abda" aria-hidden="true"><div class="lwh-track"></div></div>
+
+        <section class="lwh-dishes">
+          <h2>Our TOP dishes</h2>
+          <div class="lwh-stars" aria-hidden="true"><img src="assets/projects/the-luck-and-the-hare/web/home/stars.svg" alt="" width="1334" height="183" /></div>
+          <div class="lwh-cards">
+            <article class="lwh-card" data-dish="toast" tabindex="0" role="button" aria-pressed="false" aria-label="The Forager’s Toast: show the outline drawing">
+              <div class="face face-photo lwh-card-in">
+                <div class="lwh-dish-pic"><img src="assets/projects/the-luck-and-the-hare/web/home/dish-toast.webp" alt="Toast with mushrooms, kale and chimichurri" width="560" height="587" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text"><h3>The Forager’s Toast</h3><p>Sourdough base topped with  sautéed wild mushrooms, garlic-rubbed kale, and a vibrant, zesty house-made Chimichurri.</p></div>
+                <button type="button" class="lwh-btn lwh-btn--black">Order now</button>
+              </div>
+              <div class="face face-line">
+                <div class="lwh-dish-pic lwh-dish-pic--line"><img src="assets/projects/the-luck-and-the-hare/web/home/line-toast.webp" alt="Line drawing: toast with mushrooms, kale and chimichurri" width="540" height="546" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text" style="padding-bottom:25px"><h3>The Forager’s Toast</h3><p>Sourdough base topped with  sautéed wild mushrooms, garlic-rubbed kale, and a vibrant, zesty house-made Chimichurri.</p></div>
+              </div>
+            </article>
+            <article class="lwh-card" data-dish="waffle" tabindex="0" role="button" aria-pressed="false" aria-label="Red Velvet Waffles: show the outline drawing">
+              <div class="face face-photo lwh-card-in">
+                <div class="lwh-dish-pic"><img src="assets/projects/the-luck-and-the-hare/web/home/dish-waffle.webp" alt="Red velvet waffle with berries" width="560" height="587" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text"><h3>Red Velvet Waffles</h3><p>Beetroot Waffles topped with  blueberries, whipped coconut cream, and a drizzle of organic maple syrup.</p></div>
+                <button type="button" class="lwh-btn lwh-btn--black">Order now</button>
+              </div>
+              <div class="face face-line">
+                <div class="lwh-dish-pic lwh-dish-pic--line"><img src="assets/projects/the-luck-and-the-hare/web/home/line-waffle.webp" alt="Line drawing: red velvet waffle with berries" width="540" height="546" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text" style="padding-bottom:25px"><h3>Red Velvet Waffles</h3><p>Beetroot Waffles topped with  blueberries, whipped coconut cream, and a drizzle of organic maple syrup.</p></div>
+              </div>
+            </article>
+            <article class="lwh-card" data-dish="wrap" tabindex="0" role="button" aria-pressed="false" aria-label="Nomad Wrap: show the outline drawing">
+              <div class="face face-photo lwh-card-in">
+                <div class="lwh-dish-pic"><img src="assets/projects/the-luck-and-the-hare/web/home/dish-wrap.webp" alt="Falafel wraps on a plate" width="560" height="587" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text"><h3>Nomad Wrap</h3><p>Crispy herb-falafel tucked into a warm wrap with hummus, pickled red onions, cucumber, and a creamy lemon-tahini dressing.</p></div>
+                <button type="button" class="lwh-btn lwh-btn--black">Order now</button>
+              </div>
+              <div class="face face-line">
+                <div class="lwh-dish-pic lwh-dish-pic--line"><img src="assets/projects/the-luck-and-the-hare/web/home/line-wrap.webp" alt="Line drawing: falafel wraps on a plate" width="540" height="546" loading="lazy" decoding="async" /></div>
+                <div class="lwh-dish-text" style="padding-bottom:25px"><h3>Nomad Wrap</h3><p>Crispy herb-falafel tucked into a warm wrap with hummus, pickled red onions, cucumber, and a creamy lemon-tahini dressing.</p></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="lwh-menu">
+          <div class="lwh-menu-panel">
+            <img class="lwh-menu-grid" src="assets/projects/the-luck-and-the-hare/web/home/grid.webp" alt="" width="1138" height="615" loading="lazy" decoding="async" />
+            <div class="lwh-menu-bar"></div><div class="lwh-menu-line"></div>
+            <h2>Check out our full menu</h2>
+            <div class="lwh-menu-img"><img src="assets/projects/the-luck-and-the-hare/web/home/menu.webp" alt="The full menu: All-day eats, Our roastery, Drinks and tea, Desserts and Treats" width="1137" height="808" loading="lazy" decoding="async" /></div>
+            <button type="button" class="lwh-btn lwh-btn--black lwh-btn--cream-text">Order now</button>
+          </div>
+          <button type="button" class="lwh-sticker lwh-sticker--iced" aria-label="Iced coffee sticker: tap to make it wiggle"><img src="assets/projects/the-luck-and-the-hare/web/home/sticker-iced.svg" alt="" width="192" height="281" /></button>
+          <button type="button" class="lwh-sticker lwh-sticker--latte" aria-label="Latte sticker: tap to make it wiggle"><img src="assets/projects/the-luck-and-the-hare/web/home/sticker-latte.svg" alt="" width="245" height="222" /></button>
+        </section>
+
+        <div class="lwh-strip lwh-strip--pink" data-phrase="Follow the hare" data-cols="#000,#ba1d21" aria-hidden="true"><div class="lwh-track"></div></div>
+
+        <section class="lwh-visit">
+          <h2>Visit us in-store</h2>
+          <div class="lwh-stores">
+          <article class="lwh-store" data-store="victorian">
+            <button type="button" class="lwh-store-photo" aria-expanded="false" aria-label="Show Victorian Passage"><img src="assets/projects/the-luck-and-the-hare/web/home/store-victorian.webp" alt="" width="836" height="836" loading="lazy" decoding="async" /></button>
+            <div class="lwh-store-info">
+              <div class="lwh-store-title"><h3>Victorian Passage</h3></div>
+              <div class="lwh-store-desc">
+                <p class="addr">157 Hillingdon Crescent, Brixton.</p>
+                <p class="hours">Weekdays: 07:00 til 20:00<br />Weekends: 09:00 til 21:00<br />Holidays may vary.</p>
+                <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+              </div>
+            </div>
+          </article>
+          <article class="lwh-store" data-store="therese">
+            <button type="button" class="lwh-store-photo" aria-expanded="false" aria-label="Show St. Therese's Churchyard"><img src="assets/projects/the-luck-and-the-hare/web/home/store-therese.webp" alt="" width="836" height="836" loading="lazy" decoding="async" /></button>
+            <div class="lwh-store-info">
+              <div class="lwh-store-title"><h3>St. Therese's Churchyard</h3></div>
+              <div class="lwh-store-desc">
+                <p class="addr">24 Copper Kettle Lane, Kensington. Close to the church.</p>
+                <p class="hours">Weekdays: 07:00 til 20:00<br />Weekends: 09:00 til 21:00<br />Holidays may vary.</p>
+                <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+              </div>
+            </div>
+          </article>
+          <article class="lwh-store" data-store="nightingale">
+            <button type="button" class="lwh-store-photo" aria-expanded="false" aria-label="Show Nightingale Passage"><img src="assets/projects/the-luck-and-the-hare/web/home/store-nightingale.webp" alt="" width="836" height="836" loading="lazy" decoding="async" /></button>
+            <div class="lwh-store-info">
+              <div class="lwh-store-title"><h3>Nightingale Passage</h3></div>
+              <div class="lwh-store-desc">
+                <p class="addr">58 Nightingale Passage, Islington. In front of the blue house.</p>
+                <p class="hours">Weekdays: 07:00 til 20:00<br />Weekends: 09:00 til 21:00<br />Holidays may vary.</p>
+                <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+              </div>
+            </div>
+          </article>
+          <article class="lwh-store is-open" data-store="paddington">
+            <button type="button" class="lwh-store-photo" aria-expanded="true" aria-label="Show Paddington Avenue"><img src="assets/projects/the-luck-and-the-hare/web/home/store-paddington.webp" alt="" width="836" height="836" loading="lazy" decoding="async" /></button>
+            <div class="lwh-store-info">
+              <div class="lwh-store-title"><h3>Paddington Avenue</h3></div>
+              <div class="lwh-store-desc">
+                <p class="addr">147 Paddington Avenue, Juniper, W2 3BT.</p>
+                <p class="hours">Weekdays: 07:00 til 20:00<br />Weekends: 09:00 til 21:00<br />Holidays may vary.</p>
+                <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+              </div>
+            </div>
+          </article>
+          <article class="lwh-store" data-store="meridian">
+            <button type="button" class="lwh-store-photo" aria-expanded="false" aria-label="Show Meridian Coffee Co."><img src="assets/projects/the-luck-and-the-hare/web/home/store-meridian.webp" alt="" width="836" height="836" loading="lazy" decoding="async" /></button>
+            <div class="lwh-store-info">
+              <div class="lwh-store-title"><h3>Meridian Coffee Co.</h3></div>
+              <div class="lwh-store-desc">
+                <p class="addr">Pierside Gallery, Greenwich.</p>
+                <p class="hours">Weekdays: 07:00 til 20:00<br />Weekends: 09:00 til 21:00<br />Holidays may vary.</p>
+                <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+              </div>
+            </div>
+          </article>
+          </div>
+        </section>
+
+        <section class="lwh-truck">
+          <div class="lwh-truck-left">
+            <h2>Or catch our scheduled stops around the city</h2>
+            <div class="lwh-truck-img"><img src="assets/projects/the-luck-and-the-hare/web/home/truck.webp" alt="The Luck &amp; The Hare food truck" width="1032" height="842" loading="lazy" decoding="async" /></div>
+          </div>
+          <div class="lwh-days">
+          <div class="lwh-day" data-day="monday">
+            <button type="button" class="lwh-day-head" id="lwh-dayh-0" aria-expanded="false" aria-controls="lwh-dayb-0">Monday</button>
+            <div class="lwh-day-body" id="lwh-dayb-0" role="region" aria-labelledby="lwh-dayh-0">
+              <p class="place">Arts &amp; Culture Centre, 12 Riverside Walk, Southwark, SE1 9PX</p>
+              <p class="time">From 10:00 to 18:00</p>
+              <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+            </div>
+          </div>
+          <div class="lwh-day" data-day="tuesday">
+            <button type="button" class="lwh-day-head" id="lwh-dayh-1" aria-expanded="false" aria-controls="lwh-dayb-1">Tuesday</button>
+            <div class="lwh-day-body" id="lwh-dayb-1" role="region" aria-labelledby="lwh-dayh-1">
+              <p class="place">Public Library and Research Hub. Scholars’ Way, Islington, N1 2BL.</p>
+              <p class="time">From 08:30 to 18:00</p>
+              <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+            </div>
+          </div>
+          <div class="lwh-day" data-day="wednesday">
+            <button type="button" class="lwh-day-head" id="lwh-dayh-2" aria-expanded="false" aria-controls="lwh-dayb-2">Wednesday</button>
+            <div class="lwh-day-body" id="lwh-dayb-2" role="region" aria-labelledby="lwh-dayh-2">
+              <p class="place">Catholic University, Centre. In front of the gardens.</p>
+              <p class="time">From 07:00 to 18:00</p>
+              <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+            </div>
+          </div>
+          <div class="lwh-day" data-day="thursday">
+            <button type="button" class="lwh-day-head" id="lwh-dayh-3" aria-expanded="false" aria-controls="lwh-dayb-3">Thursday</button>
+            <div class="lwh-day-body" id="lwh-dayb-3" role="region" aria-labelledby="lwh-dayh-3">
+              <p class="place">Metropolitan University. Eastgate Circus, Shoreditch, E1 6HY</p>
+              <p class="time">From 09:00 to 20:00</p>
+              <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+            </div>
+          </div>
+          <div class="lwh-day" data-day="friday">
+            <button type="button" class="lwh-day-head" id="lwh-dayh-4" aria-expanded="false" aria-controls="lwh-dayb-4">Friday</button>
+            <div class="lwh-day-body" id="lwh-dayb-4" role="region" aria-labelledby="lwh-dayh-4">
+              <p class="place">The Garden Market. 4 Willow Passage, Richmond, TW10 6RF</p>
+              <p class="time">From 09:00 to 20:00</p>
+              <button type="button" class="lwh-btn lwh-btn--red">View on map</button>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <div class="lwh-strip lwh-strip--black" data-phrase="See you soon" data-cols="#ba1d21,#f2abda" aria-hidden="true"><div class="lwh-track"></div></div>
+
+        <footer class="lwh-footer">
+          <div class="lwh-foot-logo" aria-hidden="true"><img class="a" src="assets/projects/the-luck-and-the-hare/web/home/footer-logo-a.svg" alt="" /><img class="b" src="assets/projects/the-luck-and-the-hare/web/home/footer-logo-b.svg" alt="" /></div>
+          <p class="lwh-foot-about">The Luck &amp; The Hare is an artisanal vegan cuisine and coffee roastery. Our mission is to provide a cruelty-free delicious experience for those who value quality, sustainability and transparency.</p>
+          <div class="lwh-foot-col" style="left:523.5px"><h3>BROWSE</h3><a href="#lwh" data-noop>Home</a><a href="#lwh" data-noop>Shop</a><a href="#lwh" data-noop>Blog</a><a href="#lwh" data-noop>Contact</a><a href="#lwh" data-noop>Cart</a></div>
+          <div class="lwh-foot-col" style="left:726.5px"><h3>Services</h3><a href="#lwh" data-noop>Coffee blends</a><a href="#lwh" data-noop>Merch and apparel</a><a href="#lwh" data-noop>Catering and Bulk sales</a><a href="#lwh" data-noop>Community and Activism</a><a href="#lwh" data-noop>Hare and Animal protection</a></div>
+          <div class="lwh-foot-col" style="left:1046.5px"><h3>Contact</h3><a href="#lwh" data-noop>@theluckandthehare</a><a href="#lwh" data-noop>hello@theluckandthehare.com</a><a href="#lwh" data-noop>Privacy Policy</a><a href="#lwh" data-noop>Terms of Service</a></div>
+          <p class="lwh-foot-copy">© 2026 The Luck &amp; The Hare. All rights reserved</p>
+        </footer>
+      </div>
+      <img id="lw-img" alt="" width="1440" height="1000" decoding="async" hidden />
         </div>
       </div>
       <p class="lw-hint" id="lw-hint">Scroll inside the window ↓</p>
@@ -64,10 +274,11 @@
     <a href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
   </footer>
 
+  <script defer src="js/luck-home.js?v=202611141450"></script>
   <script>
     (() => {
       const pages = {
-        home: { src: "assets/projects/the-luck-and-the-hare/web/home.webp", h: 4947, alt: "Home page: hero with the Night Leaper bag and mug, welcome to the burrow, top dishes, full menu, visit us in-store and the food truck schedule" },
+        home: { live: true },
         shop: { src: "assets/projects/the-luck-and-the-hare/web/shop.webp", h: 3226, alt: "Shop page: Colombian coffee blends with the Early Hopper product, T-shirts, mugs, caps and kits and gifts" },
         coffee: { src: "assets/projects/the-luck-and-the-hare/web/coffee.webp", h: 1977, alt: "Coffee product pages: The Early Hopper, The Gentle Napper and The Night Leaper, each with its profile, vibe, best use, bag sizes and add to cart" },
         shirts: { src: "assets/projects/the-luck-and-the-hare/web/shirts.webp", h: 1973, alt: "T-shirts page: Eat Kindly Tee, Coffee Dark Tee and No Harm Tee with sizes and add to cart" },
@@ -80,10 +291,12 @@
       const url = document.getElementById("lw-url"), hint = document.getElementById("lw-hint");
       const show = (name, focus) => {
         const p = pages[name]; if (!p) return;
+        const home = document.getElementById("lwh");
         tabs.forEach((t) => { const on = t.dataset.page === name; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on) { screen.setAttribute("aria-labelledby", t.id); url.textContent = "theluckandthehare.com/" + t.dataset.path; if (focus) t.focus();
           // on phones the tab strip scrolls sideways: keep the chosen tab in view
           const strip = t.parentElement; if (t.offsetLeft < strip.scrollLeft || t.offsetLeft + t.offsetWidth > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: t.offsetLeft - 16, behavior: "smooth" }); } });
-        img.src = p.src; img.alt = p.alt; img.height = p.h;
+        if (p.live) { img.hidden = true; if (home) { home.hidden = false; if (home.fit) home.fit(); } }
+        else { if (home) home.hidden = true; img.hidden = false; img.src = p.src; img.alt = p.alt; img.height = p.h; }
         screen.scrollTop = 0;
         try { history.replaceState(null, "", name === "home" ? location.pathname : "#" + name); } catch (e) {}
       };

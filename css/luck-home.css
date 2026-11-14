@@ -1,0 +1,212 @@
+/* =========================================================
+   The Luck & The Hare — interactive HOME sketch (luck-web.html)
+   Built at the Figma's 1440px width (frame "HOME") and zoomed to fit
+   the browser window. Colours: CREAM #fff5ea, BUBBLEGUM #f2abda,
+   CHERRY #ba1d21, ONYX #000. Fonts: Cabinet Grotesk, Telma, Inter.
+   ========================================================= */
+.lwh {
+  --cream: #fff5ea; --bubble: #f2abda; --cherry: #ba1d21; --onyx: #000;
+  position: relative; width: 1440px; overflow: hidden;
+  background: var(--cream); color: var(--onyx);
+  font-family: 'Cabinet Grotesk', system-ui, sans-serif; line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+.lwh[hidden] { display: none; }
+.lwh *, .lwh *::before, .lwh *::after { box-sizing: border-box; }
+:where(.lwh) :where(p, h2, h3) { margin: 0; font-weight: inherit; }
+:where(.lwh) img { display: block; max-width: none; cursor: default; }
+:where(.lwh) button { font: inherit; color: inherit; border: 0; background: none; padding: 0; cursor: pointer; text-align: inherit; }
+:where(.lwh) a { color: inherit; text-decoration: none; }
+.lwh :focus-visible { outline: 3px solid var(--cherry); outline-offset: 2px; }
+
+/* ---------- buttons (Figma states: default / hover / pressed) ---------- */
+.lwh-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 5px 24px; border-radius: 20px; white-space: nowrap;
+  font: 900 15.789px/normal 'Cabinet Grotesk', sans-serif; text-align: center;
+  transition: background-color .18s, transform .18s, color .18s, box-shadow .18s;
+}
+.lwh-btn:hover { transform: translateY(-2px); }
+.lwh-btn:active, .lwh-btn.is-tap { transform: translateY(1px) scale(.97); }
+.lwh-btn--black { background: #000; color: var(--bubble); }
+.lwh-btn--black:hover { background: #414141; }
+.lwh-btn--black:active, .lwh-btn--black.is-tap { background: #000; color: var(--cream); }
+.lwh-btn--bubble { background: var(--bubble); color: var(--cherry); }
+.lwh-btn--bubble:hover { background: #ffd1ef; }
+.lwh-btn--bubble:active, .lwh-btn--bubble.is-tap { background: var(--bubble); color: #000; }
+.lwh-btn--red { background: var(--cherry); color: var(--bubble); }
+.lwh-btn--red:hover { background: #e85457; }
+.lwh-btn--red:active, .lwh-btn--red.is-tap { background: var(--cherry); color: var(--cream); }
+.lwh-btn--cream-text { color: var(--cream); }
+
+/* ---------- nav (type=sticky) ---------- */
+.lwh-nav {
+  position: sticky; top: 0; z-index: 30; height: 42px;
+  display: flex; align-items: stretch; background: var(--cream);
+  border-top: 1px solid #000; border-bottom: 1px solid #000;
+}
+.lwh-nav-logo { display: flex; align-items: center; margin-left: 36px; }
+.lwh-nav-logo img { width: 74.75px; height: 29px; transition: transform .3s; }
+.lwh-nav-logo:hover img { transform: translateX(6px) rotate(-4deg); }
+.lwh-nav-spacer { flex: 1; }
+.lwh-nav-btn {
+  min-width: 191px; padding: 0 59px; display: flex; align-items: center; justify-content: center;
+  border-left: 1px solid #000; font: 700 16px/normal 'Cabinet Grotesk', sans-serif; white-space: nowrap;
+  transition: background-color .2s;
+}
+.lwh-nav-btn:hover, .lwh-nav-btn:focus-visible { background: var(--bubble); }
+.lwh-nav-btn:active { background: #e58ec9; }
+
+/* ---------- hero ---------- */
+.lwh-hero { position: relative; height: 696px; background: #000; border-bottom: 1px solid #000; overflow: hidden; }
+.lwh-hero > img:first-child { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lwh-hero-fade { position: absolute; right: -12px; top: 0; width: 1014px; height: 696px; background: linear-gradient(to right, rgba(0,0,0,0), #000); }
+.lwh-hero > img.lwh-hero-logo { position: absolute; left: 992px; top: 163px; width: 299px; height: 118px; }
+.lwh-hero-text { position: absolute; left: 926px; top: 332px; width: 365px; font: 700 29.272px/36px 'Cabinet Grotesk', sans-serif; color: var(--cream); text-align: right; }
+.lwh-hero .lwh-btn { position: absolute; left: 1189px; top: 527px; }
+
+/* ---------- welcome ---------- */
+.lwh-welcome { position: relative; height: 636px; background: var(--bubble); }
+.lwh-photo {
+  position: absolute; left: 159px; top: 80.5px; width: 664px; height: 475px;
+  border: 1px solid #000; border-radius: 30px; overflow: hidden;
+}
+.lwh-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lwh-sticker {
+  --r: 0deg; --sy: 1;
+  position: absolute; transform: rotate(var(--r)) scaleY(var(--sy)); cursor: pointer;
+  transition: scale .25s cubic-bezier(.3,1.6,.5,1);
+  -webkit-tap-highlight-color: transparent;
+}
+.lwh-sticker img { position: absolute; width: 100%; height: 100%; }
+.lwh-sticker:hover { scale: 1.05; }
+.lwh-sticker:hover, .lwh-sticker.is-wiggle { animation: lwhWiggle .65s ease-in-out; }
+@keyframes lwhWiggle {
+  0%, 100% { transform: rotate(var(--r)) scaleY(var(--sy)) translate(0, 0); }
+  18% { transform: rotate(calc(var(--r) - 7deg)) scaleY(var(--sy)) translate(-3px, -5px); }
+  40% { transform: rotate(calc(var(--r) + 6deg)) scaleY(var(--sy)) translate(3px, -3px); }
+  62% { transform: rotate(calc(var(--r) - 4deg)) scaleY(var(--sy)) translate(-2px, 0); }
+  82% { transform: rotate(calc(var(--r) + 2deg)) scaleY(var(--sy)) translate(1px, 0); }
+}
+.lwh-sticker--team { --r: -1.15deg; left: 664.4px; top: 354.6px; width: 237px; height: 243px; }
+.lwh-sticker--team img { inset: auto; left: -2.14%; top: -0.41%; width: 102.58%; height: 102.48%; }
+.lwh-welcome-text { position: absolute; left: 928px; top: 96px; width: 359px; }
+.lwh-welcome-text h2 { font: 900 62px/53.888px 'Cabinet Grotesk', sans-serif; }
+.lwh-welcome-text p { font: 700 15.18px/normal 'Cabinet Grotesk', sans-serif; position: absolute; left: 0; }
+.lwh-welcome-text .p1 { top: 146px; width: 332px; }
+.lwh-welcome-text .p2 { top: 260px; width: 338px; }
+.lwh-welcome-text hr { position: absolute; left: 0; top: 374px; width: 353px; height: 2px; margin: 0; border: 0; background: #000; }
+.lwh-welcome-text .lwh-btn { position: absolute; left: 0; top: 414px; }
+
+/* ---------- colour strips (marquee) ---------- */
+.lwh-strip { position: relative; height: 40px; overflow: hidden; border: 1px solid #000; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.lwh-strip--red { background: var(--cherry); }
+.lwh-strip--pink { background: var(--bubble); }
+.lwh-strip--black { background: #000; }
+.lwh-track { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; gap: 15px; will-change: transform; }
+.lwh-ph { flex: none; width: 401.459px; text-align: center; font: 700 23px/normal 'Telma', serif; white-space: nowrap; }
+
+/* ---------- top dishes ---------- */
+.lwh-dishes { position: relative; height: 780px; background: #000; }
+.lwh-dishes h2 { position: absolute; left: 261px; top: 96px; width: 917px; text-align: center; font: 900 69.836px/normal 'Cabinet Grotesk', sans-serif; color: var(--bubble); }
+.lwh-stars { position: absolute; left: 56px; top: 306px; width: 1334px; height: 183px; transform: rotate(180deg); pointer-events: none; }
+.lwh-stars img { width: 100%; height: 100%; }
+.lwh-cards { position: absolute; left: 255px; top: 224px; display: flex; gap: 48px; align-items: flex-start; }
+.lwh-card {
+  width: 280.263px; border: 1px solid #000; border-radius: 14px; overflow: hidden; cursor: pointer;
+  background: var(--bubble); transition: transform .25s;
+}
+.lwh-card:hover { transform: translateY(-5px); }
+.lwh-card-in { width: 280px; display: flex; flex-direction: column; align-items: center; gap: 25px; padding-bottom: 25px; }
+.lwh-card .face.face-line { display: none; }
+.lwh-card.is-outline { background: var(--cream); }
+.lwh-card.is-outline .face.face-photo { display: none; }
+.lwh-card.is-outline .face.face-line { display: flex; animation: lwhPop .45s cubic-bezier(.3,1.4,.5,1); }
+@keyframes lwhPop { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
+.lwh-card .face { width: 280px; display: flex; flex-direction: column; align-items: center; gap: 25px; }
+.lwh-dish-pic { position: relative; width: 280px; height: 293.408px; border: 1px solid #000; overflow: hidden; }
+.lwh-dish-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lwh-dish-pic--line { display: grid; place-items: center; background: transparent; }
+.lwh-dish-pic--line img { position: static; width: 269px; height: 272px; object-fit: contain; }
+.lwh-dish-text { width: 242.368px; display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center; }
+.lwh-dish-text h3 { font: 900 23.684px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-dish-text p { width: 220.263px; font: 700 11.053px/normal 'Cabinet Grotesk', sans-serif; }
+
+/* ---------- menu ---------- */
+.lwh-menu { position: relative; height: 915px; background: var(--cream); }
+.lwh-menu-panel {
+  position: absolute; left: 153px; top: 98px; width: 1140px; height: 719px;
+  background: var(--bubble); border: 1px solid #000; border-radius: 17.498px; overflow: hidden;
+}
+.lwh-menu-grid { position: absolute; left: 1px; top: 103px; width: 1138px; height: 615px; }
+.lwh-menu-bar { position: absolute; left: -1px; top: -1px; width: 1138.421px; height: 104.211px; background: #000; }
+.lwh-menu-line { position: absolute; left: -1px; top: 102.6px; width: 1140px; height: 1.5px; background: #000; }
+.lwh-menu-panel h2 { position: absolute; left: 197px; top: 14.79px; width: 761px; text-align: center; font: 900 63.158px/61.579px 'Cabinet Grotesk', sans-serif; color: var(--cream); }
+.lwh-menu-img { position: absolute; left: 196px; top: 138px; width: 747px; height: 531px; box-shadow: -10px 10px 0 #000; }
+.lwh-menu-img img { width: 100%; height: 100%; object-fit: cover; }
+.lwh-menu-panel .lwh-btn { position: absolute; left: 977.5px; top: 625px; }
+.lwh-sticker--iced { --r: -10.44deg; left: 1162.5px; top: 0; width: 192px; height: 281px; margin: 15px 23.9px; }
+.lwh-sticker--iced img { inset: auto; left: -2.64%; top: -0.37%; width: 103.18%; height: 101.85%; }
+.lwh-sticker--latte { --r: 176.44deg; --sy: -1; left: 43px; top: 620.73px; width: 244.905px; height: 221.56px; margin: 7.4px 6.6px; }
+.lwh-sticker--latte img { inset: auto; left: -2.07%; top: -0.5%; width: 102.07%; height: 102.77%; }
+
+/* ---------- visit us (accordion of stores) ---------- */
+.lwh-visit { position: relative; height: 780px; background: #000; }
+.lwh-visit h2 { position: absolute; left: 150px; top: 106px; height: 78px; font: 900 80px/normal 'Cabinet Grotesk', sans-serif; color: var(--bubble); white-space: nowrap; }
+.lwh-stores { position: absolute; left: 150px; top: 215px; width: 1147px; height: 419px; padding: 0 10px; display: flex; gap: 7px; justify-content: center; align-items: flex-start; }
+.lwh-store {
+  flex: none; width: 77px; height: 419px; display: flex; overflow: hidden;
+  background: var(--bubble); border: 1px solid #000;
+  transition: width .6s cubic-bezier(.22,.8,.24,1);
+}
+.lwh-store.is-open { width: 788.371px; }
+.lwh-store-photo { position: relative; flex: none; width: 418.371px; height: 100%; border-right: 1px solid #000; overflow: hidden; cursor: pointer; }
+.lwh-store.is-open .lwh-store-photo { cursor: default; }
+.lwh-store-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s, filter .3s; }
+.lwh-store:not(.is-open) .lwh-store-photo:hover img { transform: scale(1.06); filter: brightness(1.08); }
+.lwh-store-info { flex: none; width: 370px; padding: 26px 0; display: flex; flex-direction: column; gap: 22px; opacity: 0; transition: opacity .3s; }
+.lwh-store.is-open .lwh-store-info { opacity: 1; transition-delay: .25s; }
+.lwh-store-title { height: 114px; padding: 0 27px; }
+.lwh-store-title h3 { width: 282px; font: 900 46.076px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-store-desc { border-top: 1px solid #000; padding: 23px 27px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.lwh-store-desc .addr { font: 700 23.038px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-store-desc .hours { font: 700 14.744px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-store-desc .lwh-btn { margin-top: 12px; }
+
+/* ---------- food truck + weekly stops ---------- */
+.lwh-truck { position: relative; height: 641px; background: var(--cream); display: flex; justify-content: space-between; }
+.lwh-truck-left { position: relative; width: 827px; height: 641px; border-right: 1px solid #000; }
+.lwh-truck-left h2 { position: absolute; left: 90px; top: 53px; width: 647px; text-align: center; font: 900 50px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-truck-img { position: absolute; left: 221px; top: 194px; width: 516px; height: 421px; transition: transform .5s cubic-bezier(.3,1.5,.5,1); }
+.lwh-truck-img:hover { transform: translateX(10px) rotate(-1deg); }
+.lwh-truck-img img { width: 100%; height: 100%; object-fit: cover; }
+.lwh-days { width: 613px; margin-top: 88px; }
+.lwh-day { height: 93px; overflow: hidden; border-bottom: 1px solid #000; background: transparent; color: #000; transition: height .45s cubic-bezier(.22,.8,.24,1), background-color .25s, color .25s; }
+.lwh-day.is-open { background: #000; color: var(--bubble); }
+.lwh-day-head { display: block; width: 100%; padding: 30px 116px 0 26px; font: 700 30px/36px 'Cabinet Grotesk', sans-serif; cursor: pointer; }
+.lwh-day-head:hover { text-decoration: underline; text-underline-offset: 6px; }
+.lwh-day-body { display: grid; grid-template-columns: 282px 190px; column-gap: 50px; row-gap: 20px; align-items: start; padding: 20px 26px 37px; }
+.lwh-day-body .place { grid-column: 1; font: 700 23.038px/normal 'Cabinet Grotesk', sans-serif; }
+.lwh-day-body .time { grid-column: 1; grid-row: 2; font: 700 16px/normal 'Cabinet Grotesk', sans-serif; align-self: center; }
+.lwh-day-body .lwh-btn { grid-column: 2; grid-row: 2; align-self: stretch; }
+
+/* ---------- footer ---------- */
+.lwh-footer { position: relative; height: 385px; background: var(--cherry); border-top: 1px solid #000; font-family: 'Inter', 'Cabinet Grotesk', sans-serif; font-weight: 600; color: #000; }
+.lwh-foot-logo { position: absolute; left: 83.5px; top: 34px; width: 151px; height: 150px; overflow: hidden; }
+.lwh-foot-logo img { position: absolute; }
+.lwh-foot-logo .a { left: 0; top: 0; width: 100%; height: 57.54%; }
+.lwh-foot-logo .b { left: 2.94%; top: 65.74%; width: 82.88%; height: 34.26%; }
+.lwh-foot-about { position: absolute; left: 83.5px; top: 218px; width: 340px; font-size: 13px; line-height: normal; }
+.lwh-foot-col { position: absolute; top: 34px; }
+.lwh-foot-col h3 { font: 900 23px/normal 'Inter', sans-serif; margin-bottom: 24px; }
+.lwh-foot-col a { display: block; font-size: 16px; line-height: 32px; width: fit-content; position: relative; transition: color .2s, transform .2s; }
+.lwh-foot-col a::after { content: ''; position: absolute; left: 0; bottom: 4px; width: 100%; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s; }
+.lwh-foot-col a:hover { color: var(--cream); transform: translateX(3px); }
+.lwh-foot-col a:hover::after { transform: scaleX(1); }
+.lwh-foot-copy { position: absolute; left: 72px; width: 1296px; top: 320px; text-align: center; font-size: 13px; line-height: 19px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lwh-sticker:hover, .lwh-sticker.is-wiggle { animation: none; }
+  .lwh-store, .lwh-day, .lwh-card, .lwh-btn, .lwh-truck-img { transition: none; }
+}
+.lwh-day:not(.is-open) .lwh-day-body { visibility: hidden; }

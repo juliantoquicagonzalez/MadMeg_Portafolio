@@ -1306,7 +1306,7 @@ body.lb-open { overflow: hidden; }
 .lw-lock { font-size: 8px; color: #ba1d21; }
 .lw-screen { height: min(78vh, 820px); overflow-y: auto; overscroll-behavior: contain; background: #fff5ea; scrollbar-color: #ba1d21 #fff5ea; }
 .lw-screen:focus-visible { outline: 3px solid #ba1d21; outline-offset: -3px; }
-.lw-screen img { display: block; width: 100%; height: auto; cursor: default; }
+.lw-screen > img { display: block; width: 100%; height: auto; cursor: default; }
 .lw-hint { margin: 22px 0 0; text-align: center; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; transition: opacity .4s; }
 .lw-hint.is-gone { opacity: 0; }
 
@@ -1334,3 +1334,4 @@ body.lb-open { overflow: hidden; }
 .cb-cta:hover span, .cb-cta:focus-visible span { transform: translateX(5px); }
 .cb-cta:focus-visible { outline: 3px solid #fff5ea; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .cb-cta, .cb-cta span { transition: none; } .cb-cta:hover { transform: none; } }
+.lw-screen > img[hidden] { display: none; }
