@@ -215,7 +215,7 @@
           captions: ["The gentle napper", "The early hopper", "The night leaper"],
         },
         {
-          type: "gallery", tone: "coconut", cols: 2, square: true,
+          type: "gallery", tone: "coconut", cols: 2, square: true, maxw: "760px",
           images: [lh("merch-mug", 1232, 864, "Mug: “No harm, just charm!”"), lh("merch-shirt", 1024, 1024, "T-shirt: “Eat kindly, stay lucky.”")],
         },
         // the menu frame (Figma), edge to edge; replaces the "Shop" web mockup
