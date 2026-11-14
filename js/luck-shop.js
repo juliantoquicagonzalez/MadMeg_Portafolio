@@ -66,10 +66,10 @@
     requestAnimationFrame(tick);
   }, "strips");
 
-  /* ---- the bag falls from the hero to the coffee spot as the page scrolls; the top nav appears after the hero menu ---- */
+  /* ---- the bag falls from the hero to the coffee spot as the page scrolls ---- */
   safe(() => {
-    const bag = $("#lws-bag"), nav = $(".lws-nav");
-    const START = { x: 335.1, y: -4.9, s: 1 }, END = { x: 330, y: 685, s: 754 / 760 };
+    const bag = $("#lws-bag");
+    const START = { x: 335.1, y: 37.1, s: 1 }, END = { x: 330, y: 727, s: 754 / 760 };   // +42: the nav sits above the hero
     const DIST = 560;                                    // design px of scrolling it takes to land
     const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     let cur = reduce ? 1 : 0;
@@ -86,7 +86,6 @@
         const target = reduce ? 1 : clamp(st / DIST, 0, 1);
         cur += (target - cur) * 0.16; if (Math.abs(target - cur) < 0.0005) cur = target;
         draw();
-        nav.classList.toggle("is-on", st > 640);
       }
       requestAnimationFrame(tick);
     };

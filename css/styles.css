@@ -1283,8 +1283,8 @@ body.lb-open { overflow: hidden; }
 .lw-title { margin: 0 0 22px; font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 900; font-size: clamp(40px, 7vw, 104px); line-height: .98; letter-spacing: -.015em; }
 .lw-text { margin: 0; max-width: 52ch; font-family: 'Cabinet Grotesk', var(--f-head); font-weight: 500; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.45; }
 
-.lw-stage { background: #f2abda; padding: clamp(28px, 5vw, 72px) var(--pc) clamp(22px, 3vw, 40px); }
-.lw-browser { max-width: 1240px; margin: 0 auto; background: #fff5ea; border: 2px solid #000; border-radius: 14px; overflow: hidden; box-shadow: 10px 12px 0 #000; }
+.lw-stage { background: #f2abda; padding: clamp(18px, 2.4vw, 34px) clamp(10px, 1.6vw, 26px) clamp(16px, 2vw, 26px); } /* the window takes almost the whole screen */
+.lw-browser { max-width: 1680px; margin: 0 auto; background: #fff5ea; border: 2px solid #000; border-radius: 14px; overflow: hidden; box-shadow: 8px 10px 0 #000; }
 .lw-chrome { display: flex; align-items: flex-end; gap: 18px; padding: 10px 14px 0; background: #000; }
 .lw-dots { display: flex; gap: 6px; padding-bottom: 14px; }
 .lw-dots i { width: 11px; height: 11px; border-radius: 50%; background: #f2abda; }
@@ -1304,7 +1304,7 @@ body.lb-open { overflow: hidden; }
 .lw-tabs button:focus-visible { outline: 3px solid #f2abda; outline-offset: -3px; }
 .lw-address { display: flex; align-items: center; gap: 10px; padding: 9px 16px; background: #fff5ea; border-bottom: 2px solid #000; font: 500 13px/1 var(--f-mono); }
 .lw-lock { font-size: 8px; color: #ba1d21; }
-.lw-screen { height: min(78vh, 820px); overflow-y: auto; overscroll-behavior: contain; background: #fff5ea; scrollbar-color: #ba1d21 #fff5ea; }
+.lw-screen { height: clamp(560px, calc(100vh - 176px), 1200px); overflow-y: auto; overscroll-behavior: contain; background: #fff5ea; scrollbar-color: #ba1d21 #fff5ea; }
 .lw-screen:focus-visible { outline: 3px solid #ba1d21; outline-offset: -3px; }
 .lw-screen > img { display: block; width: 100%; height: auto; cursor: default; }
 .lw-hint { margin: 22px 0 0; text-align: center; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; transition: opacity .4s; }

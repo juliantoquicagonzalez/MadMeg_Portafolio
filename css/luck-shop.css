@@ -5,22 +5,10 @@
    ========================================================= */
 .lws { height: auto; }
 
-/* ---------- top nav: appears once the hero's own menu has scrolled away ---------- */
-.lws .lws-nav { margin-bottom: -42px; transform: translateY(-100%); transition: transform .35s cubic-bezier(.22,.8,.24,1); }
-.lws .lws-nav.is-on { transform: none; }
-
 /* ---------- hero ---------- */
 .lws-hero { position: relative; height: 770px; background: #ba1d21; overflow: hidden; }
 .lws-hero-ilus { position: absolute; left: -20px; top: -24px; width: 1470px; height: 827px; object-fit: cover; }
 .lws-hero-title { position: absolute; left: 69.8px; top: -4.9px; width: 531.6px; text-align: center; font: 900 194.885px/normal 'Telma', serif; color: #ba1d21; z-index: 1; }
-.lws-menu { position: absolute; left: 0; top: 641px; width: 1440px; height: 92px; border-top: 2px solid var(--cream); border-bottom: 2px solid var(--cream); z-index: 2; }
-.lws-menu-btn {
-  position: absolute; top: 0; width: 191px; height: 100%; display: flex; align-items: center; justify-content: center;
-  border-left: 2px solid var(--cream); color: var(--cream); font: 700 20px/normal 'Cabinet Grotesk', sans-serif;
-  transition: background-color .2s, color .2s;
-}
-.lws-menu-btn:hover, .lws-menu-btn:focus-visible { background: var(--cream); color: #ba1d21; }
-.lws-menu-btn:active { background: var(--bubble); }
 
 /* ---------- the falling bag ---------- */
 .lws-bag { position: absolute; left: 0; top: 0; width: 760px; height: 760px; z-index: 20; pointer-events: none; will-change: transform; transform: translate(335.1px, -4.9px); }
