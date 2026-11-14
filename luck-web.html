@@ -16,7 +16,7 @@
   <!-- Tumb, licensed through Maria's Adobe Fonts (Creative Cloud) web project -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/sxu4bkt.css" />
-  <link rel="stylesheet" href="css/styles.css?v=202611141230" />
+  <link rel="stylesheet" href="css/styles.css?v=202611141310" />
 </head>
 <body>
   <header class="nav">
@@ -32,7 +32,7 @@
       <a class="lw-back" href="project.html?p=the-luck-and-the-hare">← Back to The Luck &amp; The Hare</a>
       <p class="lw-k">Sneak peek · work in progress</p>
       <h1 class="lw-title">The website,<br />a first look.</h1>
-      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, merch and gifts, and a blog for the community. Browse the tabs and scroll inside the window.</p>
+      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, T-shirts, mugs and caps, and a blog for the community. Browse the tabs, from the home to each product page, and scroll inside the window.</p>
     </section>
 
     <section class="lw-stage" aria-label="Website sketch">
@@ -42,6 +42,10 @@
           <div class="lw-tabs" role="tablist" aria-label="Pages of the website">
             <button type="button" role="tab" id="tab-home" aria-controls="lw-screen" aria-selected="true" data-page="home" data-path="">Home</button>
             <button type="button" role="tab" id="tab-shop" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="shop" data-path="shop">Shop</button>
+            <button type="button" role="tab" id="tab-coffee" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="coffee" data-path="shop/coffee">Coffee</button>
+            <button type="button" role="tab" id="tab-shirts" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="shirts" data-path="shop/t-shirts">T-shirts</button>
+            <button type="button" role="tab" id="tab-mugs" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="mugs" data-path="shop/mugs">Mugs</button>
+            <button type="button" role="tab" id="tab-caps" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="caps" data-path="shop/caps">Caps</button>
             <button type="button" role="tab" id="tab-blog" aria-controls="lw-screen" aria-selected="false" tabindex="-1" data-page="blog" data-path="blog">Blog</button>
           </div>
         </div>
@@ -65,6 +69,10 @@
       const pages = {
         home: { src: "assets/projects/the-luck-and-the-hare/web/home.webp", h: 4947, alt: "Home page: hero with the Night Leaper bag and mug, welcome to the burrow, top dishes, full menu, visit us in-store and the food truck schedule" },
         shop: { src: "assets/projects/the-luck-and-the-hare/web/shop.webp", h: 3226, alt: "Shop page: Colombian coffee blends with the Early Hopper product, T-shirts, mugs, caps and kits and gifts" },
+        coffee: { src: "assets/projects/the-luck-and-the-hare/web/coffee.webp", h: 1977, alt: "Coffee product pages: The Early Hopper, The Gentle Napper and The Night Leaper, each with its profile, vibe, best use, bag sizes and add to cart" },
+        shirts: { src: "assets/projects/the-luck-and-the-hare/web/shirts.webp", h: 1973, alt: "T-shirts page: Eat Kindly Tee, Coffee Dark Tee and No Harm Tee with sizes and add to cart" },
+        mugs: { src: "assets/projects/the-luck-and-the-hare/web/mugs.webp", h: 1807, alt: "Mugs page: Eat Kindly Mug, Coffee Dark Mug and No Harm Mug with add to cart" },
+        caps: { src: "assets/projects/the-luck-and-the-hare/web/caps.webp", h: 1904, alt: "Caps page: Follow The Hare Cap, Red Sparkles Cap and Anti-dairy Social Club Cap with add to cart" },
         blog: { src: "assets/projects/the-luck-and-the-hare/web/blog.webp", h: 2154, alt: "Blog page: categories, featured article about the march for animal rights, recent posts and the newsletter sign-up" },
       };
       const tabs = [...document.querySelectorAll(".lw-tabs [role=tab]")];
@@ -72,7 +80,9 @@
       const url = document.getElementById("lw-url"), hint = document.getElementById("lw-hint");
       const show = (name, focus) => {
         const p = pages[name]; if (!p) return;
-        tabs.forEach((t) => { const on = t.dataset.page === name; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on) { screen.setAttribute("aria-labelledby", t.id); url.textContent = "theluckandthehare.com/" + t.dataset.path; if (focus) t.focus(); } });
+        tabs.forEach((t) => { const on = t.dataset.page === name; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on) { screen.setAttribute("aria-labelledby", t.id); url.textContent = "theluckandthehare.com/" + t.dataset.path; if (focus) t.focus();
+          // on phones the tab strip scrolls sideways: keep the chosen tab in view
+          const strip = t.parentElement; if (t.offsetLeft < strip.scrollLeft || t.offsetLeft + t.offsetWidth > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: t.offsetLeft - 16, behavior: "smooth" }); } });
         img.src = p.src; img.alt = p.alt; img.height = p.h;
         screen.scrollTop = 0;
         try { history.replaceState(null, "", name === "home" ? location.pathname : "#" + name); } catch (e) {}
