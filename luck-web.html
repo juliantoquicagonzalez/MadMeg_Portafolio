@@ -12,13 +12,14 @@
   <link href="https://api.fontshare.com/v2/css?f[]=gambetta@700&display=swap" rel="stylesheet" />
   <!-- The Luck & The Hare: its brand fonts (Fontshare serves one family per request) -->
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,900&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=telma@700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=telma@700,900&display=swap" rel="stylesheet" />
   <!-- Tumb, licensed through Maria's Adobe Fonts (Creative Cloud) web project -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/sxu4bkt.css" />
-  <link rel="stylesheet" href="css/styles.css?v=202611141550" />
+  <link rel="stylesheet" href="css/styles.css?v=202611141610" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/luck-home.css?v=202611141550" />
+  <link rel="stylesheet" href="css/luck-home.css?v=202611141610" />
+  <link rel="stylesheet" href="css/luck-shop.css?v=202611141610" />
 </head>
 <body>
   <header class="nav">
@@ -34,7 +35,7 @@
       <a class="lw-back" href="project.html?p=the-luck-and-the-hare">← Back to The Luck &amp; The Hare</a>
       <p class="lw-k">Sneak peek · work in progress</p>
       <h1 class="lw-title">The website,<br />a first look.</h1>
-      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, T-shirts, mugs and caps, and a blog for the community. Browse the tabs, from the home to each product page, and scroll inside the window. The home is alive: hover the buttons, touch the stickers, pass over a dish or a store, and unfold the days.</p>
+      <p class="lw-text">A sketch of how the web page for The Luck &amp; The Hare would feel: the burrow’s home, a shop for coffee, T-shirts, mugs and caps, and a blog for the community. Browse the tabs, from the home to each product page, and scroll inside the window. Home and Shop are alive: hover the buttons, touch the stickers, pass over a dish or a store, unfold the days, scroll to drop the coffee bag and pick a blend, a T-shirt, a cap or a mug.</p>
     </section>
 
     <section class="lw-stage" aria-label="Website sketch">
@@ -263,6 +264,122 @@
           <p class="lwh-foot-copy">© 2026 The Luck &amp; The Hare. All rights reserved</p>
         </footer>
       </div>
+      <div class="lwh lws" id="lws" aria-label="Interactive sketch of the shop page" hidden>
+        <header class="lwh-nav lws-nav">
+          <a class="lwh-nav-logo" href="#lws" data-noop aria-label="The Luck &amp; The Hare, home"><img src="assets/projects/the-luck-and-the-hare/web/home/nav-logo.svg" alt="" width="75" height="29" /></a>
+          <div class="lwh-nav-spacer"></div>
+          <button type="button" class="lwh-nav-btn">SHOP</button>
+          <button type="button" class="lwh-nav-btn">BLOG</button>
+          <button type="button" class="lwh-nav-btn">CONTACT</button>
+          <button type="button" class="lwh-nav-btn">CART</button>
+          <button type="button" class="lwh-nav-btn">ORDER NOW</button>
+        </header>
+
+        <section class="lws-hero">
+          <img class="lws-hero-ilus" src="assets/projects/the-luck-and-the-hare/web/shop/hero-ilus.webp" alt="Illustration of Colombian coffee hills framed with coffee beans and leaves" width="2000" height="1125" decoding="async" />
+          <h1 class="lws-hero-title">Shop</h1>
+          <nav class="lws-menu" aria-label="Shop menu">
+            <button type="button" class="lws-menu-btn" style="left:412px">SHOP</button>
+            <button type="button" class="lws-menu-btn" style="left:603px">BLOG</button>
+            <button type="button" class="lws-menu-btn" style="left:794px">CONTACT</button>
+            <button type="button" class="lws-menu-btn" style="left:985px">CART</button>
+            <button type="button" class="lws-menu-btn" style="left:1176px">ORDER NOW</button>
+          </nav>
+        </section>
+
+        <section class="lws-prod" id="lws-prod">
+          <div class="lws-prod-left">
+            <div class="lws-prod-col">
+              <div class="lws-prod-title"><h2 id="lws-c-name">The Early Hopper</h2></div>
+              <div class="lws-prod-desc"><p id="lws-c-desc"></p></div>
+              <div class="lws-prod-roast"><p id="lws-c-toast">Medium Toast</p></div>
+            </div>
+          </div>
+          <div class="lws-prod-right">
+            <div class="lws-spec"><h3>The Profile</h3><p id="lws-c-profile"></p></div>
+            <div class="lws-spec"><h3>The Vibe</h3><p id="lws-c-vibe"></p></div>
+            <div class="lws-spec"><h3>Best for</h3><p id="lws-c-best"></p></div>
+            <div class="lws-price">
+              <div class="lws-price-in">
+                <p class="lws-price-v" id="lws-c-price">$25.99</p>
+                <div class="lws-grams" role="radiogroup" aria-label="Bag size">
+                  <button type="button" class="lws-gram is-on" role="radio" aria-checked="true" data-g="250" data-price="$25.99">250g</button>
+                  <button type="button" class="lws-gram" role="radio" aria-checked="false" data-g="500" data-price="$46.99">500g</button>
+                </div>
+                <p class="lws-price-note">Taxes added. Delivery cost is calculated on the checkout.</p>
+                <button type="button" class="lwh-btn lwh-btn--black">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="lws-sel" aria-label="Choose a coffee">
+          <div class="lws-sel-text lws-sel-l"><p>Foraged ethically from Colombian farms and animal sanctuaries</p></div>
+          <div class="lws-sel-btns" role="radiogroup" aria-label="Coffee blend">
+            <button type="button" class="lws-sel-btn" data-coffee="light" role="radio" aria-checked="false" aria-label="The Gentle Napper">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/out-light.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/sel-light.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+            </button>
+            <button type="button" class="lws-sel-btn is-on" data-coffee="medium" role="radio" aria-checked="true" aria-label="The Early Hopper">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/out-medium.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/sel-medium.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+            </button>
+            <button type="button" class="lws-sel-btn" data-coffee="dark" role="radio" aria-checked="false" aria-label="The Night Leaper">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/out-dark.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/sel-dark.webp" alt="" width="358" height="358" loading="lazy" decoding="async" />
+            </button>
+          </div>
+          <div class="lws-sel-text lws-sel-r"><p>A percentage of every order goes directly into hare-preserving sanctuaries in the country</p></div>
+        </section>
+
+        <div class="lwh-strip lwh-strip--black" data-phrase="ethically sourced goods" data-cols="#ba1d21,#f2abda" aria-hidden="true"><div class="lwh-track"></div></div>
+
+        <section class="lws-merch" id="lws-merch">
+          <div class="lws-merch-left">
+            <div class="lws-merch-head"><h2 id="lws-m-title">T-Shirts</h2></div>
+            <ul class="lws-rows" id="lws-rows"></ul>
+            <div class="lws-merch-sel" role="radiogroup" aria-label="Product type">
+            <button type="button" class="lws-cat" data-cat="cap" role="radio" aria-checked="false" aria-label="Caps">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/ic-cap-def.webp" alt="" width="324" height="324" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/ic-cap-sel.webp" alt="" width="324" height="324" loading="lazy" decoding="async" />
+            </button>
+            <button type="button" class="lws-cat is-on" data-cat="shirt" role="radio" aria-checked="true" aria-label="T-Shirts">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/ic-shirt-def.webp" alt="" width="292" height="332" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/ic-shirt-sel.webp" alt="" width="292" height="332" loading="lazy" decoding="async" />
+            </button>
+            <button type="button" class="lws-cat" data-cat="mug" role="radio" aria-checked="false" aria-label="Mugs">
+              <img class="out" src="assets/projects/the-luck-and-the-hare/web/shop/ic-mug-def.webp" alt="" width="270" height="240" loading="lazy" decoding="async" />
+              <img class="col" src="assets/projects/the-luck-and-the-hare/web/shop/ic-mug-sel.webp" alt="" width="270" height="240" loading="lazy" decoding="async" />
+            </button>
+            </div>
+          </div>
+          <div class="lws-merch-img" id="lws-m-img"><img data-img="shirt-eat" src="assets/projects/the-luck-and-the-hare/web/shop/merch-shirt-eat.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="shirt-coffee" src="assets/projects/the-luck-and-the-hare/web/shop/merch-shirt-coffee.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="shirt-noharm" src="assets/projects/the-luck-and-the-hare/web/shop/merch-shirt-noharm.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="cap-hare" src="assets/projects/the-luck-and-the-hare/web/shop/merch-cap-hare.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="cap-sparkles" src="assets/projects/the-luck-and-the-hare/web/shop/merch-cap-sparkles.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="cap-anti" src="assets/projects/the-luck-and-the-hare/web/shop/merch-cap-anti.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="mug-eat" src="assets/projects/the-luck-and-the-hare/web/shop/merch-mug-eat.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="mug-coffee" src="assets/projects/the-luck-and-the-hare/web/shop/merch-mug-coffee.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /><img data-img="mug-noharm" src="assets/projects/the-luck-and-the-hare/web/shop/merch-mug-noharm.webp" alt="" width="1050" height="1043" loading="lazy" decoding="async" /></div>
+        </section>
+
+        <div class="lwh-strip lwh-strip--black" data-phrase="ethically sourced goods" data-cols="#ba1d21,#f2abda" aria-hidden="true"><div class="lwh-track"></div></div>
+
+        <section class="lws-kits">
+          <h2>Kits and gifts</h2>
+          <div class="lws-kit-row">
+            <article class="lws-kit"><img src="assets/projects/the-luck-and-the-hare/web/shop/kit-purist.webp" alt="The Purist" width="568" height="568" loading="lazy" decoding="async" /><div><h3>The Purist</h3><p>French Press + Coffee blend of your choice.</p></div></article>
+            <article class="lws-kit"><img src="assets/projects/the-luck-and-the-hare/web/shop/kit-nomad.webp" alt="The Nomad" width="568" height="568" loading="lazy" decoding="async" /><div><h3>The Nomad</h3><p>Coffee bottle with one of our caps.</p></div></article>
+            <article class="lws-kit"><img src="assets/projects/the-luck-and-the-hare/web/shop/kit-lover.webp" alt="The Lover" width="568" height="568" loading="lazy" decoding="async" /><div><h3>The Lover</h3><p>Coffee blend of your choice + Mug + Moka.</p></div></article>
+            <article class="lws-kit"><img src="assets/projects/the-luck-and-the-hare/web/shop/kit-lover.webp" alt="The Grinder" width="568" height="568" loading="lazy" decoding="async" /><div><h3>The Grinder</h3><p>Coffee blend + Coffee mug + Portable manual grinder.</p></div></article>
+          </div>
+        </section>
+
+        <footer class="lwh-footer">
+          <div class="lwh-foot-logo" aria-hidden="true"><img class="a" src="assets/projects/the-luck-and-the-hare/web/home/footer-logo-a.svg" alt="" /><img class="b" src="assets/projects/the-luck-and-the-hare/web/home/footer-logo-b.svg" alt="" /></div>
+          <p class="lwh-foot-about">The Luck &amp; The Hare is an artisanal vegan cuisine and coffee roastery. Our mission is to provide a cruelty-free delicious experience for those who value quality, sustainability and transparency.</p>
+          <div class="lwh-foot-col" style="left:523.5px"><h3>BROWSE</h3><a href="#lws" data-noop>Home</a><a href="#lws" data-noop>Shop</a><a href="#lws" data-noop>Blog</a><a href="#lws" data-noop>Contact</a><a href="#lws" data-noop>Cart</a></div>
+          <div class="lwh-foot-col" style="left:726.5px"><h3>Services</h3><a href="#lws" data-noop>Coffee blends</a><a href="#lws" data-noop>Merch and apparel</a><a href="#lws" data-noop>Catering and Bulk sales</a><a href="#lws" data-noop>Community and Activism</a><a href="#lws" data-noop>Hare and Animal protection</a></div>
+          <div class="lwh-foot-col" style="left:1046.5px"><h3>Contact</h3><a href="#lws" data-noop>@theluckandthehare</a><a href="#lws" data-noop>hello@theluckandthehare.com</a><a href="#lws" data-noop>Privacy Policy</a><a href="#lws" data-noop>Terms of Service</a></div>
+          <p class="lwh-foot-copy">© 2026 The Luck &amp; The Hare. All rights reserved</p>
+        </footer>
+
+        <div class="lws-bag" id="lws-bag" aria-hidden="false"><img class="b-light" src="assets/projects/the-luck-and-the-hare/web/shop/bag-light.webp" alt="The Gentle Napper coffee bag" width="1400" height="1400" decoding="async" /><img class="b-medium is-on" src="assets/projects/the-luck-and-the-hare/web/shop/bag-medium.webp" alt="The Early Hopper coffee bag" width="1400" height="1400" decoding="async" /><img class="b-dark" src="assets/projects/the-luck-and-the-hare/web/shop/bag-dark.webp" alt="The Night Leaper coffee bag" width="1400" height="1400" decoding="async" /></div>
+        <div hidden><template data-coffee="light" data-name="The Gentle Napper" data-toast="Light Toast"><p class="desc">Don’t let the name fool you—this isn't about laziness; it’s about calculated stillness. Even a sleeping hare is a weapon of speed waiting to be triggered. This light roast is for the purists who want to taste the raw, botanical complexity of the bean. It’s tea-like, bright, and hits with a high-acid punch that wakes up the brain without the heavy baggage.</p><p class="profile">High-altitude beans that retain their soft, floral origin.</p><p class="vibe">The calm before the sprint.</p><p class="best">Pour-overs, Chemex, and those who drink it black and bold.</p></template><template data-coffee="medium" data-name="The Early Hopper" data-toast="Medium Toast"><p class="desc">This is our daily driver. The Early Hopper is built for the hustle—for the ones who are out of the burrow before the sun has a chance to catch up. It’s the perfect middle ground: enough body to cut through your favorite plant milk, but enough nuance to stand alone. It’s smooth, reliable, and faster than your morning to-do list.</p><p class="profile">A perfectly balanced Colombian base. Wild citrus and Floral Honey notes.</p><p class="vibe">Constant motion.</p><p class="best">Lattes, Flat Whites, and your everyday &ldquo;get-it-done&rdquo; cup.</p></template><template data-coffee="dark" data-name="The Night Leaper" data-toast="Dark Toast"><p class="desc">For the creatures of the night and the boldest souls. The Night Leaper is a dark, oily, and intimidating roast that refuses to be ignored. We’ve pushed these beans to the edge of the fire to pull out deep, molasses-thick sweetness and a smoky finish that lingers. It’s heavy-hitting coffee for a clear conscience.</p><p class="profile">Low acidity, maximum body. Think 80% dark cocoa and charred oak.</p><p class="vibe">Total energy refill.</p><p class="best">Espresso shots, Moka pots, and heavy-duty iced mochas.</p></template><template data-cat="shirt" data-title="T-Shirts" data-sizes="1"><p class="desc">Ethically manufactured with recycled cotton and water-based screen print.</p><ul><li data-img="shirt-eat">Eat Kindly Tee</li><li data-img="shirt-coffee">Coffee, Dark Tee</li><li data-img="shirt-noharm">No Harm Tee</li></ul></template><template data-cat="cap" data-title="Caps" data-sizes="0"><p class="desc">Embroidered patch.</p><ul><li data-img="cap-hare">Follow The Hare Cap</li><li data-img="cap-sparkles">Red Sparkles Cap</li><li data-img="cap-anti">Anti-dairy Social Club Cap</li></ul></template><template data-cat="mug" data-title="Mugs" data-sizes="0"><p class="desc">Handmade ceramic mug, matte effect.</p><ul><li data-img="mug-eat">Eat Kindly Mug</li><li data-img="mug-coffee">Coffee, Dark Mug</li><li data-img="mug-noharm">No Harm Mug</li></ul></template></div>
+      </div>
       <img id="lw-img" alt="" width="1440" height="1000" decoding="async" hidden />
         </div>
       </div>
@@ -276,12 +393,13 @@
     <a href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
   </footer>
 
-  <script defer src="js/luck-home.js?v=202611141550"></script>
+  <script defer src="js/luck-home.js?v=202611141610"></script>
+  <script defer src="js/luck-shop.js?v=202611141610"></script>
   <script>
     (() => {
       const pages = {
-        home: { live: true },
-        shop: { src: "assets/projects/the-luck-and-the-hare/web/shop.webp", h: 3226, alt: "Shop page: Colombian coffee blends with the Early Hopper product, T-shirts, mugs, caps and kits and gifts" },
+        home: { live: "lwh" },
+        shop: { live: "lws" },
         coffee: { src: "assets/projects/the-luck-and-the-hare/web/coffee.webp", h: 1977, alt: "Coffee product pages: The Early Hopper, The Gentle Napper and The Night Leaper, each with its profile, vibe, best use, bag sizes and add to cart" },
         shirts: { src: "assets/projects/the-luck-and-the-hare/web/shirts.webp", h: 1973, alt: "T-shirts page: Eat Kindly Tee, Coffee Dark Tee and No Harm Tee with sizes and add to cart" },
         mugs: { src: "assets/projects/the-luck-and-the-hare/web/mugs.webp", h: 1807, alt: "Mugs page: Eat Kindly Mug, Coffee Dark Mug and No Harm Mug with add to cart" },
@@ -293,12 +411,13 @@
       const url = document.getElementById("lw-url"), hint = document.getElementById("lw-hint");
       const show = (name, focus) => {
         const p = pages[name]; if (!p) return;
-        const home = document.getElementById("lwh");
+        const lives = ["lwh", "lws"].map((id) => document.getElementById(id)).filter(Boolean);
         tabs.forEach((t) => { const on = t.dataset.page === name; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on) { screen.setAttribute("aria-labelledby", t.id); url.textContent = "theluckandthehare.com/" + t.dataset.path; if (focus) t.focus();
           // on phones the tab strip scrolls sideways: keep the chosen tab in view
           const strip = t.parentElement; if (t.offsetLeft < strip.scrollLeft || t.offsetLeft + t.offsetWidth > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: t.offsetLeft - 16, behavior: "smooth" }); } });
-        if (p.live) { img.hidden = true; if (home) { home.hidden = false; if (home.fit) home.fit(); } }
-        else { if (home) home.hidden = true; img.hidden = false; img.src = p.src; img.alt = p.alt; img.height = p.h; }
+        lives.forEach((el) => { el.hidden = el.id !== p.live; });
+        if (p.live) { img.hidden = true; const el = document.getElementById(p.live); if (el && el.fit) el.fit(); }
+        else { img.hidden = false; img.src = p.src; img.alt = p.alt; img.height = p.h; }
         screen.scrollTop = 0;
         try { history.replaceState(null, "", name === "home" ? location.pathname : "#" + name); } catch (e) {}
       };
