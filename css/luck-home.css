@@ -146,6 +146,15 @@
 .lwh-menu-panel h2 { position: absolute; left: 197px; top: 14.79px; width: 761px; text-align: center; font: 900 63.158px/61.579px 'Cabinet Grotesk', sans-serif; color: var(--cream); }
 .lwh-menu-img { position: absolute; left: 196px; top: 138px; width: 747px; height: 531px; box-shadow: -10px 10px 0 #000; }
 .lwh-menu-img img { width: 100%; height: 100%; object-fit: cover; }
+/* the menu folds open as the page scrolls (image sequence): frames are cropped to the union of the animation,
+   positioned so that the final frame lands exactly on the 747 x 531 box */
+.lwh-menu-img.is-seq { box-shadow: none; }
+.lwh-menu-img .seq-canvas { display: none; position: absolute; left: -7.4px; top: -47.8px; width: 761.7px; height: 626.8px; filter: drop-shadow(-10px 10px 0 #000); pointer-events: none; }
+.lwh-menu-img.is-seq .seq-canvas { display: block; }
+.lwh-menu-img.is-seq .seq-still { visibility: hidden; }
+.lwh-truck-img .seq-canvas { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
+.lwh-truck-img.is-seq .seq-canvas { display: block; }
+.lwh-truck-img.is-seq .seq-still { visibility: hidden; }
 .lwh-menu-panel .lwh-btn { position: absolute; left: 977.5px; top: 625px; }
 .lwh-sticker--iced { --r: -10.44deg; left: 1162.5px; top: 0; width: 192px; height: 281px; margin: 15px 23.9px; }
 .lwh-sticker--iced img { inset: auto; left: -2.64%; top: -0.37%; width: 103.18%; height: 101.85%; }
@@ -180,7 +189,6 @@
 .lwh-truck-left { position: relative; width: 827px; height: 641px; border-right: 1px solid #000; }
 .lwh-truck-left h2 { position: absolute; left: 90px; top: 53px; width: 647px; text-align: center; font: 900 50px/normal 'Cabinet Grotesk', sans-serif; }
 .lwh-truck-img { position: absolute; left: 221px; top: 194px; width: 516px; height: 421px; transition: transform .5s cubic-bezier(.3,1.5,.5,1); }
-.lwh-truck-img:hover { transform: translateX(10px) rotate(-1deg); }
 .lwh-truck-img img { width: 100%; height: 100%; object-fit: cover; }
 .lwh-days { width: 613px; margin-top: 88px; }
 .lwh-day { height: 93px; overflow: hidden; border-bottom: 1px solid #000; background: transparent; color: #000; transition: height .45s cubic-bezier(.22,.8,.24,1), background-color .25s, color .25s; }

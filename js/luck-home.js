@@ -85,6 +85,64 @@
     requestAnimationFrame(tick);
   }, "strips");
 
+  /* ---- image sequences: the truck loops on its own, the menu folds open with the scroll ---- */
+  safe(() => {
+    const screen = root.closest(".lw-screen");
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const frames = (holder) => {
+      const n = +holder.dataset.count, base = holder.dataset.frames;
+      const imgs = Array.from({ length: n }, (_, i) => { const im = new Image(); im.decoding = "async"; im.src = base + String(i + 1).padStart(3, "0") + ".webp"; return im; });
+      const canvas = holder.querySelector(".seq-canvas"), ctx = canvas.getContext("2d");
+      const draw = (i) => { const im = imgs[clamp(Math.round(i), 0, n - 1)]; if (im && im.complete && im.naturalWidth) { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.drawImage(im, 0, 0, canvas.width, canvas.height); return true; } return false; };
+      return { n, imgs, draw };
+    };
+    const lazy = (el, fn) => {
+      if (!window.IntersectionObserver) return fn();
+      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); fn(); } }, { root: screen, rootMargin: "900px 0px" });
+      io.observe(el);
+    };
+
+    // truck: constant loop, 24 frames per second, paused when it is off screen
+    const truck = document.getElementById("lwh-truck-seq");
+    if (truck) lazy(truck, () => {
+      const seq = frames(truck);
+      let on = true, f = 0, acc = 0, last = performance.now(), ready = false;
+      if (window.IntersectionObserver) new IntersectionObserver((es) => es.forEach((e) => { on = e.isIntersecting; }), { root: screen }).observe(truck);
+      const tick = (now) => {
+        const dt = Math.min(0.1, (now - last) / 1000); last = now;
+        if (!root.hidden && on) {
+          if (!ready) ready = seq.draw(0) && (truck.classList.add("is-seq"), true);
+          else if (!reduce) { acc += dt * 24; if (acc >= 1) { f = (f + Math.floor(acc)) % seq.n; acc %= 1; seq.draw(f); } }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+
+    // menu: the frame follows how far the menu has travelled up the window
+    const menu = document.getElementById("lwh-menu-seq");
+    if (menu) lazy(menu, () => {
+      const seq = frames(menu);
+      let cur = 0, ready = false, shown = -1;
+      const target = () => {
+        if (reduce) return seq.n - 1;
+        const sr = screen.getBoundingClientRect(), r = menu.getBoundingClientRect(), H = sr.height;
+        const p = clamp((H * 0.95 - (r.top - sr.top)) / (H * 0.8), 0, 1); // starts as the menu enters, ends when it has reached the upper part
+        return p * (seq.n - 1);
+      };
+      const tick = () => {
+        if (!root.hidden) {
+          const t = target();
+          cur += (t - cur) * 0.2; if (Math.abs(t - cur) < 0.02) cur = t;
+          const i = Math.round(cur);
+          if (i !== shown && seq.draw(i)) { shown = i; if (!ready) { ready = true; menu.classList.add("is-seq"); } }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, "sequences");
+
   /* ---- top dishes: pass the mouse over a dish to see it as a line drawing (tap / Enter on touch and keyboard) ---- */
   safe(() => {
     const cards = [...root.querySelectorAll(".lwh-card")];
